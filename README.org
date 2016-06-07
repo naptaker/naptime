@@ -1,0 +1,367 @@
+#+OPTIONS: title:t toc:t date:nil author:t email:nil num:nil
+#+TITLE: Space is the Place
+#+DATE: [2016-06-06 Mon]
+#+AUTHOR: Eric Bailey
+#+EMAIL: booking@naptakerrr.com
+#+LANGUAGE: en
+#+CREATOR: Emacs 25.0.94.1 (Org mode 8.3.4)
+
+* Front Matter
+:PROPERTIES:
+:tangle:   include/global.ily
+:END:
+Every good LilyPond file starts with a ~\version~:
+#+BEGIN_SRC LilyPond
+\version "2.19.24"
+#+END_SRC
+
+Include some libraries and such:
+#+BEGIN_SRC LilyPond
+%% \include "articulate.ly"
+\include "templates/predefined-instruments/context-creating-function.ily"
+\include "openlilylib"
+\useLibrary gridly
+#+END_SRC
+
+Then the ~\header~ metadata:
+#+BEGIN_SRC LilyPond
+\header {
+  title    = "Space is the Place"
+  opus     = "Naptime"
+  composer = "Eric Bailey"
+  poet     = "Preston Y. Drum"
+  arranger = "Naptaker"
+  copyright = "© 2016 Naptaker"
+}
+#+END_SRC
+* Instrument Definitions
+  :PROPERTIES:
+  :tangle:   include/global.ily
+  :END:
+** Guitar
+#+BEGIN_SRC LilyPond
+\newInstrument "Guitar"
+\with {
+  instrumentName = "Guitar"
+  %% shortInstrumentName = "G"
+  \RemoveEmptyStaves
+  \override VerticalAxisGroup #'remove-first = ##t
+  \clef "G_8"
+}
+\with {
+  \consists "Staff_performer"
+  midiInstrument = "electric guitar (clean)"
+}
+"default"
+#+END_SRC
+** Bass
+#+BEGIN_SRC LilyPond
+\newInstrument "Bass"
+\with {
+  instrumentName = "Bass"
+  %% shortInstrumentName = "B"
+  \RemoveEmptyStaves
+  \override VerticalAxisGroup #'remove-first = ##t
+  \clef F
+  \transposition c
+}
+\with {
+  \consists "Staff_performer"
+  midiInstrument = "electric bass (finger)"
+}
+"default"
+#+END_SRC
+* Templates
+:PROPERTIES:
+:tangle:   include/global.ily
+:END:
+First, initialize a grid with nine segments and all the parts.
+#+BEGIN_SRC LilyPond
+\gridInit 9 #'("meta" "guitar" "bass" "drums up" "drums down")
+#+END_SRC
+** I: Drum and Bass Intro
+#+BEGIN_SRC LilyPond
+\gridSetSegmentTemplate 1
+\with {
+  barNumber = 1
+  music     = { s1*8  }
+}
+#+END_SRC
+** II: Full Band Intro
+#+BEGIN_SRC LilyPond
+\gridSetSegmentTemplate 2
+\with {
+  barNumber = 9
+  music     = { s1*8 }
+}
+#+END_SRC
+** III: Theme A
+#+BEGIN_SRC LilyPond
+\gridSetSegmentTemplate 3
+\with {
+  barNumber = 17
+  music     = { s1*16 }
+}
+#+END_SRC
+** IV: Theme B
+#+BEGIN_SRC LilyPond
+\gridSetSegmentTemplate 4
+\with {
+  barNumber = 33
+  music     = { s1*8 }
+}
+#+END_SRC
+** V: Theme C (slow)
+Slow and heavy.
+#+BEGIN_SRC LilyPond
+\gridSetSegmentTemplate 5
+\with {
+  barNumber = 41
+  music     = { s1*8 }
+}
+#+END_SRC
+** VI: Theme C′ (double time)
+The same as the previous segment, but with twice the rhythmic intensity.
+#+BEGIN_SRC LilyPond
+\gridSetSegmentTemplate 6
+\with {
+  barNumber = 49
+  music     = { s1*8 }
+}
+#+END_SRC
+** VII: Theme D
+The triumphant stoner segment.
+#+BEGIN_SRC LilyPond
+\gridSetSegmentTemplate 7
+\with {
+  barNumber = 57
+  music     = { s1*16 }
+}
+#+END_SRC
+** VIII: Magic Notes
+#+BEGIN_SRC LilyPond
+\gridSetSegmentTemplate 8
+\with {
+  barNumber = 73
+  music     = { s1 }
+}
+#+END_SRC
+** IX: Theme B′ (reprise)
+#+BEGIN_SRC LilyPond
+\gridSetSegmentTemplate 9
+\with {
+  barNumber = 74
+  music     = { s1*24 }
+}
+#+END_SRC
+* Parts
+** Meta (=​"meta"​=)
+:PROPERTIES:
+:tangle:   include/global.ily
+:END:
+*** I: Drum and Bass Intro
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 1
+\relative c {
+  \tempo 4=150
+  \mark 1
+  s1*8
+  \break
+}
+#+END_SRC
+*** II: Full Band Intro
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 2
+\relative c {
+  \mark 2
+  s1*8
+  \break
+}
+#+END_SRC
+*** III: Theme A
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 3
+\relative c {
+  \mark 3
+  s1*4 \break
+  s1*4 \pageBreak
+  s1*4 \break
+  s1*4 \break
+}
+#+END_SRC
+*** IV: Theme B
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 4
+\relative c {
+  \mark 4
+  s1*4 \break
+  s1*4 \break
+  \break
+}
+#+END_SRC
+*** V: Theme C (slow)
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 5
+\relative c {
+  \mark 5
+  s1*8
+  \break
+}
+#+END_SRC
+*** VI: Theme C′ (double time)
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 6
+\relative c {
+  \mark 6
+  s1*8
+  \break
+}
+#+END_SRC
+*** VII: Theme D
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 7
+\relative c {
+  \mark 7
+  s1*16
+}
+#+END_SRC
+*** VIII: Magic Notes
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 8
+\relative c {
+  \mark 8
+  s1
+  \break
+}
+#+END_SRC
+*** IX: Theme B′ (reprise)
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 9
+\relative c {
+  \mark 9
+  s1*24
+  \bar "|."
+}
+#+END_SRC
+* Scheme Hacks
+  :PROPERTIES:
+  :tangle:   include/naptaker.scm
+  :END:
+Tweak the paper and global staff size.
+#+BEGIN_SRC scheme
+(set-default-paper-size "arch a" 'landscape)
+(set-global-staff-size 18)
+#+END_SRC
+
+Custom drum notation.
+#+BEGIN_SRC scheme
+(define preston-drums
+  (alist->hash-table
+   '((bassdrum      default #f -3)
+     (snare         default #f  1)
+     (closedhihat   cross   #f  5)
+     (halfopenhihat xcircle #f  5)
+     (lowtom        default #f -1)
+     (pedalhihat    cross   #f -5)
+     (crashcymbal   cross   #f  6)
+     (ridecymbal    cross   #f  4))))
+#+END_SRC
+
+** COMMENT Parenthesize
+/Currently unused/
+#+BEGIN_SRC scheme
+(define ((my-stencils start) grob)
+  (let* ((par-list (parentheses-item::calc-parenthesis-stencils grob))
+         (null-par (grob-interpret-markup grob (markup #:null))))
+    (if start
+        (list (car par-list) null-par)
+        (list null-par (cadr par-list)))))
+
+(define startParenthesis
+  (define-music-function (parser location note)
+    (ly:music?)
+    "Add an opened parenthesis to the left of `note"
+    #{
+      \once \override ParenthesesItem #'stencils = #(my-stencils #t)
+      \parenthesize $note
+    #}))
+
+(define endParenthesis
+  (define-music-function (parser location note)
+    (ly:music?)
+    "Add a closed parenthesis to the right of `note"
+    #{
+      \once \override ParenthesesItem #'stencils = #(my-stencils #f)
+      \parenthesize $note
+    #}))
+#+END_SRC
+** COMMENT Custom Line Breaks Engraver
+/Currently unused/
+#+BEGIN_SRC scheme
+;; Slightly tweaked from David Nalesnik's work.
+;; http://lists.gnu.org/archive/html/lilypond-user/2012-05/msg00381.html
+
+(define (custom-line-breaks-engraver bar-list)
+  (let* ((working-copy bar-list)
+         (total (1+ (car working-copy))))
+    (lambda (context)
+      (make-engraver
+       (acknowledgers
+        ((paper-column-interface engraver grob source-engraver)
+         (let ((internal-bar (ly:context-property context 'internalBarNumber)))
+           (if (and (pair? working-copy)
+                    (zero? (remainder internal-bar total))
+                    (eq? #t (ly:grob-property grob 'non-musical)))
+               (begin
+                 (set! (ly:grob-property grob 'line-break-permission) 'force)
+                 (if (null? (cdr working-copy))
+                     (set! working-copy bar-list)
+                     (set! working-copy (cdr working-copy)))
+                 (set! total (+ total (car working-copy))))))))))))
+#+END_SRC
+** Naptaker Score
+#+BEGIN_SRC scheme
+(define Naptaker
+  (define-music-function (parser location) ()
+    "Return the makings of a Naptaker score."
+    #{
+      \new StaffGroup <<
+        \new GuitarVoice = gtr <<
+          { \gridGetMusic "meta" }
+          { \gridGetMusic "guitar" }
+        >>
+        \new BassVoice = bass { \gridGetMusic "bass" }
+        \new DrumStaff \with {
+          drumStyleTable = #preston-drums
+        } {
+          <<
+            <<
+              \new DrumVoice { \gridGetMusic "drums up" }
+              \new DrumVoice
+              \with {
+                \remove "Rest_engraver"
+                \remove "Multi_measure_rest_engraver"
+              }
+              \gridGetMusic "drums down"
+            >>
+          >>
+        }
+      >>
+    #}))
+#+END_SRC
+* Makefile
+  :PROPERTIES:
+  :tangle:   Makefile
+  :END:
+#+BEGIN_SRC makefile
+OPENLILYLIB       = openlilylib
+LILYPOND_OPTIONS  = -I $(OPENLILYLIB) -I $(OPENLILYLIB)/ly
+LILYPOND_OPTIONS += -djob-count=8 -dmidi-extension=mid
+
+all: space_is_the_place.pdf
+
+%.pdf: %.ly include/*.ily notes/*.ily parts/*.ily
+	lilypond $(LILYPOND_OPTIONS) $<
+#+END_SRC
+# Note to self, make sure `whitepace-cleanup-mode' is disabled and
+# org-src-preserve-indentation is t.
