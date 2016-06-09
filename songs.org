@@ -1,0 +1,23 @@
+#+OPTIONS: title:t toc:t date:nil author:t email:nil num:nil
+#+TITLE: Songs
+#+DATE: [2016-06-09 Mon]
+#+AUTHOR: Eric Bailey
+#+EMAIL: naptakerband@gmail.com
+#+LANGUAGE: en
+#+CREATOR: Emacs 25.0.94.1 (Org mode 8.3.4)
+
+* Capo 3
+- F Song // The Rustler
+- Loon Juice
+- Space Is the Place
+
+* Open
+- B-Side
+- Cover Yr Eyes
+- Disco Ball
+- It's No Fun to Grow Up
+- (I Don't Want No Girl Who Looks Like No) Model
+- Slut Nite
+- Smoke All My Cigarettes
+- Speaking in Tongues
+- Twister
