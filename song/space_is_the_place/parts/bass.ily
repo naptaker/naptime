@@ -1,4 +1,4 @@
-\include "include/global.ily"
+\include "global.ily"
 \include "bass-I.ily"
 \include "bass-II.ily"
 \include "bass-III.ily"

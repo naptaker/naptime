@@ -1,4 +1,4 @@
-\include "include/global.ily"
+\include "global.ily"
 \include "guitar-I.ily"
 \include "guitar-II.ily"
 \include "guitar-III.ily"

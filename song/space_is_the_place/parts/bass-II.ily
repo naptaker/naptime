@@ -1,4 +1,4 @@
-\include "include/global.ily"
+\include "global.ily"
 
 \gridPutMusic "bass" 2
 \relative c {
