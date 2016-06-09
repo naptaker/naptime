@@ -2,7 +2,7 @@
 #+TITLE: Space is the Place
 #+DATE: [2016-06-06 Mon]
 #+AUTHOR: Eric Bailey
-#+EMAIL: booking@naptakerrr.com
+#+EMAIL: naptakerband@gmail.com
 #+LANGUAGE: en
 #+CREATOR: Emacs 25.0.94.1 (Org mode 8.3.4)
 
