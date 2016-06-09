@@ -18,7 +18,7 @@ Every good LilyPond file starts with a ~\version~:
 Include some libraries and such:
 #+BEGIN_SRC LilyPond
 %% \include "articulate.ly"
-\include "templates/predefined-instruments/context-creating-function.ily"
+\include "instruments.ily"
 \include "openlilylib"
 \useLibrary gridly
 #+END_SRC
@@ -33,43 +33,6 @@ Then the ~\header~ metadata:
   arranger = "Naptaker"
   copyright = "© 2016 Naptaker"
 }
-#+END_SRC
-* Instrument Definitions
-  :PROPERTIES:
-  :tangle:   include/global.ily
-  :END:
-** Guitar
-#+BEGIN_SRC LilyPond
-\newInstrument "Guitar"
-\with {
-  instrumentName = "Guitar"
-  %% shortInstrumentName = "G"
-  \RemoveEmptyStaves
-  \override VerticalAxisGroup #'remove-first = ##t
-  \clef "G_8"
-}
-\with {
-  \consists "Staff_performer"
-  midiInstrument = "electric guitar (clean)"
-}
-"default"
-#+END_SRC
-** Bass
-#+BEGIN_SRC LilyPond
-\newInstrument "Bass"
-\with {
-  instrumentName = "Bass"
-  %% shortInstrumentName = "B"
-  \RemoveEmptyStaves
-  \override VerticalAxisGroup #'remove-first = ##t
-  \clef F
-  \transposition c
-}
-\with {
-  \consists "Staff_performer"
-  midiInstrument = "electric bass (finger)"
-}
-"default"
 #+END_SRC
 * Templates
 :PROPERTIES:
@@ -243,125 +206,20 @@ The triumphant stoner segment.
   \bar "|."
 }
 #+END_SRC
-* Scheme Hacks
-  :PROPERTIES:
-  :tangle:   include/naptaker.scm
-  :END:
-Tweak the paper and global staff size.
-#+BEGIN_SRC scheme
-(set-default-paper-size "arch a" 'landscape)
-(set-global-staff-size 18)
-#+END_SRC
-
-Custom drum notation.
-#+BEGIN_SRC scheme
-(define preston-drums
-  (alist->hash-table
-   '((bassdrum      default #f -3)
-     (snare         default #f  1)
-     (closedhihat   cross   #f  5)
-     (halfopenhihat xcircle #f  5)
-     (lowtom        default #f -1)
-     (pedalhihat    cross   #f -5)
-     (crashcymbal   cross   #f  6)
-     (ridecymbal    cross   #f  4))))
-#+END_SRC
-
-** COMMENT Parenthesize
-/Currently unused/
-#+BEGIN_SRC scheme
-(define ((my-stencils start) grob)
-  (let* ((par-list (parentheses-item::calc-parenthesis-stencils grob))
-         (null-par (grob-interpret-markup grob (markup #:null))))
-    (if start
-        (list (car par-list) null-par)
-        (list null-par (cadr par-list)))))
-
-(define startParenthesis
-  (define-music-function (parser location note)
-    (ly:music?)
-    "Add an opened parenthesis to the left of `note"
-    #{
-      \once \override ParenthesesItem #'stencils = #(my-stencils #t)
-      \parenthesize $note
-    #}))
-
-(define endParenthesis
-  (define-music-function (parser location note)
-    (ly:music?)
-    "Add a closed parenthesis to the right of `note"
-    #{
-      \once \override ParenthesesItem #'stencils = #(my-stencils #f)
-      \parenthesize $note
-    #}))
-#+END_SRC
-** COMMENT Custom Line Breaks Engraver
-/Currently unused/
-#+BEGIN_SRC scheme
-;; Slightly tweaked from David Nalesnik's work.
-;; http://lists.gnu.org/archive/html/lilypond-user/2012-05/msg00381.html
-
-(define (custom-line-breaks-engraver bar-list)
-  (let* ((working-copy bar-list)
-         (total (1+ (car working-copy))))
-    (lambda (context)
-      (make-engraver
-       (acknowledgers
-        ((paper-column-interface engraver grob source-engraver)
-         (let ((internal-bar (ly:context-property context 'internalBarNumber)))
-           (if (and (pair? working-copy)
-                    (zero? (remainder internal-bar total))
-                    (eq? #t (ly:grob-property grob 'non-musical)))
-               (begin
-                 (set! (ly:grob-property grob 'line-break-permission) 'force)
-                 (if (null? (cdr working-copy))
-                     (set! working-copy bar-list)
-                     (set! working-copy (cdr working-copy)))
-                 (set! total (+ total (car working-copy))))))))))))
-#+END_SRC
-** Naptaker Score
-#+BEGIN_SRC scheme
-(define Naptaker
-  (define-music-function (parser location) ()
-    "Return the makings of a Naptaker score."
-    #{
-      \new StaffGroup <<
-        \new GuitarVoice = gtr <<
-          { \gridGetMusic "meta" }
-          { \gridGetMusic "guitar" }
-        >>
-        \new BassVoice = bass { \gridGetMusic "bass" }
-        \new DrumStaff \with {
-          drumStyleTable = #preston-drums
-        } {
-          <<
-            <<
-              \new DrumVoice { \gridGetMusic "drums up" }
-              \new DrumVoice
-              \with {
-                \remove "Rest_engraver"
-                \remove "Multi_measure_rest_engraver"
-              }
-              \gridGetMusic "drums down"
-            >>
-          >>
-        }
-      >>
-    #}))
-#+END_SRC
 * Makefile
   :PROPERTIES:
   :tangle:   Makefile
   :END:
 #+BEGIN_SRC makefile
-OPENLILYLIB       = openlilylib
+OPENLILYLIB      ?= ../../openlilylib
 LILYPOND_OPTIONS  = -I $(OPENLILYLIB) -I $(OPENLILYLIB)/ly
+LILYPOND_OPTIONS += -I include -I ../../include
 LILYPOND_OPTIONS += -djob-count=8 -dmidi-extension=mid
 
-all: space_is_the_place.pdf
+all: main.pdf
 
 %.pdf: %.ly include/*.ily notes/*.ily parts/*.ily
-	lilypond $(LILYPOND_OPTIONS) $<
+	@lilypond $(LILYPOND_OPTIONS) $<
 #+END_SRC
 # Note to self, make sure `whitepace-cleanup-mode' is disabled and
 # org-src-preserve-indentation is t.

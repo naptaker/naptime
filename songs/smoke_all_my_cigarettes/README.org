@@ -1,0 +1,108 @@
+#+OPTIONS: title:t toc:t date:nil author:t email:nil num:nil
+#+TITLE: Smoke All My Cigarettes
+#+DATE: [2016-06-09 Mon]
+#+AUTHOR: Eric Bailey
+#+EMAIL: naptakerband@gmail.com
+#+LANGUAGE: en
+#+CREATOR: Emacs 25.0.94.1 (Org mode 8.3.4)
+
+* Front Matter
+:PROPERTIES:
+:tangle:   include/global.ily
+:END:
+Every good LilyPond file starts with a ~\version~:
+#+BEGIN_SRC LilyPond
+\version "2.19.24"
+#+END_SRC
+
+Include some libraries and such:
+#+BEGIN_SRC LilyPond
+%% \include "articulate.ly"
+\include "instruments.ily"
+\include "openlilylib"
+\useLibrary gridly
+#+END_SRC
+
+Define some useful variables.
+#+BEGIN_SRC LilyPond
+Key    = { \key c \major }
+Tempo  = { \tempo 4 = 128 }
+global = { \Tempo \defaultTimeSignature \time 4/4 }
+#+END_SRC
+
+Then the ~\header~ metadata:
+#+BEGIN_SRC LilyPond
+\header {
+  title    = "Smoke All My Cigarettes"
+  opus     = "Naptime"
+  composer = "Eric Bailey"
+  poet     = "Preston Y. Drum"
+  arranger = "Naptaker"
+  copyright = "© 2016 Naptaker"
+}
+#+END_SRC
+* Templates
+:PROPERTIES:
+:tangle:   include/global.ily
+:END:
+First, initialize a grid with two segments and all the parts.
+#+BEGIN_SRC LilyPond
+\gridInit 2 #'("meta" "guitar" "bass" "drums up" "drums down")
+#+END_SRC
+** I: Drum and Guitar Intro
+#+BEGIN_SRC LilyPond
+\gridSetSegmentTemplate 1
+\with {
+  barNumber = 1
+  music     = { s1*4 }
+}
+#+END_SRC
+** II: Full Band Intro
+#+BEGIN_SRC LilyPond
+\gridSetSegmentTemplate 2
+\with {
+  barNumber = 5
+  music     = { s1*8 }
+}
+#+END_SRC
+* Parts
+** Meta (=​"meta"​=)
+:PROPERTIES:
+:tangle:   include/global.ily
+:END:
+*** I: Drum and Guitar Intro
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 1
+\relative c {
+  \global
+  \mark 1
+  s1*4
+  %% \break
+}
+#+END_SRC
+*** II: Full Band Intro
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 2
+\relative c {
+  \mark 2
+  s1*8
+  \break
+}
+#+END_SRC
+* Makefile
+  :PROPERTIES:
+  :tangle:   Makefile
+  :END:
+#+BEGIN_SRC makefile
+OPENLILYLIB      ?= ../../openlilylib
+LILYPOND_OPTIONS  = -I $(OPENLILYLIB) -I $(OPENLILYLIB)/ly
+LILYPOND_OPTIONS += -I include -I ../../include
+LILYPOND_OPTIONS += -djob-count=8 -dmidi-extension=mid
+
+all: main.pdf
+
+%.pdf: %.ly include/*.ily notes/*.ily parts/*.ily
+	@lilypond $(LILYPOND_OPTIONS) $<
+#+END_SRC
+# Note to self, make sure `whitepace-cleanup-mode' is disabled and
+# org-src-preserve-indentation is t.

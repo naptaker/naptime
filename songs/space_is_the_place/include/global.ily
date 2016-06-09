@@ -14,8 +14,6 @@
   copyright = "© 2016 Naptaker"
 }
 
-
-
 \gridInit 9 #'("meta" "guitar" "bass" "drums up" "drums down")
 
 \gridSetSegmentTemplate 1
