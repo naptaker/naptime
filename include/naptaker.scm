@@ -17,10 +17,11 @@
     "Return the makings of a Naptaker score."
     #{
       \new StaffGroup <<
-        \new GuitarVoice = gtr <<
+        \new VoxVoice = vox <<
           { \gridGetMusic "meta" }
-          { \gridGetMusic "guitar" }
+          { \gridGetMusic "vox" }
         >>
+        \new GuitarVoice = gtr { \gridGetMusic "guitar" }
         \new BassVoice = bass { \gridGetMusic "bass" }
         \new DrumStaff \with {
           drumStyleTable = #preston-drums

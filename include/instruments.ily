@@ -2,6 +2,16 @@
 
 \include "templates/predefined-instruments/context-creating-function.ily"
 
+\newInstrument "Vox"
+\with {
+  instrumentName = "Vocals"
+  %% shortInstrumentName = "V"
+  \RemoveEmptyStaves
+  \override VerticalAxisGroup #'remove-first = ##t
+  \clef F
+}
+"default"
+
 \newInstrument "Guitar"
 \with {
   instrumentName = "Guitar"
