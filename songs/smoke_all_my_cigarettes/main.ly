@@ -1,12 +1,12 @@
 \include "global.ily"
-%% \include "parts/bass.ily"
+\include "parts/bass.ily"
 \include "parts/guitar.ily"
 
 \gridDisplay
 \gridCheck
 %% \gridSetRange #'all
-%% \gridSetRange #'(1 . 4)
-%% \gridSetRange 4
+%% \gridSetRange #'(7 . 9)
+%% \gridSetRange 7
 
 \score {
   \Naptaker
