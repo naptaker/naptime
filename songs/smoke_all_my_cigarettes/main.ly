@@ -1,5 +1,4 @@
 \include "global.ily"
-#(load "../../include/naptaker.scm")
 %% \include "parts/bass.ily"
 \include "parts/guitar.ily"
 
