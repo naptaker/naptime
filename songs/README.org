@@ -1,0 +1,40 @@
+#+OPTIONS: title:t toc:t date:nil author:t email:nil num:nil
+#+TITLE: Songs
+#+DATE: [2016-06-09 Mon]
+#+AUTHOR: Eric Bailey
+#+EMAIL: naptakerband@gmail.com
+#+LANGUAGE: en
+#+CREATOR: Emacs 25.0.94.1 (Org mode 8.3.4)
+
+* Capo 3
+- F Song // The Rustler
+- Loon Juice
+- Space Is the Place
+
+* Open
+- B-Side
+- Cover Yr Eyes
+- Disco Ball
+- It's No Fun to Grow Up
+- (I Don't Want No Girl Who Looks Like No) Model
+- Slut Nite
+- Smoke All My Cigarettes
+- Speaking in Tongues
+- Twister
+* Makefile
+N.B. ~whitespace-cleanup-mode~ *must* be disabled and
+~org-src-preserve-indentation~ must be non-nil.
+#+BEGIN_SRC makefile
+OPENLILYLIB      ?= ../../openlilylib
+LILYPOND_OPTIONS  = -I $(OPENLILYLIB) -I $(OPENLILYLIB)/ly
+LILYPOND_OPTIONS += -I include -I ../../include
+LILYPOND_OPTIONS += -djob-count=8 -dmidi-extension=mid
+ifeq ($(DEBUG),1)
+	LILYPOND_OPTIONS += -V
+endif
+
+all: main.pdf
+
+%.pdf: %.ly include/*.ily notes/*.ily parts/*.ily
+	@lilypond $(LILYPOND_OPTIONS) $<
+#+END_SRC
