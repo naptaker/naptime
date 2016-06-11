@@ -27,17 +27,19 @@
         \new BassVoice = bass { \gridGetMusic "bass" }
         \new DrumStaff \with {
           drumStyleTable = #preston-drums
+          instrumentName = "Drums"
+          %% shortInstrumentName = "D"
+          \RemoveEmptyStaves
+          \override VerticalAxisGroup #'remove-first = ##t
         } {
           <<
-            <<
-              \new DrumVoice { \gridGetMusic "drums up" }
-              \new DrumVoice
-              \with {
-                \remove "Rest_engraver"
-                \remove "Multi_measure_rest_engraver"
-              }
-              \gridGetMusic "drums down"
-            >>
+            \new DrumVoice { \gridGetMusic "drums up" }
+            \new DrumVoice
+            \with {
+              \remove "Rest_engraver"
+              \remove "Multi_measure_rest_engraver"
+            }
+            \gridGetMusic "drums down"
           >>
         }
       >>
