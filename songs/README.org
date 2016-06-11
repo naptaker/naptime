@@ -1,3 +1,4 @@
+#+STARTUP: showall
 #+OPTIONS: title:t toc:t date:nil author:t email:nil num:nil
 #+TITLE: Songs
 #+DATE: [2016-06-09 Mon]
@@ -9,8 +10,7 @@
 * Capo 3
 - F Song // The Rustler
 - Loon Juice
-- Space Is the Place
-
+- [[file:space_is_the_place/README.org][Space Is the Place]]
 * Open
 - B-Side
 - Cover Yr Eyes
@@ -18,7 +18,7 @@
 - It's No Fun to Grow Up
 - (I Don't Want No Girl Who Looks Like No) Model
 - Slut Nite
-- Smoke All My Cigarettes
+- [[file:smoke_all_my_cigarettes/README.org][Smoke All My Cigarettes]]
 - Speaking in Tongues
 - Twister
 * Makefile
