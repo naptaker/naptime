@@ -17,6 +17,7 @@ Every good LilyPond file starts with a ~\version~:
 
 Include some libraries and such:
 #+BEGIN_SRC LilyPond
+#(load "../../include/naptaker.scm")
 %% \include "articulate.ly"
 \include "instruments.ily"
 \include "openlilylib"
@@ -26,7 +27,7 @@ Include some libraries and such:
 Define some useful variables.
 #+BEGIN_SRC LilyPond
 Key    = { \key c \major }
-Tempo  = { \tempo 4 = 128 }
+Tempo  = { \tempo 4 = 138 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 #+END_SRC
 
@@ -45,25 +46,15 @@ Then the ~\header~ metadata:
 :PROPERTIES:
 :tangle:   include/global.ily
 :END:
-First, initialize a grid with two segments and all the parts.
+First, initialize a grid with nine segments and all the parts.
 #+BEGIN_SRC LilyPond
-\gridInit 2 #'("meta" "guitar" "bass" "drums up" "drums down")
+\gridInit 9 #'("meta" "vox" "guitar" "bass" "drums up" "drums down")
 #+END_SRC
-** I: Drum and Guitar Intro
+
+Next, initialize the template with a list of the lengths (in measures)
+of every segment.
 #+BEGIN_SRC LilyPond
-\gridSetSegmentTemplate 1
-\with {
-  barNumber = 1
-  music     = { s1*4 }
-}
-#+END_SRC
-** II: Full Band Intro
-#+BEGIN_SRC LilyPond
-\gridSetSegmentTemplate 2
-\with {
-  barNumber = 5
-  music     = { s1*8 }
-}
+\templateInit #'(4 8 8 8 8 8 52 8 18)
 #+END_SRC
 * Parts
 ** Meta (=​"meta"​=)
@@ -73,36 +64,179 @@ First, initialize a grid with two segments and all the parts.
 *** I: Drum and Guitar Intro
 #+BEGIN_SRC LilyPond
 \gridPutMusic "meta" 1
-\relative c {
+{
   \global
   \mark 1
   s1*4
-  %% \break
+  \break
 }
 #+END_SRC
 *** II: Full Band Intro
 #+BEGIN_SRC LilyPond
 \gridPutMusic "meta" 2
-\relative c {
+{
   \mark 2
   s1*8
   \break
 }
 #+END_SRC
+*** III: "Take me away..."
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 3
+{
+  \mark 3
+  s1*8
+  \pageBreak
+}
+#+END_SRC
+*** IV: Intro Variation
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 4
+{
+  \mark 4
+  s1*8
+  \break
+}
+#+END_SRC
+*** V:
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 5
+{
+  \mark 5
+  s1*8
+  \break
+}
+#+END_SRC
+*** VI:
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 6
+{
+  \mark 6
+  s1*8
+  \break
+}
+#+END_SRC
+*** VII: Regulations Rip-Off and Guitar Noodling
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 7
+{
+  \mark 7
+  s1*4
+  s1*4 \break
+
+  s1*4
+  s1*4
+  s1*4 \break
+  s1*8 \break
+
+  s1*4
+  s1*4 \break
+  s1*4
+  s1*4 \break
+  s1*8 \break
+}
+#+END_SRC
+*** VIII:
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 8
+{
+  \mark 8
+  s1*8 \break
+}
+#+END_SRC
+*** IX:
+#+BEGIN_SRC LilyPond
+\gridPutMusic "meta" 9
+{
+  \mark 9
+  s1*8 \break
+  s1*8
+  s1*2
+  \bar "|."
+}
+#+END_SRC
+* Main
+:PROPERTIES:
+:tangle:   main.ly
+:END:
+Include the grid, templates and header metadata ([[file:include/global.ily][global.ily]]), and the parts.
+#+BEGIN_SRC LilyPond
+\include "global.ily"
+\include "parts/bass.ily"
+\include "parts/guitar.ily"
+#+END_SRC
+
+Print out the grid while rendering and
+ensure all segments are of appropriate length.
+#+BEGIN_SRC LilyPond
+\gridDisplay
+\gridCheck
+#+END_SRC
+
+During the process of transcribing a score, it can be useful to render a
+particular range of the grid. GridLy provides a function, ~gridSetRange~ to
+do just that.
+
+By default, all segments are retrieved:
+#+BEGIN_SRC LilyPond :tangle no
+\gridSetRange #'all
+#+END_SRC
+
+... but you can specify a dotted pair (start and end):
+#+BEGIN_SRC LilyPond :tangle no
+\gridSetRange #'(7 . 9)
+#+END_SRC
+
+... or a single segment index:
+#+BEGIN_SRC LilyPond :tangle no
+\gridSetRange 7
+#+END_SRC
+
+Configure he score to be printed, including some visual tweaks.
+#+BEGIN_SRC LilyPond
+\score {
+  \Naptaker
+
+  \layout {
+    %% Increase the size of bar numbers by 2
+    \override Score.BarNumber.font-size = #2
+
+    %% Draw a box around bar numbers
+    \override Score.BarNumber.stencil =
+    #(make-stencil-boxer 0.1 0.25 ly:text-interface::print)
+
+    \override Score.BarNumber.padding = #3
+  }
+}
+#+END_SRC
+
+Configure the MIDI output.
+#+BEGIN_SRC LilyPond
+\score {
+  \unfoldRepeats \Naptaker
+  \midi { }
+}
+#+END_SRC
 * Makefile
-  :PROPERTIES:
-  :tangle:   Makefile
-  :END:
+:PROPERTIES:
+:tangle:   Makefile
+:END:
+N.B. ~whitespace-cleanup-mode~ *must* be disabled and
+~org-src-preserve-indentation~ must be non-nil.
 #+BEGIN_SRC makefile
 OPENLILYLIB      ?= ../../openlilylib
 LILYPOND_OPTIONS  = -I $(OPENLILYLIB) -I $(OPENLILYLIB)/ly
 LILYPOND_OPTIONS += -I include -I ../../include
 LILYPOND_OPTIONS += -djob-count=8 -dmidi-extension=mid
+ifeq ($(DEBUG),1)
+	LILYPOND_OPTIONS += -V
+endif
 
 all: main.pdf
 
 %.pdf: %.ly include/*.ily notes/*.ily parts/*.ily
 	@lilypond $(LILYPOND_OPTIONS) $<
 #+END_SRC
-# Note to self, make sure `whitepace-cleanup-mode' is disabled and
-# org-src-preserve-indentation is t.
+
+# FIXME:
+# #+INCLUDE: "../README.org::*Makefile" :only-contents t

@@ -4,9 +4,6 @@
 
 \gridDisplay
 \gridCheck
-%% \gridSetRange #'all
-%% \gridSetRange #'(7 . 9)
-%% \gridSetRange 7
 
 \score {
   \Naptaker

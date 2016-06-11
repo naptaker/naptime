@@ -59,7 +59,6 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   \break
 }
 
-
 \gridPutMusic "meta" 6
 {
   \mark 6
