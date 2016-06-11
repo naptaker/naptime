@@ -1,7 +1,7 @@
 \include "global.ily"
 
 \gridPutMusic "guitar" 1
-\relative c {
+\relative c' {
   \include "notes/guitar-I.ily"
 }
 
