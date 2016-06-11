@@ -203,26 +203,3 @@ Configure the MIDI output.
   \midi { }
 }
 #+END_SRC
-* Makefile
-:PROPERTIES:
-:tangle:   Makefile
-:END:
-N.B. ~whitespace-cleanup-mode~ *must* be disabled and
-~org-src-preserve-indentation~ must be non-nil.
-#+BEGIN_SRC makefile
-OPENLILYLIB      ?= ../../openlilylib
-LILYPOND_OPTIONS  = -I $(OPENLILYLIB) -I $(OPENLILYLIB)/ly
-LILYPOND_OPTIONS += -I include -I ../../include
-LILYPOND_OPTIONS += -djob-count=8 -dmidi-extension=mid
-ifeq ($(DEBUG),1)
-	LILYPOND_OPTIONS += -V
-endif
-
-all: main.pdf
-
-%.pdf: %.ly include/*.ily notes/*.ily parts/*.ily
-	@lilypond $(LILYPOND_OPTIONS) $<
-#+END_SRC
-
-# FIXME:
-# #+INCLUDE: "../README.org::*Makefile" :only-contents t
