@@ -1,5 +1,7 @@
-(set-default-paper-size "arch a" 'landscape)
-(set-global-staff-size 18)
+;; (set-default-paper-size "arch a" 'landscape)
+;; (set-global-staff-size 18)
+(set-default-paper-size "letter" 'landscape)
+(set-global-staff-size 14)
 
 (define preston-drums
   (alist->hash-table
