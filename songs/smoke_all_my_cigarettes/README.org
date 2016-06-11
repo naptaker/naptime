@@ -192,7 +192,7 @@ By default, all segments are retrieved:
 \gridSetRange 7
 #+END_SRC
 
-Configure he score to be printed, including some visual tweaks.
+Configure the score to be printed, including some visual tweaks.
 #+BEGIN_SRC LilyPond
 \score {
   \Naptaker

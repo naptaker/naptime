@@ -1,13 +1,9 @@
 \include "global.ily"
-#(load "../../include/naptaker.scm")
 \include "parts/bass.ily"
 \include "parts/guitar.ily"
 
 \gridDisplay
 \gridCheck
-%% \gridSetRange #'all
-%% \gridSetRange #'(1 . 4)
-%% \gridSetRange 4
 
 \score {
   \Naptaker
