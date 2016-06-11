@@ -24,6 +24,13 @@ Include some libraries and such:
 \useLibrary gridly
 #+END_SRC
 
+Define some useful variables.
+#+BEGIN_SRC LilyPond
+Key    = { \key c \major }
+Tempo  = { \tempo 4 = 150 }
+global = { \Tempo \defaultTimeSignature \time 4/4 }
+#+END_SRC
+
 Then the ~\header~ metadata:
 #+BEGIN_SRC LilyPond
 \header {
@@ -58,7 +65,7 @@ of every segment.
 #+BEGIN_SRC LilyPond
 \gridPutMusic "meta" 1
 {
-  \tempo 4=150
+  \global
   \mark 1
   s1*8
   \break

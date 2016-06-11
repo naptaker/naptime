@@ -6,6 +6,10 @@
 \include "openlilylib"
 \useLibrary gridly
 
+Key    = { \key c \major }
+Tempo  = { \tempo 4 = 150 }
+global = { \Tempo \defaultTimeSignature \time 4/4 }
+
 \header {
   title    = "Space is the Place"
   opus     = "Naptime"
@@ -21,7 +25,7 @@
 
 \gridPutMusic "meta" 1
 {
-  \tempo 4=150
+  \global
   \mark 1
   s1*8
   \break
