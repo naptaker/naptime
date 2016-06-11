@@ -17,3 +17,7 @@ all: $(pdfs)
 	@echo $@
 	@$(lilypond) $(defaults) $(includes) -I $(PWD)/$*/include -o $*/main $<
 	@echo
+
+%/main.ly: %/README.org
+	@mkdir -p $*/parts
+	@emacsclient -e '(org-babel-tangle-file "$<")' >/dev/null 2>&1
