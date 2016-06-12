@@ -1,0 +1,393 @@
+#+OPTIONS: title:t toc:t date:nil author:t email:nil num:nil
+#+TITLE: Loon Juice
+#+DATE: [2016-06-11 Mon]
+#+AUTHOR: Eric Bailey
+#+EMAIL: naptakerband@gmail.com
+#+LANGUAGE: en
+#+CREATOR: Emacs 25.0.94.1 (Org mode 8.3.4)
+
+* Front Matter
+:PROPERTIES:
+:tangle:   include/global.ily
+:END:
+Every good LilyPond file starts with a ~\version~:
+#+BEGIN_SRC LilyPond
+\version "2.19.24"
+#+END_SRC
+
+Include some libraries and such:
+#+BEGIN_SRC LilyPond
+#(load "../../include/naptaker.scm")
+\include "preamble.ily"
+\include "instruments.ily"
+\include "openlilylib"
+\useLibrary gridly
+#+END_SRC
+
+Define some useful variables.
+#+BEGIN_SRC LilyPond
+Key    = { \key c \major }
+Tempo  = { \tempo 4 = 168 }
+global = { \Tempo \defaultTimeSignature \time 4/4 }
+#+END_SRC
+
+Then the ~\header~ metadata:
+#+BEGIN_SRC LilyPond
+\header {
+  title    = "Loon Juice"
+  opus     = "Naptime"
+  composer = "Naptaker"
+  %% poet     = "Preston Y. Drum"
+  %% arranger = "Naptaker"
+  copyright = "© 2016 Naptaker"
+}
+#+END_SRC
+* Templates
+:PROPERTIES:
+:tangle:   include/global.ily
+:END:
+First, initialize a grid with nine segments and all the parts.
+#+BEGIN_SRC LilyPond
+\gridInit 7 #'("meta" "vox" "guitar" "bass" "drums up" "drums down")
+#+END_SRC
+
+Next, initialize the template with a list of the lengths (in measures)
+of every segment.
+#+BEGIN_SRC LilyPond
+\templateInit #'(8 8 16 16 16 16 8)
+#+END_SRC
+* Segments
+** I: Guitar Intro
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
+\gridPutMusic "meta" 1
+{
+  \global
+  \mark 1
+  s1*8
+  \break
+}
+#+END_SRC
+*** Guitar
+#+BEGIN_SRC LilyPond :tangle parts/guitar-I.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 1
+\relative c' {
+  \include "notes/guitar-I.ily"
+}
+
+\gridCompileCell "guitar" 1
+#+END_SRC
+*** Bass
+The bass doesn't come in until the fifth measure.
+#+BEGIN_SRC LilyPond :tangle parts/bass-I.ily
+\include "global.ily"
+
+\gridPutMusic "bass" 1
+\relative c {
+  \include "notes/bass-I.ily"
+}
+
+\gridCompileCell "bass" 1
+#+END_SRC
+*** TODO Drums
+** II: Full Band Intro
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
+\gridPutMusic "meta" 2
+{
+  \mark 2
+  s1*8
+  \break
+}
+#+END_SRC
+*** Guitar
+#+BEGIN_SRC LilyPond :tangle parts/guitar-II.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 2
+\relative c' {
+  \include "notes/guitar-I.ily"
+}
+
+\gridCompileCell "guitar" 2
+#+END_SRC
+*** Bass
+#+BEGIN_SRC LilyPond :tangle parts/bass-II.ily
+\include "global.ily"
+
+\gridPutMusic "bass" 2
+\relative c {
+  \include "notes/bass-II.ily"
+}
+
+\gridCompileCell "bass" 2
+#+END_SRC
+*** TODO Drums
+** III: Bass and Tremolo Chords
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
+\gridPutMusic "meta" 3
+{
+  \mark 3
+  s1*16
+  \break
+}
+#+END_SRC
+*** Guitar
+#+BEGIN_SRC LilyPond :tangle parts/guitar-III.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 3
+\relative c {
+  \include "notes/guitar-III.ily"
+}
+
+\gridCompileCell "guitar" 3
+#+END_SRC
+*** Bass
+#+BEGIN_SRC LilyPond :tangle parts/bass-III.ily
+\include "global.ily"
+
+\gridPutMusic "bass" 3
+\relative c {
+  \repeat unfold 2 {
+    \include "notes/bass-III.ily"
+  }
+}
+
+\gridCompileCell "bass" 3
+#+END_SRC
+*** TODO Drums
+** IV:
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
+\gridPutMusic "meta" 4
+{
+  \mark 4
+  s1*16
+  \break
+}
+#+END_SRC
+*** Guitar
+#+BEGIN_SRC LilyPond :tangle parts/guitar-IV.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 4
+\relative c' {
+  \include "notes/guitar-I.ily"
+  \include "notes/guitar-IV.ily"
+}
+
+\gridCompileCell "guitar" 4
+#+END_SRC
+*** Bass
+#+BEGIN_SRC LilyPond :tangle parts/bass-IV.ily
+\include "global.ily"
+
+\gridPutMusic "bass" 4
+\relative c {
+  \repeat unfold 2 {
+    \include "notes/bass-III.ily"
+  }
+}
+
+\gridCompileCell "bass" 4
+#+END_SRC
+*** TODO Drums
+** V: Bass and Tremolo Chords (again)
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
+\gridPutMusic "meta" 5
+{
+  \mark 5
+  s1*16
+  \break
+}
+#+END_SRC
+*** Guitar
+#+BEGIN_SRC LilyPond :tangle parts/guitar-V.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 5
+\relative c {
+  \include "notes/guitar-III.ily"
+}
+
+\gridCompileCell "guitar" 5
+#+END_SRC
+*** Bass
+#+BEGIN_SRC LilyPond :tangle parts/bass-V.ily
+\include "global.ily"
+
+\gridPutMusic "bass" 5
+\relative c {
+  \repeat unfold 2 {
+    \include "notes/bass-III.ily"
+  }
+}
+
+\gridCompileCell "bass" 5
+#+END_SRC
+*** TODO Drums
+** VI:
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
+\gridPutMusic "meta" 6
+{
+  \mark 6
+  s1*16
+  \break
+}
+#+END_SRC
+*** Guitar
+#+BEGIN_SRC LilyPond :tangle parts/guitar-VI.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 6
+\relative c' {
+  \include "notes/guitar-I.ily"
+  \include "notes/guitar-IV.ily"
+}
+
+\gridCompileCell "guitar" 6
+#+END_SRC
+*** Bass
+#+BEGIN_SRC LilyPond :tangle parts/bass-VI.ily
+\include "global.ily"
+
+\gridPutMusic "bass" 6
+\relative c {
+  \repeat unfold 2 {
+    \include "notes/bass-III.ily"
+  }
+}
+
+\gridCompileCell "bass" 6
+#+END_SRC
+*** TODO Drums
+** VII: Ending
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
+\gridPutMusic "meta" 7
+{
+  \mark 7
+  s1*8
+  \bar "|."
+}
+#+END_SRC
+*** Guitar
+#+BEGIN_SRC LilyPond :tangle parts/guitar-VII.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 7
+\relative c' {
+  \include "notes/guitar-I.ily"
+}
+
+\gridCompileCell "guitar" 7
+#+END_SRC
+*** Bass
+#+BEGIN_SRC LilyPond :tangle parts/bass-VII.ily
+\include "global.ily"
+
+\gridPutMusic "bass" 7
+\relative c {
+  \include "notes/bass-I.ily"
+}
+
+\gridCompileCell "bass" 7
+#+END_SRC
+*** TODO Drums
+* Parts
+** Guitar
+   :PROPERTIES:
+   :tangle:   parts/guitar.ily
+   :END:
+#+BEGIN_SRC LilyPond
+\include "global.ily"
+\include "guitar-I.ily"
+\include "guitar-II.ily"
+\include "guitar-III.ily"
+\include "guitar-IV.ily"
+\include "guitar-V.ily"
+\include "guitar-VI.ily"
+\include "guitar-VII.ily"
+#+END_SRC
+** Bass
+   :PROPERTIES:
+   :tangle:   parts/bass.ily
+   :END:
+#+BEGIN_SRC LilyPond
+\include "global.ily"
+\include "bass-I.ily"
+\include "bass-II.ily"
+\include "bass-III.ily"
+\include "bass-IV.ily"
+\include "bass-V.ily"
+\include "bass-VI.ily"
+\include "bass-VII.ily"
+#+END_SRC
+* Main
+:PROPERTIES:
+:tangle:   main.ly
+:END:
+Include the grid, templates and header metadata ([[file:include/global.ily][global.ily]]), and the parts.
+#+BEGIN_SRC LilyPond
+\include "global.ily"
+\include "parts/bass.ily"
+\include "parts/guitar.ily"
+#+END_SRC
+
+Print out the grid while rendering and
+ensure all segments are of appropriate length.
+#+BEGIN_SRC LilyPond
+\gridDisplay
+\gridCheck
+#+END_SRC
+
+During the process of transcribing a score, it can be useful to render a
+particular range of the grid. GridLy provides a function, ~gridSetRange~ to
+do just that.
+
+By default, all segments are retrieved:
+#+BEGIN_SRC LilyPond :tangle no
+\gridSetRange #'all
+#+END_SRC
+
+... but you can specify a dotted pair (start and end):
+#+BEGIN_SRC LilyPond :tangle no
+\gridSetRange #'(1 . 3)
+#+END_SRC
+
+... or a single segment index:
+#+BEGIN_SRC LilyPond :tangle no
+\gridSetRange4
+#+END_SRC
+
+Configure the score to be printed, including some visual tweaks.
+#+BEGIN_SRC LilyPond
+\score {
+  \Naptaker
+
+  \layout {
+    %% Increase the size of bar numbers by 2
+    \override Score.BarNumber.font-size = #2
+
+    %% Draw a box around bar numbers
+    \override Score.BarNumber.stencil =
+    #(make-stencil-boxer 0.1 0.25 ly:text-interface::print)
+
+    \override Score.BarNumber.padding = #3
+  }
+}
+#+END_SRC
+
+Configure the MIDI output.
+#+BEGIN_SRC LilyPond
+\score {
+  \unfoldRepeats \Naptaker
+  \midi { }
+}
+#+END_SRC
