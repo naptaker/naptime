@@ -18,7 +18,7 @@ Every good LilyPond file starts with a ~\version~:
 Include some libraries and such:
 #+BEGIN_SRC LilyPond
 #(load "../../include/naptaker.scm")
-%% \include "articulate.ly"
+\include "preamble.ily"
 \include "instruments.ily"
 \include "openlilylib"
 \useLibrary gridly

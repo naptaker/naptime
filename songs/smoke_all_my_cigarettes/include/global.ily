@@ -1,7 +1,7 @@
 \version "2.19.24"
 
 #(load "../../include/naptaker.scm")
-%% \include "articulate.ly"
+\include "preamble.ily"
 \include "instruments.ily"
 \include "openlilylib"
 \useLibrary gridly

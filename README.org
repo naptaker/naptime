@@ -15,6 +15,18 @@
 
 \include "templates/predefined-instruments/context-creating-function.ily"
 #+END_SRC
+** Vox
+#+BEGIN_SRC LilyPond
+\newInstrument "Vox"
+\with {
+  instrumentName = "Vocals"
+  %% shortInstrumentName = "V"
+  \RemoveEmptyStaves
+  \override VerticalAxisGroup #'remove-first = ##t
+  \clef F
+}
+"default"
+#+END_SRC
 ** Guitar
 #+BEGIN_SRC LilyPond
 \newInstrument "Guitar"
@@ -48,14 +60,70 @@
 }
 "default"
 #+END_SRC
+* Preamble
+:PROPERTIES:
+:tangle:   include/preamble.ily
+:END:
+#+BEGIN_SRC LilyPond
+%% \include "articulate.ly"
+
+fuzzOn     = \set midiInstrument = #"overdriven guitar"
+fuzzOff    = \set midiInstrument = #"electric guitar (clean)"
+
+xOn        = \deadNotesOn
+xOff       = \deadNotesOff
+
+fretMagic  = {
+  \once \override TabNoteHead #'transparent = ##t
+  \once \override NoteHead #'transparent = ##t
+  \once \override Stem #'transparent = ##t
+  \once \override Flag #'transparent = ##t
+  \once \override NoteHead #'no-ledgers = ##t
+  \once \override Glissando #'(bound-details left padding) = #0.3
+}
+
+voltaFirst = \markup { 1. \text \italic { play 1x and 4x only } }
+
+%% http://lsr.di.unimi.it/LSR/Item?id=198
+%% see also http://lsr.di.unimi.it/LSR/Item?id=190
+theCoda    = {
+  \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible
+  \once \override Score.RehearsalMark.font-size = #6
+  \mark \markup { \musicglyph #"scripts.coda" }
+}
+
+%% http://lsr.dsi.unimi.it/LSR/Snippet?id=664
+toCoda     = {
+  %% the align part
+  \once \override Score.RehearsalMark #'self-alignment-X = #RIGHT
+  \once \override Score.RehearsalMark #'break-visibility = #begin-of-line-invisible
+  \once \override Score.RehearsalMark #'direction = #DOWN
+  %% prefered size
+  \once \override Score.RehearsalMark #'font-size = #-2
+  \mark \markup {
+    \center-column {
+      \concat { \lower #1 { "D.S. al  " } { \musicglyph #"scripts.coda" } }
+      \italic { \lower #1 { \small "play both endings" } }
+    }
+  }
+}
+
+breakingCoda = {
+  \break
+  \once \override Score.RehearsalMark.font-size = #6
+  \mark \markup { \musicglyph #"scripts.coda" }
+}
+#+END_SRC
 * Scheme Hacks
   :PROPERTIES:
   :tangle:   include/naptaker.scm
   :END:
 Tweak the paper and global staff size.
 #+BEGIN_SRC scheme
-(set-default-paper-size "arch a" 'landscape)
-(set-global-staff-size 18)
+;; (set-default-paper-size "arch a" 'landscape)
+;; (set-global-staff-size 18)
+(set-default-paper-size "letter" 'landscape)
+(set-global-staff-size 14)
 #+END_SRC
 
 Custom drum notation.
@@ -130,26 +198,85 @@ Custom drum notation.
     "Return the makings of a Naptaker score."
     #{
       \new StaffGroup <<
-        \new GuitarVoice = gtr <<
+        \new VoxVoice = vox <<
           { \gridGetMusic "meta" }
-          { \gridGetMusic "guitar" }
+          { \gridGetMusic "vox" }
         >>
+        \new GuitarVoice = gtr { \gridGetMusic "guitar" }
         \new BassVoice = bass { \gridGetMusic "bass" }
         \new DrumStaff \with {
           drumStyleTable = #preston-drums
+          instrumentName = "Drums"
+          %% shortInstrumentName = "D"
+          \RemoveEmptyStaves
+          \override VerticalAxisGroup #'remove-first = ##t
         } {
           <<
-            <<
-              \new DrumVoice { \gridGetMusic "drums up" }
-              \new DrumVoice
-              \with {
-                \remove "Rest_engraver"
-                \remove "Multi_measure_rest_engraver"
-              }
-              \gridGetMusic "drums down"
-            >>
+            \new DrumVoice { \gridGetMusic "drums up" }
+            \new DrumVoice
+            \with {
+              \remove "Rest_engraver"
+              \remove "Multi_measure_rest_engraver"
+            }
+            \gridGetMusic "drums down"
           >>
         }
       >>
     #}))
+#+END_SRC
+** Template Initialization
+:PROPERTIES:
+:tangle:   include/naptaker.scm
+:END:
+#+BEGIN_SRC scheme
+(define templateInit
+  (define-void-function (parser location segments) (list?)
+    (ly:debug (format #f "Initializing template with segment lengths: ~{~d ~}"
+                      segments))
+    (let* ((segment 0) (bar-number 1))
+      (map (lambda (measures)
+             (let ((this-bar-number bar-number))
+               (set! segment (1+ segment))
+               (set! bar-number (+ bar-number measures))
+               #{
+                 \gridSetSegmentTemplate $segment
+                 \with {
+                   barNumber = $this-bar-number
+                   music     = {
+                     #(make-music 'SkipEvent
+                        'duration (ly:make-duration 0 0 measures 1))
+                   }
+                 }
+               #}))
+           segments))))
+#+END_SRC
+* Makefile
+:PROPERTIES:
+:tangle:   Makefile
+:END:
+#+BEGIN_SRC makefile
+songdirs := $(dir $(wildcard songs/*/main.ly))
+# songs    := $(notdir $(patsubst %/,%,$(songdirs)))
+pdfs     := $(addsuffix main.pdf,$(songdirs))
+
+ifeq ($(DEBUG),1)
+	lilypond = lilypond -V
+else
+	lilypond = lilypond -dwarning-as-error
+endif
+
+includes := -I $(PWD)/openlilylib -I $(PWD)/openlilylib/ly -I $(PWD)/include
+defaults  = -djob-count=8 -dmidi-extension=mid -dlog-file=$*/main
+
+all: $(pdfs)
+
+%/main.pdf: %/main.ly include/* %/include/* %/notes/* %/parts/*
+	@echo -n 'Engraving $@ ... '
+	@$(lilypond) $(defaults) $(includes) -I $(PWD)/$*/include -o $*/main $< \
+	>$*/PROGRESS 2>/dev/null
+	@echo "\xF0\x9F\x8E\xB5"
+
+%/main.ly: %/README.org
+	@mkdir -p $*/parts
+	@emacsclient -e '(org-babel-tangle-file "$<")' >/dev/null 2>&1
 #+END_SRC

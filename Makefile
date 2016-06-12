@@ -14,9 +14,10 @@ defaults  = -djob-count=8 -dmidi-extension=mid -dlog-file=$*/main
 all: $(pdfs)
 
 %/main.pdf: %/main.ly include/* %/include/* %/notes/* %/parts/*
-	@echo $@
-	@$(lilypond) $(defaults) $(includes) -I $(PWD)/$*/include -o $*/main $<
-	@echo
+	@echo -n 'Engraving $@ ... '
+	@$(lilypond) $(defaults) $(includes) -I $(PWD)/$*/include -o $*/main $< \
+	>$*/PROGRESS 2>/dev/null
+	@echo "\xF0\x9F\x8E\xB5"
 
 %/main.ly: %/README.org
 	@mkdir -p $*/parts
