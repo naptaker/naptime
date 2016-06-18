@@ -1,7 +1,7 @@
 #+STARTUP: showall
 #+OPTIONS: title:t toc:t date:nil author:t email:nil num:nil
 #+TITLE: Songs
-#+DATE: [2016-06-09 Mon]
+#+DATE: [2016-06-09 Thu]
 #+AUTHOR: Eric Bailey
 #+EMAIL: naptakerband@gmail.com
 #+LANGUAGE: en
@@ -9,12 +9,12 @@
 
 * Capo 3
 - F Song // The Rustler
-- Loon Juice
+- [[file:loon_juice/README.org][Loon Juice]]
 - [[file:space_is_the_place/README.org][Space Is the Place]]
 * Open
 - B-Side
 - Cover Yr Eyes
-- Disco Ball
+- [[file:disco_ball/README.org][Disco Ball]]
 - It's No Fun to Grow Up
 - (I Don't Want No Girl Who Looks Like No) Model
 - Slut Nite

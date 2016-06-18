@@ -1,6 +1,6 @@
 #+OPTIONS: title:t toc:t date:nil author:t email:nil num:nil
 #+TITLE: Loon Juice
-#+DATE: [2016-06-11 Mon]
+#+DATE: [2016-06-11 Sat]
 #+AUTHOR: Eric Bailey
 #+EMAIL: naptakerband@gmail.com
 #+LANGUAGE: en

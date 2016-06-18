@@ -1,6 +1,6 @@
 #+OPTIONS: title:t toc:t date:nil author:t email:nil num:nil
 #+TITLE: Naptime
-#+DATE: [2016-06-09 Mon]
+#+DATE: [2016-06-09 Thu]
 #+AUTHOR: Eric Bailey
 #+EMAIL: naptakerband@gmail.com
 #+LANGUAGE: en
