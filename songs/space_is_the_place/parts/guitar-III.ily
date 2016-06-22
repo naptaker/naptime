@@ -5,12 +5,12 @@
   %% 1-3
   \repeat unfold 3 {
     \repeat unfold 3 { \include "notes/guitar-III.ily" }
-    \include "notes/common-IIIa.ily"
+    \include "notes/guitar-IIIa.ily"
   }
 
   %% 4
   \repeat unfold 3 { \include "notes/guitar-III.ily" }
-  \include "notes/common-IIIb.ily"
+  \include "notes/guitar-IIIb.ily"
 }
 
 \gridCompileCell "guitar" 3

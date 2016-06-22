@@ -3,7 +3,7 @@
 \gridPutMusic "guitar" 4
 \relative c {
   \repeat unfold 2 {
-    \include "notes/common-IV.ily"
+    \include "notes/guitar-IV.ily"
   }
 }
 

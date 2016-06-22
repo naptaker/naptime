@@ -7,12 +7,12 @@
   %% 1-3
   \repeat unfold 3 {
     \include "notes/bass-III.ily"
-    \include "notes/common-IIIa.ily"
+    \include "notes/bass-IIIa.ily"
   }
 
   %% 4
   \include "notes/bass-III.ily"
-  \include "notes/common-IIIb.ily"
+  \include "notes/bass-IIIb.ily"
 }
 
 \gridCompileCell "bass" 3
