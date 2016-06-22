@@ -16,6 +16,7 @@
 \with {
   instrumentName = "Guitar"
   %% shortInstrumentName = "G"
+  stringTunings = \stringTuning <d, a, d fis a d'>
   \RemoveEmptyStaves
   \override VerticalAxisGroup #'remove-first = ##t
   \override StringNumber      #'stencil      = ##f
