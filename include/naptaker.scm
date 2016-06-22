@@ -23,8 +23,20 @@
           { \gridGetMusic "meta" }
           { \gridGetMusic "vox" }
         >>
-        \new GuitarVoice = gtr { \gridGetMusic "guitar" }
-        \new BassVoice = bass { \gridGetMusic "bass" }
+        <<
+          \new GuitarVoice = gtr { \gridGetMusic "guitar" }
+          \new TabStaff {
+            %% \tabFullNotation
+            \gridGetMusic "guitar"
+          }
+        >>
+        <<
+          \new BassVoice = bass { \gridGetMusic "bass" }
+          \new TabStaff {
+            %% \tabFullNotation
+            \gridGetMusic "bass"
+          }
+        >>
         \new DrumStaff \with {
           drumStyleTable = #preston-drums
           instrumentName = "Drums"

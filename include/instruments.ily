@@ -18,6 +18,7 @@
   %% shortInstrumentName = "G"
   \RemoveEmptyStaves
   \override VerticalAxisGroup #'remove-first = ##t
+  \override StringNumber      #'stencil      = ##f
   \clef "G_8"
 }
 \with {
@@ -32,6 +33,7 @@
   %% shortInstrumentName = "B"
   \RemoveEmptyStaves
   \override VerticalAxisGroup #'remove-first = ##t
+  \override StringNumber      #'stencil      = ##f
   \clef F
   \transposition c
 }

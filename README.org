@@ -35,6 +35,7 @@
   %% shortInstrumentName = "G"
   \RemoveEmptyStaves
   \override VerticalAxisGroup #'remove-first = ##t
+  \override StringNumber      #'stencil      = ##f
   \clef "G_8"
 }
 \with {
@@ -51,6 +52,7 @@
   %% shortInstrumentName = "B"
   \RemoveEmptyStaves
   \override VerticalAxisGroup #'remove-first = ##t
+  \override StringNumber      #'stencil      = ##f
   \clef F
   \transposition c
 }
@@ -202,8 +204,20 @@ Custom drum notation.
           { \gridGetMusic "meta" }
           { \gridGetMusic "vox" }
         >>
-        \new GuitarVoice = gtr { \gridGetMusic "guitar" }
-        \new BassVoice = bass { \gridGetMusic "bass" }
+        <<
+          \new GuitarVoice = gtr { \gridGetMusic "guitar" }
+          \new TabStaff {
+            %% \tabFullNotation
+            \gridGetMusic "guitar"
+          }
+        >>
+        <<
+          \new BassVoice = bass { \gridGetMusic "bass" }
+          \new TabStaff {
+            %% \tabFullNotation
+            \gridGetMusic "bass"
+          }
+        >>
         \new DrumStaff \with {
           drumStyleTable = #preston-drums
           instrumentName = "Drums"
