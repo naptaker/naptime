@@ -56,13 +56,10 @@ of every segment.
 #+BEGIN_SRC LilyPond
 \templateInit #'(8 8 16 8 8 8 16 1 24)
 #+END_SRC
-* Parts
-** Meta (=​"meta"​=)
-:PROPERTIES:
-:tangle:   include/global.ily
-:END:
-*** I: Drum and Bass Intro
-#+BEGIN_SRC LilyPond
+* Segments
+** I: Drum and Bass Intro
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
 \gridPutMusic "meta" 1
 {
   \global
@@ -71,8 +68,35 @@ of every segment.
   \break
 }
 #+END_SRC
-*** II: Full Band Intro
-#+BEGIN_SRC LilyPond
+*** TODO Vocals
+*** Guitar
+#+BEGIN_SRC LilyPond :tangle parts/guitar-I.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 1
+\relative c {
+  R1*8
+}
+
+\gridCompileCell "guitar" 1
+#+END_SRC
+*** Bass
+#+BEGIN_SRC LilyPond :tangle parts/bass-I.ily
+\include "global.ily"
+
+\gridPutMusic "bass" 1
+\relative c, {
+  \repeat unfold 2 {
+    \include "notes/bass-I.ily"
+  }
+}
+
+\gridCompileCell "bass" 1
+#+END_SRC
+*** TODO Drums
+** II: Full Band Intro
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
 \gridPutMusic "meta" 2
 {
   \mark 2
@@ -80,8 +104,37 @@ of every segment.
   \break
 }
 #+END_SRC
-*** III: Theme A
-#+BEGIN_SRC LilyPond
+*** TODO Vocals
+*** Guitar
+#+BEGIN_SRC LilyPond :tangle parts/guitar-II.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 2
+\relative c {
+  \repeat unfold 2 {
+    \include "notes/guitar-II.ily"
+  }
+}
+
+\gridCompileCell "guitar" 2
+#+END_SRC
+*** Bass
+#+BEGIN_SRC LilyPond :tangle parts/bass-II.ily
+\include "global.ily"
+
+\gridPutMusic "bass" 2
+\relative c, {
+  \repeat unfold 2 {
+    \include "notes/bass-II.ily"
+  }
+}
+
+\gridCompileCell "bass" 2
+#+END_SRC
+*** TODO Drums
+** III: Theme A
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
 \gridPutMusic "meta" 3
 {
   \mark 3
@@ -91,8 +144,49 @@ of every segment.
   s1*4 \break
 }
 #+END_SRC
-*** IV: Theme B
-#+BEGIN_SRC LilyPond
+*** TODO Vocals
+*** Guitar
+#+BEGIN_SRC LilyPond :tangle parts/guitar-III.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 3
+\relative c {
+  %% 1-3
+  \repeat unfold 3 {
+    \repeat unfold 3 { \include "notes/guitar-III.ily" }
+    \include "notes/guitar-IIIa.ily"
+  }
+
+  %% 4
+  \repeat unfold 3 { \include "notes/guitar-III.ily" }
+  \include "notes/guitar-IIIb.ily"
+}
+
+\gridCompileCell "guitar" 3
+#+END_SRC
+*** Bass
+#+BEGIN_SRC LilyPond :tangle parts/bass-III.ily
+\include "global.ily"
+
+\gridPutMusic "bass" 3
+\relative c, {
+  %% 1-3
+  \repeat unfold 3 {
+    \include "notes/bass-III.ily"
+    \include "notes/bass-IIIa.ily"
+  }
+
+  %% 4
+  \include "notes/bass-III.ily"
+  \include "notes/bass-IIIb.ily"
+}
+
+\gridCompileCell "bass" 3
+#+END_SRC
+*** TODO Drums
+** IV: Theme B
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
 \gridPutMusic "meta" 4
 {
   \mark 4
@@ -101,9 +195,38 @@ of every segment.
   \break
 }
 #+END_SRC
-*** V: Theme C (slow)
+*** TODO Vocals
+*** Guitar
+#+BEGIN_SRC LilyPond :tangle parts/guitar-IV.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 4
+\relative c {
+  \repeat unfold 2 {
+    \include "notes/guitar-IV.ily"
+  }
+}
+
+\gridCompileCell "guitar" 4
+#+END_SRC
+*** Bass
+#+BEGIN_SRC LilyPond :tangle parts/bass-IV.ily
+\include "global.ily"
+
+\gridPutMusic "bass" 4
+\relative c, {
+  \repeat unfold 2 {
+    \include "notes/bass-IV.ily"
+  }
+}
+
+\gridCompileCell "bass" 4
+#+END_SRC
+*** TODO Drums
+** V: Theme C (slow)
+*** Meta
 Slow and heavy.
-#+BEGIN_SRC LilyPond
+#+BEGIN_SRC LilyPond :tangle include/global.ily
 \gridPutMusic "meta" 5
 {
   \mark 5
@@ -111,9 +234,25 @@ Slow and heavy.
   \break
 }
 #+END_SRC
-*** VI: Theme C′ (double time)
+*** TODO Vocals
+*** DONE Guitar
+CLOSED: [2016-06-26 Sun 17:07]
+#+BEGIN_SRC LilyPond :tangle parts/guitar-V.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 5
+\relative c {
+  \include "notes/guitar-V.ily"
+}
+
+\gridCompileCell "guitar" 5
+#+END_SRC
+*** TODO Bass
+*** TODO Drums
+** VI: Theme C′ (double time)
+*** Meta
 The same as the previous segment, but with twice the rhythmic intensity.
-#+BEGIN_SRC LilyPond
+#+BEGIN_SRC LilyPond :tangle include/global.ily
 \gridPutMusic "meta" 6
 {
   \mark 6
@@ -121,17 +260,28 @@ The same as the previous segment, but with twice the rhythmic intensity.
   \break
 }
 #+END_SRC
-*** VII: Theme D
+*** TODO Vocals
+*** TODO Guitar
+*** TODO Bass
+*** TODO Drums
+** VII: Theme D
+*** Meta
 The triumphant stoner segment.
-#+BEGIN_SRC LilyPond
+#+BEGIN_SRC LilyPond :tangle include/global.ily
 \gridPutMusic "meta" 7
 {
+  \tempo 4 = 69
   \mark 7
   s1*16
 }
 #+END_SRC
-*** VIII: Magic Notes
-#+BEGIN_SRC LilyPond
+*** TODO Vocals
+*** TODO Guitar
+*** TODO Bass
+*** TODO Drums
+** VIII: Magic Notes
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
 \gridPutMusic "meta" 8
 {
   \mark 8
@@ -139,14 +289,62 @@ The triumphant stoner segment.
   \break
 }
 #+END_SRC
-*** IX: Theme B′ (reprise)
-#+BEGIN_SRC LilyPond
+*** TODO Vocals
+*** DONE Guitar
+CLOSED: [2016-06-26 Sun 17:18]
+#+BEGIN_SRC LilyPond :tangle parts/guitar-VIII.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 8
+\relative c {
+  \include "notes/guitar-VIII.ily"
+}
+
+\gridCompileCell "guitar" 8
+#+END_SRC
+*** TODO Bass
+*** TODO Drums
+** IX: Theme B′ (reprise)
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
 \gridPutMusic "meta" 9
 {
+  \Tempo
   \mark 9
   s1*24
   \bar "|."
 }
+#+END_SRC
+*** TODO Vocals
+*** TODO Guitar
+*** TODO Bass
+*** TODO Drums
+* Parts
+** Guitar
+:PROPERTIES:
+:tangle:   parts/guitar.ily
+:END:
+#+BEGIN_SRC LilyPond
+\include "global.ily"
+\include "guitar-I.ily"
+\include "guitar-II.ily"
+\include "guitar-III.ily"
+\include "guitar-IV.ily"
+\include "guitar-V.ily"
+%% \include "guitar-VI.ily"
+%% \include "guitar-VII.ily"
+\include "guitar-VIII.ily"
+#+END_SRC
+** Bass
+:PROPERTIES:
+:tangle:   parts/bass.ily
+:END:
+#+BEGIN_SRC LilyPond
+\include "global.ily"
+\include "bass-I.ily"
+\include "bass-II.ily"
+\include "bass-III.ily"
+\include "bass-IV.ily"
 #+END_SRC
 * Main
 :PROPERTIES:
@@ -188,7 +386,7 @@ By default, all segments are retrieved:
 Configure the score to be printed, including some visual tweaks.
 #+BEGIN_SRC LilyPond
 \score {
-  \Naptaker
+  \Naptaker #guitar-open-d-tuning
 
   \layout {
     %% Increase the size of bar numbers by 2
@@ -206,7 +404,7 @@ Configure the score to be printed, including some visual tweaks.
 Configure the MIDI output.
 #+BEGIN_SRC LilyPond
 \score {
-  \unfoldRepeats \Naptaker
+  \unfoldRepeats \Naptaker #guitar-open-d-tuning
   \midi { }
 }
 #+END_SRC

@@ -3,3 +3,7 @@
 \include "guitar-II.ily"
 \include "guitar-III.ily"
 \include "guitar-IV.ily"
+\include "guitar-V.ily"
+%% \include "guitar-VI.ily"
+%% \include "guitar-VII.ily"
+\include "guitar-VIII.ily"
