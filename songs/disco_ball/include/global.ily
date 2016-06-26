@@ -10,14 +10,14 @@ Key    = { \key c \major }
 Tempo  = { \tempo 4 = 192 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
-\header {
-  title     = "Disco Ball"
-  opus      = "Naptime"
-  composer  = "Preston Y. Drum"
-  poet      = "Preston Y. Drum"
-  arranger  = "Naptaker"
-  copyright = "© 2016 Naptaker"
-}
+  \header {
+    title     = "Disco Ball"
+    opus      = "Naptime"
+    composer  = "Preston Y. Drum"
+    poet      = "Preston Y. Drum"
+    arranger  = "Naptaker"
+    copyright = "© 2016 Naptaker"
+  }
 
 \gridInit 4 #'("meta" "vox" "guitar" "bass" "drums up" "drums down")
 

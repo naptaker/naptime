@@ -26,7 +26,10 @@
         <<
           \new GuitarVoice = gtr { \gridGetMusic "guitar" }
           \new TabStaff \with {
-            stringTunings = #the-guitar-tuning
+            stringTunings       = #the-guitar-tuning
+            %% FIXME: This is a bad hack.
+            minimumFret         = #2
+            restrainOpenStrings = ##t
             \RemoveEmptyStaves
             \override VerticalAxisGroup #'remove-first = ##t
             \remove "Staff_performer"

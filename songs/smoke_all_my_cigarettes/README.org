@@ -117,7 +117,7 @@ The bass doesn't come in until the fifth measure.
 \include "global.ily"
 
 \gridPutMusic "bass" 2
-\relative c {
+\relative c, {
   \repeat unfold 2 {
     \include "notes/bass-II.ily"
   }
@@ -152,7 +152,7 @@ The bass doesn't come in until the fifth measure.
 \include "global.ily"
 
 \gridPutMusic "bass" 3
-\relative c {
+\relative c, {
   \repeat unfold 2 {
     \include "notes/bass-III.ily"
   }
@@ -192,7 +192,7 @@ The bass doesn't come in until the fifth measure.
 \include "global.ily"
 
 \gridPutMusic "bass" 4
-\relative c {
+\relative c, {
   \repeat unfold 2 {
     \include "notes/bass-IV.ily"
   }
@@ -227,7 +227,7 @@ The bass doesn't come in until the fifth measure.
 \include "global.ily"
 
 \gridPutMusic "bass" 5
-\relative c {
+\relative c, {
   \repeat unfold 2 {
     \include "notes/bass-V.ily"
   }
@@ -263,7 +263,7 @@ The bass doesn't come in until the fifth measure.
 \include "global.ily"
 
 \gridPutMusic "bass" 6
-\relative c {
+\relative c, {
   \include "notes/bass-VI.ily"
   \bar "||"
 }
@@ -329,7 +329,7 @@ The bass doesn't come in until the fifth measure.
 \include "global.ily"
 
 \gridPutMusic "bass" 7
-\relative c {
+\relative c, {
   R1*4
   \repeat percent 24 {
     \include "notes/bass-VII.ily"
@@ -364,7 +364,7 @@ The bass doesn't come in until the fifth measure.
 \include "global.ily"
 
 \gridPutMusic "bass" 8
-\relative c {
+\relative c, {
   \include "notes/bass-VIII.ily"
 }
 
@@ -410,11 +410,11 @@ The bass doesn't come in until the fifth measure.
 \include "global.ily"
 
 \gridPutMusic "bass" 9
-\relative c {
+\relative c, {
   \repeat unfold 2 {
     \include "notes/bass-II.ily"
   }
-  \relative c {
+  \relative c, {
     \repeat unfold 2 {
       \include "notes/bass-III.ily"
     }
@@ -498,7 +498,7 @@ By default, all segments are retrieved:
 Configure the score to be printed, including some visual tweaks.
 #+BEGIN_SRC LilyPond
 \score {
-  \Naptaker
+  \Naptaker #guitar-open-d-tuning
 
   \layout {
     %% Increase the size of bar numbers by 2
@@ -516,7 +516,7 @@ Configure the score to be printed, including some visual tweaks.
 Configure the MIDI output.
 #+BEGIN_SRC LilyPond
 \score {
-  \unfoldRepeats \Naptaker
+  \unfoldRepeats \Naptaker #guitar-open-d-tuning
   \midi { }
 }
 #+END_SRC

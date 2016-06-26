@@ -1,11 +1,11 @@
 \include "global.ily"
 
 \gridPutMusic "bass" 9
-\relative c {
+\relative c, {
   \repeat unfold 2 {
     \include "notes/bass-II.ily"
   }
-  \relative c {
+  \relative c, {
     \repeat unfold 2 {
       \include "notes/bass-III.ily"
     }

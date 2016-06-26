@@ -1,7 +1,7 @@
 \include "global.ily"
 
 \gridPutMusic "bass" 7
-\relative c {
+\relative c, {
   \include "notes/bass-I.ily"
 }
 
