@@ -15,24 +15,34 @@
      (ridecymbal    cross   #f  4))))
 
 (define Naptaker
-  (define-music-function (parser location) ()
+  (define-music-function (parser location the-guitar-tuning) (list?)
     "Return the makings of a Naptaker score."
     #{
       \new StaffGroup <<
         \new VoxVoice = vox <<
           { \gridGetMusic "meta" }
-          { \gridGetMusic "vox" }
+          { \gridGetMusic "vox"  }
         >>
         <<
           \new GuitarVoice = gtr { \gridGetMusic "guitar" }
-          \new TabStaff {
+          \new TabStaff \with {
+            stringTunings = #the-guitar-tuning
+            \RemoveEmptyStaves
+            \override VerticalAxisGroup #'remove-first = ##t
+            \remove "Staff_performer"
+          } {
             %% \tabFullNotation
             \gridGetMusic "guitar"
           }
         >>
         <<
           \new BassVoice = bass { \gridGetMusic "bass" }
-          \new TabStaff {
+          \new TabStaff \with {
+            stringTunings = #bass-tuning
+            \RemoveEmptyStaves
+            \override VerticalAxisGroup #'remove-first = ##t
+            \remove "Staff_performer"
+          } {
             %% \tabFullNotation
             \gridGetMusic "bass"
           }

@@ -33,11 +33,10 @@
 \with {
   instrumentName = "Guitar"
   %% shortInstrumentName = "G"
-  stringTunings = \stringTuning <d, a, d fis a d'>
   \RemoveEmptyStaves
   \override VerticalAxisGroup #'remove-first = ##t
   \override StringNumber      #'stencil      = ##f
-  \clef "G_8"
+  \clef "treble_8"
 }
 \with {
   \consists "Staff_performer"
@@ -54,8 +53,7 @@
   \RemoveEmptyStaves
   \override VerticalAxisGroup #'remove-first = ##t
   \override StringNumber      #'stencil      = ##f
-  \clef F
-  \transposition c
+  \clef "bass_8"
 }
 \with {
   \consists "Staff_performer"
@@ -197,24 +195,34 @@ Custom drum notation.
 ** Naptaker Score
 #+BEGIN_SRC scheme
 (define Naptaker
-  (define-music-function (parser location) ()
+  (define-music-function (parser location the-guitar-tuning) (list?)
     "Return the makings of a Naptaker score."
     #{
       \new StaffGroup <<
         \new VoxVoice = vox <<
           { \gridGetMusic "meta" }
-          { \gridGetMusic "vox" }
+          { \gridGetMusic "vox"  }
         >>
         <<
           \new GuitarVoice = gtr { \gridGetMusic "guitar" }
-          \new TabStaff {
+          \new TabStaff \with {
+            stringTunings = #the-guitar-tuning
+            \RemoveEmptyStaves
+            \override VerticalAxisGroup #'remove-first = ##t
+            \remove "Staff_performer"
+          } {
             %% \tabFullNotation
             \gridGetMusic "guitar"
           }
         >>
         <<
           \new BassVoice = bass { \gridGetMusic "bass" }
-          \new TabStaff {
+          \new TabStaff \with {
+            stringTunings = #bass-tuning
+            \RemoveEmptyStaves
+            \override VerticalAxisGroup #'remove-first = ##t
+            \remove "Staff_performer"
+          } {
             %% \tabFullNotation
             \gridGetMusic "bass"
           }

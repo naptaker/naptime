@@ -16,11 +16,10 @@
 \with {
   instrumentName = "Guitar"
   %% shortInstrumentName = "G"
-  stringTunings = \stringTuning <d, a, d fis a d'>
   \RemoveEmptyStaves
   \override VerticalAxisGroup #'remove-first = ##t
   \override StringNumber      #'stencil      = ##f
-  \clef "G_8"
+  \clef "treble_8"
 }
 \with {
   \consists "Staff_performer"
@@ -35,8 +34,7 @@
   \RemoveEmptyStaves
   \override VerticalAxisGroup #'remove-first = ##t
   \override StringNumber      #'stencil      = ##f
-  \clef F
-  \transposition c
+  \clef "bass_8"
 }
 \with {
   \consists "Staff_performer"
