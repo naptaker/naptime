@@ -21,7 +21,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \gridInit 9 #'("meta" "vox" "guitar" "bass" "drums up" "drums down")
 
-\templateInit #'(8 8 16 8 8 8 16 1 24)
+\templateInit #'(8 8 16 8 8 8 7 1 24)
 
 \gridPutMusic "meta" 1
 {
@@ -73,7 +73,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 {
   \tempo 4 = 69
   \mark 7
-  s1*16
+  s1*7
 }
 
 \gridPutMusic "meta" 8

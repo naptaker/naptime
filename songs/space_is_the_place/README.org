@@ -54,7 +54,7 @@ First, initialize a grid with nine segments and all the parts.
 Next, initialize the template with a list of the lengths (in measures)
 of every segment.
 #+BEGIN_SRC LilyPond
-\templateInit #'(8 8 16 8 8 8 16 1 24)
+\templateInit #'(8 8 16 8 8 8 7 1 24)
 #+END_SRC
 * Segments
 ** I: Drum and Bass Intro
@@ -272,7 +272,7 @@ The triumphant stoner segment.
 {
   \tempo 4 = 69
   \mark 7
-  s1*16
+  s1*7
 }
 #+END_SRC
 *** TODO Vocals
@@ -380,7 +380,7 @@ By default, all segments are retrieved:
 
 ... or a single segment index:
 #+BEGIN_SRC LilyPond :tangle no
-\gridSetRange 7
+\gridSetRange 9
 #+END_SRC
 
 Configure the score to be printed, including some visual tweaks.
