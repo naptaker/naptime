@@ -1,3 +1,4 @@
+\ottava #0
 <b fis' b dis fis b>1 |
 <f c' f a c f>1 |
 <b fis' b dis fis b>1 |

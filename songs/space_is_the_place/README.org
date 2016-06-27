@@ -261,7 +261,18 @@ The same as the previous segment, but with twice the rhythmic intensity.
 }
 #+END_SRC
 *** TODO Vocals
-*** TODO Guitar
+*** DONE Guitar
+CLOSED: [2016-06-27 Mon 03:03]
+#+BEGIN_SRC LilyPond :tangle parts/guitar-VI.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 6
+\relative c {
+  \include "notes/guitar-VI.ily"
+}
+
+\gridCompileCell "guitar" 6
+#+END_SRC
 *** TODO Bass
 *** TODO Drums
 ** VII: Theme D
@@ -276,7 +287,18 @@ The triumphant stoner segment.
 }
 #+END_SRC
 *** TODO Vocals
-*** TODO Guitar
+*** DONE Guitar
+CLOSED: [2016-06-27 Mon 03:47]
+#+BEGIN_SRC LilyPond :tangle parts/guitar-VII.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 7
+\relative c {
+  \include "notes/guitar-VII.ily"
+}
+
+\gridCompileCell "guitar" 7
+#+END_SRC
 *** TODO Bass
 *** TODO Drums
 ** VIII: Magic Notes
@@ -316,7 +338,33 @@ CLOSED: [2016-06-26 Sun 17:18]
 }
 #+END_SRC
 *** TODO Vocals
-*** TODO Guitar
+*** DONE Guitar
+CLOSED: [2016-06-27 Mon 04:01]
+#+BEGIN_SRC LilyPond :tangle parts/guitar-IX.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 9
+\relative c {
+  \include "notes/guitar-IV.ily"
+  \relative {
+    \include "notes/guitar-IX.ily"
+  }
+  \relative {
+    \include "notes/guitar-IV.ily"
+  }
+  \relative {
+    \include "notes/guitar-IX.ily"
+  }
+  \relative {
+    \include "notes/guitar-IV.ily"
+  }
+  \relative {
+    \include "notes/guitar-IX.ily"
+  }
+}
+
+\gridCompileCell "guitar" 9
+#+END_SRC
 *** TODO Bass
 *** TODO Drums
 * Parts
@@ -331,9 +379,10 @@ CLOSED: [2016-06-26 Sun 17:18]
 \include "guitar-III.ily"
 \include "guitar-IV.ily"
 \include "guitar-V.ily"
-%% \include "guitar-VI.ily"
-%% \include "guitar-VII.ily"
+\include "guitar-VI.ily"
+\include "guitar-VII.ily"
 \include "guitar-VIII.ily"
+\include "guitar-IX.ily"
 #+END_SRC
 ** Bass
 :PROPERTIES:
