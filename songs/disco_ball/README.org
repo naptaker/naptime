@@ -33,14 +33,14 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 Then the ~\header~ metadata:
 #+BEGIN_SRC LilyPond
-  \header {
-    title     = "Disco Ball"
-    opus      = "Naptime"
-    composer  = "Preston Y. Drum"
-    poet      = "Preston Y. Drum"
-    arranger  = "Naptaker"
-    copyright = "© 2016 Naptaker"
-  }
+\header {
+  title     = "Disco Ball"
+  opus      = "Naptime"
+  composer  = "Preston Y. Drum"
+  poet      = "Preston Y. Drum"
+  arranger  = "Naptaker"
+  copyright = "© 2016 Naptaker"
+}
 #+END_SRC
 * Templates
 :PROPERTIES:
@@ -201,11 +201,11 @@ The bass doesn't come in until the fifth measure.
    :tangle:   parts/guitar.ily
    :END:
 #+BEGIN_SRC LilyPond
-  \include "global.ily"
-  \include "guitar-I.ily"
-  \include "guitar-II.ily"
-  \include "guitar-III.ily"
-  \include "guitar-IV.ily"
+\include "global.ily"
+\include "guitar-I.ily"
+\include "guitar-II.ily"
+\include "guitar-III.ily"
+\include "guitar-IV.ily"
 #+END_SRC
 ** Bass
    :PROPERTIES:
