@@ -91,7 +91,34 @@ of every segment.
 
 \gridCompileCell "bass" 1
 #+END_SRC
-*** TODO Drums
+*** DONE Drums
+CLOSED: [2016-06-29 Wed 02:12]
+**** Up
+#+BEGIN_SRC LilyPond :tangle parts/drums_up-I.ily
+\include "global.ily"
+
+\gridPutMusic "drums up" 1
+\drummode {
+  \repeat unfold 2 {
+    \include "notes/drums_up-I.ily"
+  }
+}
+
+\gridCompileCell "drums up" 1
+#+END_SRC
+**** Down
+#+BEGIN_SRC LilyPond :tangle parts/drums_down-I.ily
+\include "global.ily"
+
+\gridPutMusic "drums down" 1
+\drummode {
+  \repeat unfold 2 {
+    \include "notes/drums_down-I.ily"
+  }
+}
+
+\gridCompileCell "drums down" 1
+#+END_SRC
 ** II: Full Band Intro
 *** Meta
 #+BEGIN_SRC LilyPond :tangle include/global.ily
@@ -129,7 +156,34 @@ of every segment.
 
 \gridCompileCell "bass" 2
 #+END_SRC
-*** TODO Drums
+*** DONE Drums
+CLOSED: [2016-06-29 Wed 02:21]
+**** Up
+#+BEGIN_SRC LilyPond :tangle parts/drums_up-II.ily
+\include "global.ily"
+
+\gridPutMusic "drums up" 2
+\drummode {
+  \repeat unfold 2 {
+    \include "notes/drums_up-I.ily"
+  }
+}
+
+\gridCompileCell "drums up" 2
+#+END_SRC
+**** Down
+#+BEGIN_SRC LilyPond :tangle parts/drums_down-II.ily
+\include "global.ily"
+
+\gridPutMusic "drums down" 2
+\drummode {
+  \repeat unfold 2 {
+    \include "notes/drums_down-I.ily"
+  }
+}
+
+\gridCompileCell "drums down" 2
+#+END_SRC
 ** III: Theme A
 *** Meta
 #+BEGIN_SRC LilyPond :tangle include/global.ily
@@ -181,7 +235,34 @@ of every segment.
 
 \gridCompileCell "bass" 3
 #+END_SRC
-*** TODO Drums
+*** DONE Drums
+CLOSED: [2016-06-29 Wed 03:38]
+**** Up
+#+BEGIN_SRC LilyPond :tangle parts/drums_up-III.ily
+\include "global.ily"
+
+\gridPutMusic "drums up" 3
+\drummode {
+  \repeat unfold 4 {
+    \include "notes/drums_up-III.ily"
+  }
+}
+
+\gridCompileCell "drums up" 3
+#+END_SRC
+**** Down
+#+BEGIN_SRC LilyPond :tangle parts/drums_down-III.ily
+\include "global.ily"
+
+\gridPutMusic "drums down" 3
+\drummode {
+  \repeat unfold 4 {
+    \include "notes/drums_down-III.ily"
+  }
+}
+
+\gridCompileCell "drums down" 3
+#+END_SRC
 ** IV: Theme B
 *** Meta
 #+BEGIN_SRC LilyPond :tangle include/global.ily
@@ -220,7 +301,33 @@ of every segment.
 
 \gridCompileCell "bass" 4
 #+END_SRC
-*** TODO Drums
+*** DONE Drums
+CLOSED: [2016-06-29 Wed 03:38]
+**** Up
+#+BEGIN_SRC LilyPond :tangle parts/drums_up-IV.ily
+\include "global.ily"
+
+\gridPutMusic "drums up" 4
+\drummode {
+  \include "notes/drums_up-IVa.ily"
+  \include "notes/drums_up-IVb.ily"
+}
+
+\gridCompileCell "drums up" 4
+#+END_SRC
+**** Down
+#+BEGIN_SRC LilyPond :tangle parts/drums_down-IV.ily
+\include "global.ily"
+
+\gridPutMusic "drums down" 4
+\drummode {
+  \repeat unfold 2 {
+    \include "notes/drums_down-IV.ily"
+  }
+}
+
+\gridCompileCell "drums down" 4
+#+END_SRC
 ** V: Theme C (slow)
 *** Meta
 Slow and heavy.
@@ -390,6 +497,18 @@ CLOSED: [2016-06-27 Mon 04:01]
 \include "bass-III.ily"
 \include "bass-IV.ily"
 #+END_SRC
+** Drums
+#+BEGIN_SRC LilyPond :tangle parts/drums.ily
+\include "global.ily"
+\include "drums_up-I.ily"
+\include "drums_down-I.ily"
+\include "drums_up-II.ily"
+\include "drums_down-II.ily"
+\include "drums_up-III.ily"
+\include "drums_down-III.ily"
+\include "drums_up-IV.ily"
+\include "drums_down-IV.ily"
+#+END_SRC
 * Main
 :PROPERTIES:
 :tangle:   main.ly
@@ -399,6 +518,7 @@ Include the grid, templates and header metadata ([[file:include/global.ily][glob
 \include "global.ily"
 \include "parts/bass.ily"
 \include "parts/guitar.ily"
+\include "parts/drums.ily"
 #+END_SRC
 
 Print out the grid while rendering and
