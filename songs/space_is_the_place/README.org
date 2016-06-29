@@ -74,9 +74,7 @@ of every segment.
 \include "global.ily"
 
 \gridPutMusic "guitar" 1
-\relative c {
-  R1*8
-}
+\relative { R1*8 }
 
 \gridCompileCell "guitar" 1
 #+END_SRC
@@ -369,10 +367,7 @@ CLOSED: [2016-06-27 Mon 04:01]
 *** TODO Drums
 * Parts
 ** Guitar
-:PROPERTIES:
-:tangle:   parts/guitar.ily
-:END:
-#+BEGIN_SRC LilyPond
+#+BEGIN_SRC LilyPond :tangle parts/guitar.ily
 \include "global.ily"
 \include "guitar-I.ily"
 \include "guitar-II.ily"
