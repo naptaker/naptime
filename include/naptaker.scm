@@ -3,16 +3,23 @@
 (set-default-paper-size "letter" 'landscape)
 (set-global-staff-size 14)
 
+;; http://lilypond-cookbook.tumblr.com/post/74876227435/drum-music-5-the-hi-hat
+;; http://lilypond-cookbook.tumblr.com/post/75485862838/drum-music-template
 (define preston-drums
   (alist->hash-table
-   '((bassdrum      default #f -3)
-     (snare         default #f  1)
-     (closedhihat   cross   #f  5)
-     (halfopenhihat xcircle #f  5)
-     (lowtom        default #f -1)
-     (pedalhihat    cross   #f -5)
-     (crashcymbal   cross   #f  6)
-     (ridecymbal    cross   #f  4))))
+   '((ridecymbal    cross   #f          5)
+     (crashcymbal   cross   #f          6)
+     (hihat         cross   "stopped"   5)
+     (closedhihat   cross   "stopped"   5)
+     (openhihat     cross   "open"      5)
+     (halfopenhihat cross   "halfopen"  5)
+     (pedalhihat    cross   #f         -5)
+     (snare         default #f          1)
+     (sidestick     cross   #f          1)
+     (hightom       default #f          3)
+     (lowmidtom     default #f          0)
+     (lowtom        default #f         -1)
+     (bassdrum      default #f         -3))))
 
 (define Naptaker
   (define-music-function (parser location the-guitar-tuning) (list?)
@@ -40,6 +47,7 @@
         >>
         <<
           \new BassVoice = bass { \gridGetMusic "bass" }
+%{
           \new TabStaff \with {
             stringTunings = #bass-tuning
             \RemoveEmptyStaves
@@ -49,6 +57,7 @@
             %% \tabFullNotation
             \gridGetMusic "bass"
           }
+%}
         >>
         \new DrumStaff \with {
           drumStyleTable = #preston-drums
@@ -58,13 +67,14 @@
           \override VerticalAxisGroup #'remove-first = ##t
         } {
           <<
-            \new DrumVoice { \gridGetMusic "drums up" }
+            \new DrumVoice { \voiceOne \gridGetMusic "drums up" }
             \new DrumVoice
             \with {
               \remove "Rest_engraver"
               \remove "Multi_measure_rest_engraver"
+            } {
+              \voiceTwo \gridGetMusic "drums down"
             }
-            \gridGetMusic "drums down"
           >>
         }
       >>
