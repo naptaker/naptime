@@ -64,8 +64,7 @@ of every segment.
 {
   \global
   \mark 1
-  s1*8
-  \break
+  s1*8 \break
 }
 #+END_SRC
 *** TODO Vocals
@@ -125,8 +124,7 @@ CLOSED: [2016-06-29 Wed 02:12]
 \gridPutMusic "meta" 2
 {
   \mark 2
-  s1*8
-  \break
+  s1*8 \pageBreak
 }
 #+END_SRC
 *** TODO Vocals
@@ -190,10 +188,10 @@ CLOSED: [2016-06-29 Wed 02:21]
 \gridPutMusic "meta" 3
 {
   \mark 3
+  s1*4 % \break
   s1*4 \break
+  s1*4 % \break
   s1*4 \pageBreak
-  s1*4 \break
-  s1*4 \break
 }
 #+END_SRC
 *** TODO Vocals
@@ -269,9 +267,8 @@ CLOSED: [2016-06-29 Wed 03:38]
 \gridPutMusic "meta" 4
 {
   \mark 4
+  s1*4 % \break
   s1*4 \break
-  s1*4 \break
-  \break
 }
 #+END_SRC
 *** TODO Vocals
@@ -335,8 +332,7 @@ Slow and heavy.
 \gridPutMusic "meta" 5
 {
   \mark 5
-  s1*8
-  \break
+  s1*8 \break
 }
 #+END_SRC
 *** TODO Vocals
@@ -361,8 +357,7 @@ The same as the previous segment, but with twice the rhythmic intensity.
 \gridPutMusic "meta" 6
 {
   \mark 6
-  s1*8
-  \break
+  s1*8 \break
 }
 #+END_SRC
 *** TODO Vocals
@@ -412,8 +407,7 @@ CLOSED: [2016-06-27 Mon 03:47]
 \gridPutMusic "meta" 8
 {
   \mark 8
-  s1
-  \break
+  s1 \pageBreak
 }
 #+END_SRC
 *** TODO Vocals
@@ -487,10 +481,7 @@ CLOSED: [2016-06-27 Mon 04:01]
 \include "guitar-IX.ily"
 #+END_SRC
 ** Bass
-:PROPERTIES:
-:tangle:   parts/bass.ily
-:END:
-#+BEGIN_SRC LilyPond
+#+BEGIN_SRC LilyPond :tangle parts/bass.ily
 \include "global.ily"
 \include "bass-I.ily"
 \include "bass-II.ily"
@@ -509,6 +500,7 @@ CLOSED: [2016-06-27 Mon 04:01]
 \include "drums_up-IV.ily"
 \include "drums_down-IV.ily"
 #+END_SRC
+** TODO Vocals
 * Main
 :PROPERTIES:
 :tangle:   main.ly
@@ -539,12 +531,12 @@ By default, all segments are retrieved:
 
 ... but you can specify a dotted pair (start and end):
 #+BEGIN_SRC LilyPond :tangle no
-\gridSetRange #'(7 . 9)
+\gridSetRange #'(2 . 3)
 #+END_SRC
 
 ... or a single segment index:
 #+BEGIN_SRC LilyPond :tangle no
-\gridSetRange 9
+\gridSetRange 3
 #+END_SRC
 
 Configure the score to be printed, including some visual tweaks.
