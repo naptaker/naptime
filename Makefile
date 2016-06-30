@@ -22,5 +22,5 @@ all: $(pdfs)
 	@echo "\xF0\x9F\x8E\xB5"
 
 %/main.ly: %/README.org
-	@mkdir -p $*/parts
+	@mkdir -p $*/include $*/notes $*/parts
 	@emacsclient -e '(org-babel-tangle-file "$<")' >/dev/null 2>&1
