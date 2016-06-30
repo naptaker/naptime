@@ -21,3 +21,5 @@
 - [[file:smoke_all_my_cigarettes/README.org][Smoke All My Cigarettes]]
 - Speaking in Tongues
 - Twister
+* Capo 4 (D minor)
+- [[file:halfway_house/README.org][Halfway House]]
