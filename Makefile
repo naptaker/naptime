@@ -1,4 +1,4 @@
-songdirs := $(dir $(wildcard songs/*/main.ly))
+songdirs := $(dir $(wildcard songs/*/README.org))
 # songs    := $(notdir $(patsubst %/,%,$(songdirs)))
 pdfs     := $(addsuffix main.pdf,$(songdirs))
 

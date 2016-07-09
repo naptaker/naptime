@@ -291,7 +291,7 @@ Custom drum notation.
 :tangle:   Makefile
 :END:
 #+BEGIN_SRC makefile
-songdirs := $(dir $(wildcard songs/*/main.ly))
+songdirs := $(dir $(wildcard songs/*/README.org))
 # songs    := $(notdir $(patsubst %/,%,$(songdirs)))
 pdfs     := $(addsuffix main.pdf,$(songdirs))
 
@@ -315,6 +315,6 @@ all: $(pdfs)
 	@echo "\xF0\x9F\x8E\xB5"
 
 %/main.ly: %/README.org
-	@mkdir -p $*/parts
+	@mkdir -p $*/include $*/notes $*/parts
 	@emacsclient -e '(org-babel-tangle-file "$<")' >/dev/null 2>&1
 #+END_SRC
