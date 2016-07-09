@@ -80,6 +80,34 @@ of every segment.
 
 \gridCompileCell "guitar" 1
 #+END_SRC
+**** Notes
+:PROPERTIES:
+:noweb:    yes
+:END:
+#+BEGIN_SRC LilyPond :tangle notes/guitar-I.ily
+\set TabStaff.minimumFret = #3
+<<notes-guitar-Ia>>
+<<notes-guitar-Ib>>
+<<notes-guitar-Ia>>
+\set TabStaff.minimumFret = #6
+<<notes-guitar-Ic>>
+\set TabStaff.minimumFret = #3
+#+END_SRC
+#+NAME: notes-guitar-Ia
+#+BEGIN_SRC LilyPond
+g4  8 f g       bes f    fis |
+g4  8 f d'4\3       f\2      |
+#+END_SRC
+#+NAME: notes-guitar-Ib
+#+BEGIN_SRC LilyPond
+g,4 8 f g       bes f    fis |
+g4  8 f des'4\3     ges,     |
+#+END_SRC
+#+NAME: notes-guitar-Ic
+#+BEGIN_SRC LilyPond
+bes,4   8 a   bes4      aes8 a |
+bes8  d a des c    aes  g4\4   |
+#+END_SRC
 *** Bass
 The bass doesn't come in until the fifth measure.
 #+BEGIN_SRC LilyPond :tangle parts/bass-I.ily
@@ -91,6 +119,17 @@ The bass doesn't come in until the fifth measure.
 }
 
 \gridCompileCell "bass" 1
+#+END_SRC
+**** Notes
+#+BEGIN_SRC LilyPond :tangle notes/bass-I.ily
+R1 |
+r2 d4 f |
+R1 |
+r2 des4 ges, |
+R1 |
+r2 d'4 f |
+bes,4 8 a bes4      aes8 a   |
+bes8  d a des   c   aes  g4  |
 #+END_SRC
 *** TODO Drums
 ** II: Full Band Intro
@@ -125,6 +164,17 @@ The bass doesn't come in until the fifth measure.
 
 \gridCompileCell "bass" 2
 #+END_SRC
+**** Notes
+#+BEGIN_SRC LilyPond :tangle notes/bass-II.ily
+g4    8 f g     bes f    fis |
+g4    8 f d'4       f        |
+g,4   8 f g     bes f    fis |
+g4    8 f des'4     ges,     |
+g4    8 f g     bes f    fis |
+g4    8 f d'4       f        |
+bes,4 8 a bes4      aes8 a   |
+bes8  d a des   c   aes  g4  |
+#+END_SRC
 *** TODO Drums
 ** III: Bass and Tremolo Chords
 *** Meta
@@ -146,6 +196,42 @@ The bass doesn't come in until the fifth measure.
 }
 
 \gridCompileCell "guitar" 3
+#+END_SRC
+**** Notes
+#+BEGIN_SRC LilyPond :tangle notes/guitar-III.ily
+\set TabStaff.restrainOpenStrings = ##t
+
+\set TabStaff.minimumFret = #3
+<g d' g b>1 ~ |
+q2 <d' f bes d>4 <a e' a\4 cis\3> |
+
+\set TabStaff.minimumFret = #8
+<bes f' bes d>1 ~ |
+q2 \set TabStaff.minimumFret = #11 <des aes' des f>4 q |
+
+\set TabStaff.minimumFret = #3
+<g, d' g b>1 ~ |
+q2 <d' f bes d>4 <a e' a\4 cis\3> |
+
+\set TabStaff.minimumFret = #6
+<bes f' bes d>2 \acciaccatura { q16 16 } q2 |
+<d' f bes>8 q q q <cis e a>4-. <c ees aes>-. |
+
+\set TabStaff.minimumFret = #3
+<g, d' g b>1 ~ |
+q2 <d' f bes d>4 <a e' a\4 cis\3> |
+
+\set TabStaff.minimumFret = #8
+<bes f' bes d>1 ~ |
+q2 \set TabStaff.minimumFret = #4 <ges des' ges bes>4 q |
+
+\set TabStaff.minimumFret = #3
+<g d' g b>1 ~ |
+q2 <d' f bes d>4 <a e' a\4 cis\3> |
+
+\set TabStaff.minimumFret = #6
+<bes f' bes d>2 \acciaccatura { q16 16 } q2 |
+<d' f bes>8 q q q <cis e a>4-. <c ees aes>-. |
 #+END_SRC
 *** Bass
 #+BEGIN_SRC LilyPond :tangle parts/bass-III.ily
@@ -182,6 +268,19 @@ The bass doesn't come in until the fifth measure.
 }
 
 \gridCompileCell "guitar" 4
+#+END_SRC
+**** Notes
+#+BEGIN_SRC LilyPond :tangle notes/guitar-IV.ily
+b4    8 ais b     d   a    ais |
+b4    8 a   e'4       g        |
+b,4   8 a   b     d   a    ais |
+b4    8 a   e'4       bes      |
+b4    8 ais b     d   a    ais |
+b4    8 a   e'4       g        |
+\set TabStaff.minimumFret = #6
+f4    8 8   4         8    8   |
+f8  8 8 8   e4        ees      |
+\set TabStaff.minimumFret = #3
 #+END_SRC
 *** Bass
 #+BEGIN_SRC LilyPond :tangle parts/bass-IV.ily
@@ -364,7 +463,7 @@ By default, all segments are retrieved:
 
 ... or a single segment index:
 #+BEGIN_SRC LilyPond :tangle no
-\gridSetRange4
+\gridSetRange 4
 #+END_SRC
 
 Configure the score to be printed, including some visual tweaks.
