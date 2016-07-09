@@ -154,7 +154,7 @@ The bass doesn't come in until the fifth measure.
 \gridPutMusic "bass" 3
 \relative c, {
   \repeat unfold 2 {
-    \include "notes/bass-III.ily"
+    \include "notes/bass-II.ily"
   }
 }
 
@@ -190,7 +190,7 @@ The bass doesn't come in until the fifth measure.
 \gridPutMusic "bass" 4
 \relative c, {
   \repeat unfold 2 {
-    \include "notes/bass-III.ily"
+    \include "notes/bass-II.ily"
   }
 }
 
@@ -225,7 +225,7 @@ The bass doesn't come in until the fifth measure.
 \gridPutMusic "bass" 5
 \relative c, {
   \repeat unfold 2 {
-    \include "notes/bass-III.ily"
+    \include "notes/bass-II.ily"
   }
 }
 
@@ -261,7 +261,7 @@ The bass doesn't come in until the fifth measure.
 \gridPutMusic "bass" 6
 \relative c, {
   \repeat unfold 2 {
-    \include "notes/bass-III.ily"
+    \include "notes/bass-II.ily"
   }
 }
 
