@@ -1,7 +1,7 @@
 \include "global.ily"
 
 \gridPutMusic "guitar" 5
-\relative c {
+\chordmode {
   \include "notes/guitar-III.ily"
 }
 

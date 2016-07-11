@@ -6,3 +6,4 @@
 \include "bass-V.ily"
 \include "bass-VI.ily"
 \include "bass-VII.ily"
+\include "bass-VIII.ily"

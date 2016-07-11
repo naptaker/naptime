@@ -1,33 +1,28 @@
-\set TabStaff.restrainOpenStrings = ##t
+\set restrainOpenStrings = ##t
+%% \powerChords
 
-\set TabStaff.minimumFret = #3
-<g d' g b>1 ~ |
-q2 <d' f bes d>4 <a e' a\4 cis\3> |
+\set minimumFret = #3 g,,1:1.5.8.10 ~ |
+2 bes,,4:3.5.8.10^1 \set minimumFret = #7 a,,:1.5.8.10 |
 
-\set TabStaff.minimumFret = #8
-<bes f' bes d>1 ~ |
-q2 \set TabStaff.minimumFret = #11 <des aes' des f>4 q |
+\set minimumFret = #8 bes,,1:1.5.8.10 ~ |
+2 \set minimumFret = #11 \fuzzOn des,4:1.5.8.10 q \fuzzOff |
 
-\set TabStaff.minimumFret = #3
-<g, d' g b>1 ~ |
-q2 <d' f bes d>4 <a e' a\4 cis\3> |
+\set minimumFret = #3 g,,1:1.5.8.10 ~ |
+2 bes,,4:3.5.8.10^1 \set minimumFret = #7 a,,:1.5.8.10 |
 
-\set TabStaff.minimumFret = #6
-<bes f' bes d>2 \acciaccatura { q16 16 } q2 |
-<d' f bes>8 q q q <cis e a>4-. <c ees aes>-. |
+\set minimumFret = #6
+bes,,2:1.5.8.10 \acciaccatura { q16 16 } q2 |
+d8:6-3-^5 q q q cis4:6-3-^5 c4:6-3-^5 |
 
-\set TabStaff.minimumFret = #3
-<g, d' g b>1 ~ |
-q2 <d' f bes d>4 <a e' a\4 cis\3> |
+\set minimumFret = #3 g,,1:1.5.8.10 ~ |
+2 bes,,4:3.5.8.10^1 \set minimumFret = #7 a,,:1.5.8.10 |
 
-\set TabStaff.minimumFret = #8
-<bes f' bes d>1 ~ |
-q2 \set TabStaff.minimumFret = #4 <ges des' ges bes>4 q |
+\set minimumFret = #8 bes,,1:1.5.8.10 ~ |
+2 \set minimumFret = #4 \fuzzOn ges,,4:1.5.8.10 q \fuzzOff |
 
-\set TabStaff.minimumFret = #3
-<g d' g b>1 ~ |
-q2 <d' f bes d>4 <a e' a\4 cis\3> |
+\set minimumFret = #3 g,,1:1.5.8.10 ~ |
+2 bes,,4:3.5.8.10^1 \set minimumFret = #7 a,,:1.5.8.10 |
 
-\set TabStaff.minimumFret = #6
-<bes f' bes d>2 \acciaccatura { q16 16 } q2 |
-<d' f bes>8 q q q <cis e a>4-. <c ees aes>-. |
+\set minimumFret = #6
+bes,,2:1.5.8.10 \acciaccatura { q16 16 } q2 |
+d8:6-3-^5 q q q cis4:6-3-^5 c4:6-3-^5 |

@@ -2,7 +2,9 @@
 
 \gridPutMusic "bass" 7
 \relative c, {
-  \include "notes/bass-I.ily"
+  \repeat unfold 2 {
+    \include "notes/bass-VII.ily"
+  }
 }
 
 \gridCompileCell "bass" 7

@@ -1,8 +1,14 @@
 \include "global.ily"
 
 \gridPutMusic "guitar" 7
-\relative c' {
-  \include "notes/guitar-I.ily"
+\chordmode {
+  \stopStaffNotTabStaff
+  \fuzzOn
+  \repeat unfold 2 {
+    \include "notes/guitar-VII.ily"
+  }
+  \fuzzOff
+  \restartStaff
 }
 
 \gridCompileCell "guitar" 7

@@ -66,12 +66,23 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 {
   \mark 6
   s1*16
+  \bar "||"
   \break
 }
 
 \gridPutMusic "meta" 7
 {
   \mark 7
+  \tempo 4 = 69
+  s1*8
+  \bar "||"
+  \break
+}
+
+\gridPutMusic "meta" 8
+{
+  \mark 8
+  \Tempo
   s1*8
   \bar "|."
 }

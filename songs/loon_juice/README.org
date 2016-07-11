@@ -85,13 +85,13 @@ and a list of the lengths (in measures) of each segment.
 :noweb:    yes
 :END:
 #+BEGIN_SRC LilyPond :tangle notes/guitar-I.ily
-\set TabStaff.minimumFret = #3
+\set minimumFret = #3
 <<notes-guitar-Ia>>
 <<notes-guitar-Ib>>
 <<notes-guitar-Ia>>
-\set TabStaff.minimumFret = #6
+\set minimumFret = #6
 <<notes-guitar-Ic>>
-\set TabStaff.minimumFret = #3
+\set minimumFret = #3
 #+END_SRC
 #+NAME: notes-guitar-Ia
 #+BEGIN_SRC LilyPond
@@ -186,52 +186,72 @@ bes8  d a des   c   aes  g4  |
   \break
 }
 #+END_SRC
-*** Guitar
+*** DONE Guitar
+CLOSED: [2016-07-10 Sun 20:29]
 #+BEGIN_SRC LilyPond :tangle parts/guitar-III.ily
 \include "global.ily"
 
 \gridPutMusic "guitar" 3
-\relative c {
+\chordmode {
+  \stopStaffNotTabStaff
   \include "notes/guitar-III.ily"
+  \restartStaff
 }
 
 \gridCompileCell "guitar" 3
 #+END_SRC
-**** Notes
+**** DONE Notes
+CLOSED: [2016-07-10 Sun 20:29]
 #+BEGIN_SRC LilyPond :tangle notes/guitar-III.ily
-\set TabStaff.restrainOpenStrings = ##t
+\set restrainOpenStrings = ##t
+%% \powerChords
 
-\set TabStaff.minimumFret = #3
-<g d' g b>1 ~ |
-q2 <d' f bes d>4 <a e' a\4 cis\3> |
+\set minimumFret = #3 g,,1:1.5.8.10 ~ |
+2 bes,,4:3.5.8.10^1 \set minimumFret = #7 a,,:1.5.8.10 |
 
-\set TabStaff.minimumFret = #8
-<bes f' bes d>1 ~ |
-q2 \set TabStaff.minimumFret = #11 <des aes' des f>4 q |
+\set minimumFret = #8 bes,,1:1.5.8.10 ~ |
+2 \set minimumFret = #11 \fuzzOn des,4:1.5.8.10 q \fuzzOff |
 
-\set TabStaff.minimumFret = #3
-<g, d' g b>1 ~ |
-q2 <d' f bes d>4 <a e' a\4 cis\3> |
+\set minimumFret = #3 g,,1:1.5.8.10 ~ |
+2 bes,,4:3.5.8.10^1 \set minimumFret = #7 a,,:1.5.8.10 |
 
-\set TabStaff.minimumFret = #6
-<bes f' bes d>2 \acciaccatura { q16 16 } q2 |
-<d' f bes>8 q q q <cis e a>4-. <c ees aes>-. |
+\set minimumFret = #6
+bes,,2:1.5.8.10 \acciaccatura { q16 16 } q2 |
+d8:6-3-^5 q q q cis4:6-3-^5 c4:6-3-^5 |
 
-\set TabStaff.minimumFret = #3
-<g, d' g b>1 ~ |
-q2 <d' f bes d>4 <a e' a\4 cis\3> |
+\set minimumFret = #3 g,,1:1.5.8.10 ~ |
+2 bes,,4:3.5.8.10^1 \set minimumFret = #7 a,,:1.5.8.10 |
 
-\set TabStaff.minimumFret = #8
-<bes f' bes d>1 ~ |
-q2 \set TabStaff.minimumFret = #4 <ges des' ges bes>4 q |
+\set minimumFret = #8 bes,,1:1.5.8.10 ~ |
+2 \set minimumFret = #4 \fuzzOn ges,,4:1.5.8.10 q \fuzzOff |
 
-\set TabStaff.minimumFret = #3
-<g d' g b>1 ~ |
-q2 <d' f bes d>4 <a e' a\4 cis\3> |
+\set minimumFret = #3 g,,1:1.5.8.10 ~ |
+2 bes,,4:3.5.8.10^1 \set minimumFret = #7 a,,:1.5.8.10 |
 
-\set TabStaff.minimumFret = #6
-<bes f' bes d>2 \acciaccatura { q16 16 } q2 |
-<d' f bes>8 q q q <cis e a>4-. <c ees aes>-. |
+\set minimumFret = #6
+bes,,2:1.5.8.10 \acciaccatura { q16 16 } q2 |
+d8:6-3-^5 q q q cis4:6-3-^5 c4:6-3-^5 |
+#+END_SRC
+*** Guitar Strum
+#+BEGIN_SRC LilyPond :tangle parts/guitar-strum-III.ily
+\include "global.ily"
+
+\gridPutMusic "guitar strum" 3
+\relative c {
+  \include "notes/guitar-strum-III.ily"
+}
+
+\gridCompileCell "guitar strum" 3
+#+END_SRC
+**** Notes
+#+BEGIN_SRC LilyPond :tangle notes/guitar-strum-III.ily
+g1 ~ | 2 d'4 a | bes1 ~ | 2 des4 4 |
+
+g1 ~ | 2 d'4 a | bes2 \acciaccatura { 16 16 } 2 | d8 8 8 8 cis4-. c-. |
+
+g,1 ~ | 2 d'4 a | bes1 ~ | 2 ges4 4 |
+
+g1 ~ | 2 d'4 a | bes2 \acciaccatura { 16 16 } 2 | d8 8 8 8 cis4-. c-. |
 #+END_SRC
 *** Bass
 #+BEGIN_SRC LilyPond :tangle parts/bass-III.ily
@@ -271,16 +291,17 @@ q2 <d' f bes d>4 <a e' a\4 cis\3> |
 #+END_SRC
 **** Notes
 #+BEGIN_SRC LilyPond :tangle notes/guitar-IV.ily
+\set minimumFret = #3
 b4    8 ais b     d   a    ais |
 b4    8 a   e'4       g        |
 b,4   8 a   b     d   a    ais |
 b4    8 a   e'4       bes      |
 b4    8 ais b     d   a    ais |
 b4    8 a   e'4       g        |
-\set TabStaff.minimumFret = #6
+\set minimumFret = #6
 f4    8 8   4         8    8   |
 f8  8 8 8   e4        ees      |
-\set TabStaff.minimumFret = #3
+\set minimumFret = #3
 #+END_SRC
 *** Bass
 #+BEGIN_SRC LilyPond :tangle parts/bass-IV.ily
@@ -311,7 +332,7 @@ f8  8 8 8   e4        ees      |
 \include "global.ily"
 
 \gridPutMusic "guitar" 5
-\relative c {
+\chordmode {
   \include "notes/guitar-III.ily"
 }
 
@@ -338,6 +359,7 @@ f8  8 8 8   e4        ees      |
 {
   \mark 6
   s1*16
+  \bar "||"
   \break
 }
 #+END_SRC
@@ -347,6 +369,7 @@ f8  8 8 8   e4        ees      |
 
 \gridPutMusic "guitar" 6
 \relative c' {
+  \set minimumFret = #3
   \include "notes/guitar-I.ily"
   \include "notes/guitar-IV.ily"
 }
@@ -367,37 +390,127 @@ f8  8 8 8   e4        ees      |
 \gridCompileCell "bass" 6
 #+END_SRC
 *** TODO Drums
-** VII: Ending
+** VII: Treacle
 *** Meta
 #+BEGIN_SRC LilyPond :tangle include/global.ily
 \gridPutMusic "meta" 7
 {
   \mark 7
+  \tempo 4 = 69
   s1*8
-  \bar "|."
+  \bar "||"
+  \break
 }
 #+END_SRC
-*** Guitar
+*** DONE Guitar
+CLOSED: [2016-07-10 Sun 20:29]
 #+BEGIN_SRC LilyPond :tangle parts/guitar-VII.ily
 \include "global.ily"
 
 \gridPutMusic "guitar" 7
-\relative c' {
-  \include "notes/guitar-I.ily"
+\chordmode {
+  \stopStaffNotTabStaff
+  \fuzzOn
+  \repeat unfold 2 {
+    \include "notes/guitar-VII.ily"
+  }
+  \fuzzOff
+  \restartStaff
 }
 
 \gridCompileCell "guitar" 7
 #+END_SRC
-*** Bass
+**** DONE Notes
+CLOSED: [2016-07-10 Sun 20:29]
+#+BEGIN_SRC LilyPond :tangle notes/guitar-VII.ily
+\powerChords
+\set minimumFret = #5
+g,,2.:1.5.8   a,,4:1.5.8   |
+\set minimumFret = #8
+bes,,2.:1.5.8 c,4:1.5.8    |
+\set minimumFret = #11
+des,2.:1.5.8   ees,4:1.5.8 |
+\set minimumFret = #15
+f,1:1.5.8                  |
+\set minimumFret = #3
+#+END_SRC
+*** DONE Guitar Strum
+CLOSED: [2016-07-10 Sun 20:29]
+#+BEGIN_SRC LilyPond :tangle parts/guitar-strum-VII.ily
+\include "global.ily"
+
+\gridPutMusic "guitar strum" 7
+\relative c {
+  \repeat unfold 2 {
+    \include "notes/guitar-strum-VII.ily"
+  }
+}
+
+\gridCompileCell "guitar strum" 7
+#+END_SRC
+**** DONE Notes
+CLOSED: [2016-07-10 Sun 20:29]
+#+BEGIN_SRC LilyPond :tangle notes/guitar-strum-VII.ily
+g2.     a4   |
+bes2.   c4   |
+des2.   ees4 |
+f1           |
+#+END_SRC
+*** DONE Bass
+CLOSED: [2016-07-10 Sun 18:33]
 #+BEGIN_SRC LilyPond :tangle parts/bass-VII.ily
 \include "global.ily"
 
 \gridPutMusic "bass" 7
 \relative c, {
-  \include "notes/bass-I.ily"
+  \repeat unfold 2 {
+    \include "notes/bass-VII.ily"
+  }
 }
 
 \gridCompileCell "bass" 7
+#+END_SRC
+**** DONE Notes
+CLOSED: [2016-07-10 Sun 18:33]
+#+BEGIN_SRC LilyPond :tangle notes/bass-VII.ily
+g2.   a4   |
+bes2. c4   |
+des2. ees4 |
+f1         |
+#+END_SRC
+*** TODO Drums
+** VIII: Ending
+*** Meta
+#+BEGIN_SRC LilyPond :tangle include/global.ily
+\gridPutMusic "meta" 8
+{
+  \mark 8
+  \Tempo
+  s1*8
+  \bar "|."
+}
+#+END_SRC
+*** Guitar
+#+BEGIN_SRC LilyPond :tangle parts/guitar-VIII.ily
+\include "global.ily"
+
+\gridPutMusic "guitar" 8
+\relative c' {
+  \include "notes/guitar-I.ily"
+}
+
+\gridCompileCell "guitar" 8
+#+END_SRC
+*** Bass
+#+BEGIN_SRC LilyPond :tangle parts/bass-VIII.ily
+\include "global.ily"
+
+\gridPutMusic "bass" 8
+\relative c, {
+  \include "notes/bass-I.ily"
+}
+
+\gridCompileCell "bass" 8
 #+END_SRC
 *** TODO Drums
 * Parts
@@ -414,6 +527,16 @@ f8  8 8 8   e4        ees      |
 \include "guitar-V.ily"
 \include "guitar-VI.ily"
 \include "guitar-VII.ily"
+\include "guitar-VIII.ily"
+#+END_SRC
+** Guitar Strum
+:PROPERTIES:
+:tangle:   parts/guitar-strum.ily
+:END:
+#+BEGIN_SRC LilyPond
+\include "global.ily"
+\include "guitar-strum-III.ily"
+\include "guitar-strum-VII.ily"
 #+END_SRC
 ** Bass
    :PROPERTIES:
@@ -428,6 +551,7 @@ f8  8 8 8   e4        ees      |
 \include "bass-V.ily"
 \include "bass-VI.ily"
 \include "bass-VII.ily"
+\include "bass-VIII.ily"
 #+END_SRC
 * Main
 :PROPERTIES:
@@ -438,6 +562,7 @@ Include the grid, templates and header metadata ([[file:include/global.ily][glob
 \include "global.ily"
 \include "parts/bass.ily"
 \include "parts/guitar.ily"
+\include "parts/guitar-strum.ily"
 #+END_SRC
 
 Print out the grid while rendering and
@@ -458,12 +583,12 @@ By default, all segments are retrieved:
 
 ... but you can specify a dotted pair (start and end):
 #+BEGIN_SRC LilyPond :tangle no
-\gridSetRange #'(1 . 3)
+\gridSetRange #'(7 . 8)
 #+END_SRC
 
 ... or a single segment index:
 #+BEGIN_SRC LilyPond :tangle no
-\gridSetRange 4
+\gridSetRange 3
 #+END_SRC
 
 Configure the score to be printed, including some visual tweaks.
