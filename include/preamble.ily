@@ -25,6 +25,10 @@ hideNotesNotTabStaff = {
   \override Stem.transparent = ##t
   \override Accidental.transparent = ##t
   \override Rest.transparent = ##t
+  \override MultiMeasureRest.transparent = ##t
+  \override Script.transparent = ##t
+
+  %% Unlike \hideNotes, don't hide TabNoteHead
   %% \override TabNoteHead.transparent = ##t
 
   %% Omit Slurs and Ties too
@@ -35,22 +39,14 @@ stopStaffNotTabStaff = {
   \stopStaff
   \omit Staff.Clef \omit Staff.ClefModifier
   \omit Staff.TimeSignature
-  \omit Staff.BarLine
 
-  \override Staff.BarLine.break-visibility = #all-invisible
-
-  #(context-spec-music #{
-                         \startStaff \undo \omit Staff.Clef
-                         \undo \omit Staff.BarLine
-                         \revert Staff.BarLine.break-visibility
-                       #}
-                       'TabStaff)
+  #(context-spec-music #{ \startStaff \undo \omit Staff.Clef #} 'TabStaff)
   \hideNotesNotTabStaff
 }
 
 restartStaff = {
-  \undo \omit Staff.BarLine
-
+  \once \omit Staff.BarLine
+  #(context-spec-music #{ \undo \omit Staff.BarLine #} 'TabStaff)
   \undo \omit Staff.Clef \undo \omit Staff.ClefModifier
 
   %% This is awesomely bad...
@@ -58,13 +54,10 @@ restartStaff = {
   \omit TabStaff.Slur \omit TabStaff.Tie
 
   \undo \omit Staff.TimeSignature
-  \revert Staff.BarLine.break-visibility
-
-  %% This is terrible too...
-  \once \override Staff.BarLine.break-visibility = #all-invisible
-  \revert TabStaff.BarLine.break-visibility
 
   \startStaff \unHideNotes
+  \revert MultiMeasureRest.transparent
+  \revert Script.transparent
   %% \once \override Staff.BarLine.break-visibility = #end-of-line-invisible
 }
 
