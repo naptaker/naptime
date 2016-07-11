@@ -23,7 +23,9 @@
 }
 \with {
   \consists "Staff_performer"
-  midiInstrument = "electric guitar (clean)"
+  midiInstrument    = "electric guitar (clean)"
+  midiMinimumVolume = #0.3
+  midiMaximumVolume = #0.6
 }
 "default"
 
