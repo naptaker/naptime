@@ -42,10 +42,7 @@ Then the ~\header~ metadata:
   copyright = "© 2016 Naptaker"
 }
 #+END_SRC
-* Templates
-:PROPERTIES:
-:tangle:   include/global.ily
-:END:
+
 Initialize the grid and template with a list of parts
 and a list of the lengths (in measures) of each segment.
 #+BEGIN_SRC LilyPond
