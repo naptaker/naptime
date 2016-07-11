@@ -46,15 +46,15 @@ Then the ~\header~ metadata:
 :PROPERTIES:
 :tangle:   include/global.ily
 :END:
-First, initialize a grid with nine segments and all the parts.
+Initialize the grid and template with a list of parts
+and a list of the lengths (in measures) of each segment.
 #+BEGIN_SRC LilyPond
-\gridInit 7 #'("meta" "vox" "guitar" "bass" "drums up" "drums down")
-#+END_SRC
-
-Next, initialize the template with a list of the lengths (in measures)
-of every segment.
-#+BEGIN_SRC LilyPond
-\templateInit #'(8 8 16 16 16 16 8)
+\templateInit #'("meta"
+                 "vox"
+                 "guitar" "guitar strum"
+                 "bass"
+                 "drums up" "drums down")
+              #'(8 8 16 16 16 16 8 8)
 #+END_SRC
 * Segments
 ** I: Guitar Intro

@@ -19,9 +19,12 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   copyright = "© 2016 Naptaker"
 }
 
-\gridInit 7 #'("meta" "vox" "guitar" "bass" "drums up" "drums down")
-
-\templateInit #'(8 8 16 16 16 16 8)
+\templateInit #'("meta"
+                 "vox"
+                 "guitar" "guitar strum"
+                 "bass"
+                 "drums up" "drums down")
+              #'(8 8 16 16 16 16 8 8)
 
 \gridPutMusic "meta" 1
 {

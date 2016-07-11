@@ -95,22 +95,25 @@
     #}))
 
 (define templateInit
-  (define-void-function (parser location segments) (list?)
-    (ly:debug (format #f "Initializing template with segment lengths: ~{~d ~}"
-                      segments))
-    (let* ((segment 0) (bar-number 1))
-      (map (lambda (measures)
-             (let ((this-bar-number bar-number))
-               (set! segment (1+ segment))
-               (set! bar-number (+ bar-number measures))
-               #{
-                 \gridSetSegmentTemplate $segment
-                 \with {
-                   barNumber = $this-bar-number
-                   music     = {
-                     #(make-music 'SkipEvent
-                        'duration (ly:make-duration 0 0 measures 1))
-                   }
-                 }
-               #}))
-           segments))))
+  (define-void-function (parser location parts segments) (list? list?)
+    (ly:debug "===> Initializing template")
+    (ly:debug (format #f " --> parts: ~{~a ~}" parts))
+    (ly:debug (format #f " --> segment lengths: ~{~d ~}" segments))
+    (let* ((segment    0)
+           (bar-number 1))
+      (cons #{ \gridInit #(length segments) $parts #}
+            (map (lambda (measures)
+                   (let ((this-bar-number bar-number))
+                     (set! segment (1+ segment))
+                     (set! bar-number (+ bar-number measures))
+                     #{
+                       \gridSetSegmentTemplate $segment
+                       \with {
+                         barNumber = $this-bar-number
+                         music     = {
+                           #(make-music 'SkipEvent
+                             'duration (ly:make-duration 0 0 measures 1))
+                         }
+                       }
+                     #}))
+                 segments)))))
