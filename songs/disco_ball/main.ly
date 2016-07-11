@@ -1,11 +1,10 @@
 \include "global.ily"
 \include "parts/bass.ily"
 \include "parts/guitar.ily"
+\include "parts/guitar-strum.ily"
 
 \gridDisplay
 \gridCheck
-
-\gridSetRange #'(2 . 4)
 
 \score {
   \Naptaker #guitar-open-d-tuning

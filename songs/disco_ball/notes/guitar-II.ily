@@ -1,9 +1,17 @@
-d4\4 8\4 8\4 cis4\4 8\4 8\4 |
-c8\4 d8\4 c8\4 b4\4 8\4 a8\4 b8\4 |
-d4\4 8\4 cis8\4 d8\4 fis8\3 d8\4 cis8\4 |
-b4\4 r8 b4\4 b8\4 a8\4 b8\4 |
+\set minimumFret = #10
+d4 8 8 cis4 8 8 |
+c8 d8 c8 \set minimumFret = #7 b4 8 a8 b8 |
+\set minimumFret = #10
+d4 8 cis8 d8 fis8 d8 cis8 |
+\set minimumFret = #7
+b4 r8 b4 b8 a8 b8 |
 
-fis'4\3 fis8\3 fis8\3 f4\3 f8\3 f8\3 |
-e8\3 fis8\3 e8\3 dis4\3 r8 r4 |
-fis4\3 fis8\3 f8\3 fis8\3 a8\2 fis8\3 e8\3 |
-dis4\3 r4 r2 |
+\set minimumFret = #10
+fis'4 fis8 fis8 f4 f8 f8 |
+\set minimumFret = #9
+e8 fis8 e8 dis4 r8 r4 |
+\set minimumFret = #10
+fis4 fis8 f8 fis8 a8 fis8 e8 |
+\set minimumFret = #9
+dis4 r4 r2 |
+\set minimumFret = #2

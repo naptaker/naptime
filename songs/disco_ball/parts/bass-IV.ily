@@ -3,7 +3,7 @@
 \gridPutMusic "bass" 4
 \relative c {
   % \include "notes/bass-IV.ily"
-  R1*24
+  R1*16
 }
 
 \gridCompileCell "bass" 4

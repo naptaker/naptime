@@ -1,3 +1,6 @@
 songs/loon_juice/main.flac filter=lfs diff=lfs merge=lfs -text
 songs/loon_juice/main.mp3 filter=lfs diff=lfs merge=lfs -text
 songs/loon_juice/main.wav filter=lfs diff=lfs merge=lfs -text
+songs/disco_ball/main.flac filter=lfs diff=lfs merge=lfs -text
+songs/disco_ball/main.mp3 filter=lfs diff=lfs merge=lfs -text
+songs/disco_ball/main.wav filter=lfs diff=lfs merge=lfs -text

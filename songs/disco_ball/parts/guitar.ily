@@ -3,3 +3,4 @@
 \include "guitar-II.ily"
 \include "guitar-III.ily"
 \include "guitar-IV.ily"
+\include "guitar-V.ily"
