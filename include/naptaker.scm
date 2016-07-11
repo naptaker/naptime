@@ -25,13 +25,27 @@
   (define-music-function (parser location the-guitar-tuning) (list?)
     "Return the makings of a Naptaker score."
     #{
-      \new StaffGroup <<
+      %% \new StaffGroup
+      <<
         \new VoxVoice = vox <<
           { \gridGetMusic "meta" }
           { \gridGetMusic "vox"  }
         >>
-        <<
+        \new StaffGroup <<
           \new GuitarVoice = gtr { \gridGetMusic "guitar" }
+          #(if (not (member "guitar strum" (hash-ref music-grid-meta #:parts)))
+               (ly:debug "No guitar strum part set")
+               #{
+                 \new RhythmicStaff \with {
+                   \RemoveEmptyStaves
+                   \override VerticalAxisGroup #'remove-first = ##t
+                   \remove "Staff_performer"
+                   \consists Pitch_squash_engraver
+                 } {
+                   \improvisationOn
+                   \gridGetMusic "guitar strum"
+                 }
+               #})
           \new TabStaff \with {
             stringTunings       = #the-guitar-tuning
             %% FIXME: This is a bad hack.
