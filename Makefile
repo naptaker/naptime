@@ -15,10 +15,15 @@ defaults  = -djob-count=8 -dmidi-extension=mid
 
 all: $(pdfs)
 
+%/main.png: %/main.pdf
+	@echo 'Converting $< to PNG ...'
+	@gm convert $^ $@
+
+%/main.pdf: export format = $(patsubst main.%,%,$(notdir $@))
 %/main.pdf: %/main.ly include/* %/include/* %/notes/* %/parts/*
 	@echo -n 'Engraving $@ ... '
 	@$(lilypond) $(defaults) $(includes) \
-	-I $(PWD)/$*/include -o $*/main $< $(output)
+	-I $(PWD)/$*/include -o $*/main --$(format) $< $(output)
 	@echo "\xF0\x9F\x8E\xB5"
 
 %/main.ly: %/README.org
