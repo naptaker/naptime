@@ -23,6 +23,7 @@ all: $(pdfs)
 
 %/main.ly: %/README.org
 	@mkdir -p $*/include $*/notes $*/parts
+	@echo 'Tangling $< ...'
 	@emacsclient -e '(org-babel-tangle-file "$<")' >/dev/null 2>&1
 
 %.wav: %.mid
