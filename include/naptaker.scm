@@ -38,7 +38,7 @@
                #{
                  \new RhythmicStaff \with {
                    \RemoveEmptyStaves
-                   \override VerticalAxisGroup #'remove-first = ##t
+                   \override VerticalAxisGroup.remove-first = ##t
                    \remove "Staff_performer"
                    \consists Pitch_squash_engraver
                  } {
@@ -52,7 +52,7 @@
             minimumFret         = #2
             restrainOpenStrings = ##t
             \RemoveEmptyStaves
-            \override VerticalAxisGroup #'remove-first = ##t
+            \override VerticalAxisGroup.remove-first = ##t
             \remove "Staff_performer"
           } {
             %% \tabFullNotation
