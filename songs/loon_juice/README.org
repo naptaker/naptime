@@ -326,16 +326,41 @@ f8  8 8 8   e4        ees      |
   \break
 }
 #+END_SRC
-*** Guitar
+*** DONE Guitar
+CLOSED: [2016-08-19 Fri 22:38]
 #+BEGIN_SRC LilyPond :tangle parts/guitar-V.ily
 \include "global.ily"
 
 \gridPutMusic "guitar" 5
 \chordmode {
+  \stopStaffNotTabStaff
   \include "notes/guitar-III.ily"
+  \restartStaff
 }
 
 \gridCompileCell "guitar" 5
+#+END_SRC
+*** DONE Guitar Strum
+CLOSED: [2016-08-19 Fri 22:40]
+#+BEGIN_SRC LilyPond :tangle parts/guitar-strum-V.ily
+\include "global.ily"
+
+\gridPutMusic "guitar strum" 5
+\relative c {
+  \include "notes/guitar-strum-III.ily"
+}
+
+\gridCompileCell "guitar strum" 5
+#+END_SRC
+**** Notes
+#+BEGIN_SRC LilyPond :tangle notes/guitar-strum-V.ily
+g1 ~ | 2 d'4 a | bes1 ~ | 2 des4 4 |
+
+g1 ~ | 2 d'4 a | bes2 \acciaccatura { 16 16 } 2 | d8 8 8 8 cis4-. c-. |
+
+g,1 ~ | 2 d'4 a | bes1 ~ | 2 ges4 4 |
+
+g1 ~ | 2 d'4 a | bes2 \acciaccatura { 16 16 } 2 | d8 8 8 8 cis4-. c-. |
 #+END_SRC
 *** Bass
 #+BEGIN_SRC LilyPond :tangle parts/bass-V.ily
@@ -535,6 +560,7 @@ f1         |
 #+BEGIN_SRC LilyPond
 \include "global.ily"
 \include "guitar-strum-III.ily"
+\include "guitar-strum-V.ily"
 \include "guitar-strum-VII.ily"
 #+END_SRC
 ** Bass
