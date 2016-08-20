@@ -1,10 +1,48 @@
-#+OPTIONS: title:t toc:t date:nil author:t email:nil num:nil
+#+OPTIONS: title:t toc:t date:nil author:t email:nil num:nil ^:{}
+#+LATEX_CLASS: article
+#+LATEX_HEADER: \usemintedstyle{lovelace}
 #+TITLE: Loon Juice
 #+DATE: [2016-06-11 Sat]
 #+AUTHOR: Eric Bailey
 #+EMAIL: naptakerband@gmail.com
+#+DESCRIPTION:
+#+KEYWORDS:
+#+SUBTITLE:
+#+DATE: \today
 #+LANGUAGE: en
-#+CREATOR: Emacs 25.0.94.1 (Org mode 8.3.4)
+#+CREATOR: Emacs 25.1.1 (Org mode 8.3.4)
+
+#+NAME: setup-minted
+#+BEGIN_SRC emacs-lisp :exports results :results silent
+(setq org-latex-listings 'minted)
+(setq org-latex-minted-options nil)
+(add-to-list 'org-latex-packages-alist '("" "minted" t))
+(add-to-list 'org-latex-packages-alist '("nopostdot" "glossaries" nil))
+(delete '("" "fixltx2e" nil) org-latex-default-packages-alist)
+(let ((cmd (concat "pdflatex -shell-escape "
+                   "-interaction nonstopmode "
+                   "-synctex=1 "
+                   "-output-directory %o %f")))
+  (setq org-latex-pdf-process (list cmd cmd cmd)))
+(setq org-latex-hyperref-template
+ "\\hypersetup{
+   pdfauthor   = {%a},
+   pdftitle    = {%t},
+   pdfkeywords = {%k},
+   pdfsubject  = {%d},
+   pdfcreator  = {%c},
+   pdflang     = {%L},
+   colorlinks  = true,
+   linkcolor   = magenta,
+   %% anchorcolor = magenta,
+   citecolor   = green,
+   urlcolor    = cyan
+ }
+")
+#+END_SRC
+
+#+LATEX: \clearpage
+
 
 [[file:main.png]]
 
