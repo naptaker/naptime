@@ -27,6 +27,17 @@
     #{
       %% \new StaffGroup
       <<
+        #(if (not (member "chords" (hash-ref music-grid-meta #:parts)))
+             (ly:debug "No chords set")
+             #{
+               <<
+                 \context ChordNames {
+                   \set chordChanges = ##t
+                   \gridGetMusic "chords"
+                 }
+                 %% \context FretBoards { \gridGetMusic "chords" }
+               >>
+             #})
         \new VoxVoice = vox <<
           { \gridGetMusic "meta" }
           { \gridGetMusic "vox"  }
