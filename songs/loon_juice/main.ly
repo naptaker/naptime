@@ -1,7 +1,7 @@
 \include "global.ily"
-\include "parts/bass.ily"
 \include "parts/guitar.ily"
-\include "parts/guitar-strum.ily"
+\include "parts/guitar_strum.ily"
+\include "parts/bass.ily"
 
 \gridDisplay
 \gridCheck

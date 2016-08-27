@@ -270,18 +270,18 @@ bes,,2:1.5.8.10 \acciaccatura { q16 16 } q2 |
 d8:6-3-^5 q q q cis4:6-3-^5 c4:6-3-^5 |
 #+END_SRC
 *** Guitar Strum
-#+BEGIN_SRC LilyPond :tangle parts/guitar-strum-III.ily
+#+BEGIN_SRC LilyPond :tangle parts/guitar_strum-III.ily
 \include "global.ily"
 
 \gridPutMusic "guitar strum" 3
 \relative c {
-  \include "notes/guitar-strum-III.ily"
+  \include "notes/guitar_strum-III.ily"
 }
 
 \gridCompileCell "guitar strum" 3
 #+END_SRC
 **** Notes
-#+BEGIN_SRC LilyPond :tangle notes/guitar-strum-III.ily
+#+BEGIN_SRC LilyPond :tangle notes/guitar_strum-III.ily
 g1 ~ | 2 d'4 a | bes1 ~ | 2 des4 4 |
 
 g1 ~ | 2 d'4 a | bes2 \acciaccatura { 16 16 } 2 | d8 8 8 8 cis4-. c-. |
@@ -380,18 +380,18 @@ CLOSED: [2016-08-19 Fri 22:38]
 #+END_SRC
 *** DONE Guitar Strum
 CLOSED: [2016-08-19 Fri 22:40]
-#+BEGIN_SRC LilyPond :tangle parts/guitar-strum-V.ily
+#+BEGIN_SRC LilyPond :tangle parts/guitar_strum-V.ily
 \include "global.ily"
 
 \gridPutMusic "guitar strum" 5
 \relative c {
-  \include "notes/guitar-strum-III.ily"
+  \include "notes/guitar_strum-III.ily"
 }
 
 \gridCompileCell "guitar strum" 5
 #+END_SRC
 **** Notes
-#+BEGIN_SRC LilyPond :tangle notes/guitar-strum-V.ily
+#+BEGIN_SRC LilyPond :tangle notes/guitar_strum-V.ily
 g1 ~ | 2 d'4 a | bes1 ~ | 2 des4 4 |
 
 g1 ~ | 2 d'4 a | bes2 \acciaccatura { 16 16 } 2 | d8 8 8 8 cis4-. c-. |
@@ -498,13 +498,13 @@ f,1:1.5.8                  |
 #+END_SRC
 *** DONE Guitar Strum
 CLOSED: [2016-07-10 Sun 20:29]
-#+BEGIN_SRC LilyPond :tangle parts/guitar-strum-VII.ily
+#+BEGIN_SRC LilyPond :tangle parts/guitar_strum-VII.ily
 \include "global.ily"
 
 \gridPutMusic "guitar strum" 7
 \relative c {
   \repeat unfold 2 {
-    \include "notes/guitar-strum-VII.ily"
+    \include "notes/guitar_strum-VII.ily"
   }
 }
 
@@ -512,7 +512,7 @@ CLOSED: [2016-07-10 Sun 20:29]
 #+END_SRC
 **** DONE Notes
 CLOSED: [2016-07-10 Sun 20:29]
-#+BEGIN_SRC LilyPond :tangle notes/guitar-strum-VII.ily
+#+BEGIN_SRC LilyPond :tangle notes/guitar_strum-VII.ily
 g2.     a4   |
 bes2.   c4   |
 des2.   ees4 |
@@ -593,13 +593,13 @@ f1         |
 #+END_SRC
 ** Guitar Strum
 :PROPERTIES:
-:tangle:   parts/guitar-strum.ily
+:tangle:   parts/guitar_strum.ily
 :END:
 #+BEGIN_SRC LilyPond
 \include "global.ily"
-\include "guitar-strum-III.ily"
-\include "guitar-strum-V.ily"
-\include "guitar-strum-VII.ily"
+\include "guitar_strum-III.ily"
+\include "guitar_strum-V.ily"
+\include "guitar_strum-VII.ily"
 #+END_SRC
 ** Bass
    :PROPERTIES:
@@ -623,9 +623,9 @@ f1         |
 Include the grid, templates and header metadata ([[file:include/global.ily][global.ily]]), and the parts.
 #+BEGIN_SRC LilyPond
 \include "global.ily"
-\include "parts/bass.ily"
 \include "parts/guitar.ily"
-\include "parts/guitar-strum.ily"
+\include "parts/guitar_strum.ily"
+\include "parts/bass.ily"
 #+END_SRC
 
 Print out the grid while rendering and

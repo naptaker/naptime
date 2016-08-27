@@ -3,7 +3,7 @@
 \gridPutMusic "guitar strum" 7
 \relative c {
   \repeat unfold 2 {
-    \include "notes/guitar-strum-VII.ily"
+    \include "notes/guitar_strum-VII.ily"
   }
 }
 

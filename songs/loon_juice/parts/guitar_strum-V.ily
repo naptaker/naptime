@@ -2,7 +2,7 @@
 
 \gridPutMusic "guitar strum" 5
 \relative c {
-  \include "notes/guitar-strum-III.ily"
+  \include "notes/guitar_strum-III.ily"
 }
 
 \gridCompileCell "guitar strum" 5
