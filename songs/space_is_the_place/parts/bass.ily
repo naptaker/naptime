@@ -3,3 +3,4 @@
 \include "bass-II.ily"
 \include "bass-III.ily"
 \include "bass-IV.ily"
+\include "bass-IX.ily"

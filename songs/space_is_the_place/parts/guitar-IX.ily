@@ -3,6 +3,7 @@
 \gridPutMusic "guitar" 9
 \relative c {
   \include "notes/guitar-IV.ily"
+  \fuzzOn
   \relative {
     \include "notes/guitar-IX.ily"
   }

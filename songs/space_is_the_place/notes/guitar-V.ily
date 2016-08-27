@@ -1,10 +1,17 @@
 \Tempo
 \ottava #0
-<b fis' b dis fis b>1 |
-<fis cis' fis ais cis fis>1 |
-<b fis' b dis fis b>1 |
-<fis cis' fis ais cis fis>1 |
-<b fis' b dis fis b>1 |
-<fis cis' fis ais cis fis>1 |
-<f c' f a c f>1 ~ |
-<f c' f a c f>1 |
+\set TabStaff.minimumFret = #9
+<b fis' b dis>1       |
+\set TabStaff.minimumFret = #4
+<fis cis' fis ais>1   |
+\set TabStaff.minimumFret = #9
+<b fis' b dis>1       |
+\set TabStaff.minimumFret = #4
+<fis cis' fis ais>1   |
+\set TabStaff.minimumFret = #9
+<b fis' b dis>1       |
+\set TabStaff.minimumFret = #4
+<fis cis' fis ais>1   |
+\set TabStaff.minimumFret = #3
+<f c' f a>1         ~ |
+<f c' f a>1           |

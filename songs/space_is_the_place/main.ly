@@ -1,6 +1,8 @@
 \include "global.ily"
-\include "parts/bass.ily"
+\include "parts/chords.ily"
 \include "parts/guitar.ily"
+\include "parts/guitar_strum.ily"
+\include "parts/bass.ily"
 \include "parts/drums.ily"
 
 \gridDisplay

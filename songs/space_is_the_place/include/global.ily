@@ -19,9 +19,13 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   copyright = "© 2016 Naptaker"
 }
 
-\gridInit 9 #'("meta" "vox" "guitar" "bass" "drums up" "drums down")
-
-\templateInit #'(8 8 16 8 8 8 7 1 24)
+\templateInit #'("meta"
+                 "vox"
+                 "chords"
+                 "guitar" "guitar strum"
+                 "bass"
+                 "drums up" "drums down")
+              #'(8 8 16 8 8 8 7 1 24)
 
 \gridPutMusic "meta" 1
 {
@@ -33,16 +37,16 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 \gridPutMusic "meta" 2
 {
   \mark 2
-  s1*8 \pageBreak
+  s1*8 \break
 }
 
 \gridPutMusic "meta" 3
 {
   \mark 3
-  s1*4 % \break
+  s1*4
   s1*4 \break
-  s1*4 % \break
-  s1*4 \pageBreak
+  s1*4
+  s1*4 \break
 }
 
 \gridPutMusic "meta" 4
@@ -55,7 +59,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 \gridPutMusic "meta" 5
 {
   \mark 5
-  s1*8 \break
+  s1*8 \pageBreak
 }
 
 \gridPutMusic "meta" 6
@@ -74,7 +78,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 \gridPutMusic "meta" 8
 {
   \mark 8
-  s1 \pageBreak
+  s1 \break
 }
 
 \gridPutMusic "meta" 9
