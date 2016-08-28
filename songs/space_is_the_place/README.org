@@ -519,7 +519,6 @@ CLOSED: [2016-06-26 Sun 17:07]
 **** DONE Notes
 CLOSED: [2016-08-26 Fri 22:21]
 #+BEGIN_SRC LilyPond :tangle notes/guitar-V.ily
-\Tempo
 \ottava #0
 \set TabStaff.minimumFret = #9
 <b fis' b dis>1       |
@@ -550,7 +549,6 @@ CLOSED: [2016-08-26 Fri 22:21]
 #+END_SRC
 **** Notes
 #+BEGIN_SRC LilyPond :tangle notes/guitar_strum-V.ily
-\Tempo
 \ottava #0
 \repeat unfold 3 {
   b1   |

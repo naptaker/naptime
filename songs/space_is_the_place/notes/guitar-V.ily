@@ -1,4 +1,3 @@
-\Tempo
 \ottava #0
 \set TabStaff.minimumFret = #9
 <b fis' b dis>1       |

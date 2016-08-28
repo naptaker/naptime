@@ -1,4 +1,3 @@
-\Tempo
 \ottava #0
 \repeat unfold 3 {
   b1   |
