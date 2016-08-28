@@ -874,6 +874,35 @@ aes4     aes8.     ges16 ges8 aes4     f8  |
 ges8 ges ges   ges       ges  bes  a   f   |
 #+END_SRC
 *** TODO Drums
+**** Up
+#+BEGIN_SRC LilyPond :tangle parts/drums_up-IX.ily
+\include "global.ily"
+
+\gridPutMusic "drums up" 9
+\drummode {
+  \repeat unfold 3 {
+    \include "notes/drums_up-IVa.ily"
+    \include "notes/drums_up-IVb.ily"
+  }
+}
+
+\gridCompileCell "drums up" 9
+#+END_SRC
+**** Down
+#+BEGIN_SRC LilyPond :tangle parts/drums_down-IX.ily
+\include "global.ily"
+
+\gridPutMusic "drums down" 9
+\drummode {
+  \repeat unfold 3 {
+    \repeat unfold 2 {
+      \include "notes/drums_down-IV.ily"
+    }
+  }
+}
+
+\gridCompileCell "drums down" 9
+#+END_SRC
 * Parts
 ** Chords
 #+BEGIN_SRC LilyPond :tangle parts/chords.ily
@@ -931,6 +960,8 @@ ges8 ges ges   ges       ges  bes  a   f   |
 \include "drums_down-III.ily"
 \include "drums_up-IV.ily"
 \include "drums_down-IV.ily"
+\include "drums_up-IX.ily"
+\include "drums_down-IX.ily"
 #+END_SRC
 ** TODO Vocals
 * Main

@@ -7,3 +7,5 @@
 \include "drums_down-III.ily"
 \include "drums_up-IV.ily"
 \include "drums_down-IV.ily"
+\include "drums_up-IX.ily"
+\include "drums_down-IX.ily"
