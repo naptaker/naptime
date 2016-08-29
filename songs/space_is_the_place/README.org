@@ -158,9 +158,9 @@ s8 bd s  bd s  bd bd bd |
 \chordmode {
   \repeat unfold 2 {
     ees2:7 d:7 |
-    ees2:7 s   |
+    ees2:7 r   |
     ees2:7 d:7 |
-    ees2   s   |
+    ees2   r   |
   }
 }
 #+END_SRC
@@ -250,7 +250,7 @@ CLOSED: [2016-06-29 Wed 02:21]
     \repeat unfold 3 {
       s4 ees8:7 s4 ges8:7 bes4 |
     }
-    s1
+    r1
   }
 }
 #+END_SRC
@@ -576,12 +576,7 @@ The same as the previous segment, but with twice the rhythmic intensity.
 
 \gridPutMusic "chords" 6
 \chordmode {
-  \repeat unfold 3 {
-    b1   |
-    fis1 |
-  }
-  f1 ~ |
-  f1   |
+  \include "notes/guitar_strum-VI.ily"
 }
 #+END_SRC
 *** DONE Guitar
@@ -649,13 +644,13 @@ The triumphant stoner segment.
 
 \gridPutMusic "chords" 7
 \chordmode {
-  e2.                 s16 d8.     |
-  b2  s8    s16 bes   b   d8.     |
-  e2  s16 d e   g8        e8.     |
-  b2  s8    bes       a       fis |
-  e2.                 s16 d8.     |
-  b2  s8.       bes16 b   e   b8  |
-  bes1                            |
+  e2.                    16  d8.      |
+  b2   ~ 8     16    bes b   d8.      |
+  e2     16 d  e     g8      e8.      |
+  b2     16 16 bes16 16  a16 16  fis8 |
+  e2.                    16  d8.      |
+  b2   ~ 8.          16  b   e   b8   |
+  bes1                                |
 }
 #+END_SRC
 *** DONE Guitar
@@ -715,14 +710,16 @@ CLOSED: [2016-08-26 Fri 22:21]
 #+END_SRC
 **** Notes
 #+BEGIN_SRC LilyPond :tangle notes/guitar_strum-VII.ily
-e2. 16 d8. |
-b2 ~ 8 16 bes b d8. |
-e2 16 d e g8 e8. |
-b2 \override NoteHead.style = #'cross 8:16 bes:16 a:16 fis |
+e2.                          16 d8.     |
+b2  ~ 8      16     bes      b  d8.     |
+e2    16   d e      g8          e8.     |
+b2
+\override NoteHead.style = #'cross
+      8:16   bes:16     a:16        fis |
 \revert NoteHead.style
-e2. 16 d8. |
-b2 ~ 8. bes16 b d b8 |
-bes1 |
+e2.                          16 d8.     |
+b2  ~ 8.             bes16   b  d   b8  |
+bes1                                    |
 #+END_SRC
 *** TODO Bass
 *** TODO Drums
