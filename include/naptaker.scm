@@ -3,8 +3,6 @@
 (set-default-paper-size "letter" 'landscape)
 (set-global-staff-size 14)
 
-;; http://lilypond-cookbook.tumblr.com/post/74876227435/drum-music-5-the-hi-hat
-;; http://lilypond-cookbook.tumblr.com/post/75485862838/drum-music-template
 (define preston-drums
   (alist->hash-table
    '((ridecymbal    cross   #f          5)
@@ -72,18 +70,7 @@
         >>
         <<
           \new BassVoice = bass { \gridGetMusic "bass" }
-%{
-          \new TabStaff \with {
-            stringTunings = #bass-tuning
-            \RemoveEmptyStaves
-            \override VerticalAxisGroup #'remove-first = ##t
-            \remove "Staff_performer"
-          } {
-            %% \tabFullNotation
-            \gridGetMusic "bass"
-          }
-%}
-        >>
+>>
         \new DrumStaff \with {
           drumStyleTable = #preston-drums
           instrumentName = "Drums"
