@@ -84,11 +84,11 @@ xOff       = \deadNotesOff
 ** COMMENT Fret Magic
 #+BEGIN_SRC LilyPond
 fretMagic  = {
-  \once \override TabNoteHead #'transparent = ##t
-  \once \override NoteHead #'transparent = ##t
-  \once \override Stem #'transparent = ##t
-  \once \override Flag #'transparent = ##t
-  \once \override NoteHead #'no-ledgers = ##t
+  \once \hide TabNoteHead
+  \once \hide NoteHead
+  \once \hide Stem
+  \once \hide Flag
+  \once \override NoteHead.no-ledgers = ##t
   \once \override Glissando #'(bound-details left padding) = #0.3
 }
 #+END_SRC
@@ -97,18 +97,18 @@ fretMagic  = {
 %% Basically \hideNotes, except deliberately excluding TabNoteHead
 hideNotesNotTabStaff = {
   %% hide notes, accidentals, etc.
-  \override Dots.transparent = ##t
-  \override NoteHead.transparent = ##t
+  \hide Dots
+  \hide NoteHead
   \override NoteHead.no-ledgers = ##t
   %% assume that any Beam inherits transparency from its parent Stem
-  \override Stem.transparent = ##t
-  \override Accidental.transparent = ##t
-  \override Rest.transparent = ##t
-  \override MultiMeasureRest.transparent = ##t
-  \override Script.transparent = ##t
+  \hide Stem
+  \hide Accidental
+  \hide Rest
+  \hide MultiMeasureRest
+  \hide Script
 
   %% Unlike \hideNotes, don't hide TabNoteHead
-  %% \override TabNoteHead.transparent = ##t
+  %% \hide TabNoteHead
 
   %% Omit Slurs and Ties too
   \omit Staff.Slur \omit Staff.Tie
@@ -135,8 +135,8 @@ restartStaff = {
   \undo \omit Staff.TimeSignature
 
   \startStaff \unHideNotes
-  \revert MultiMeasureRest.transparent
-  \revert Script.transparent
+  \undo \hide MultiMeasureRest
+  \undo \hide Script
   %% \once \override Staff.BarLine.break-visibility = #end-of-line-invisible
 }
 #+END_SRC
