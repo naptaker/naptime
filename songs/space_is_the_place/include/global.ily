@@ -20,7 +20,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 }
 
 \templateInit #'("meta"
-                 "vox"
+                 ;; "vox"
                  "chords"
                  "guitar" "guitar strum"
                  "bass"
