@@ -36,10 +36,17 @@
                  %% \context FretBoards { \gridGetMusic "chords" }
                >>
              #})
-        \new VoxVoice = vox <<
-          { \gridGetMusic "meta" }
-          { \gridGetMusic "vox"  }
-        >>
+        #(if (not (member "vox" (hash-ref music-grid-meta #:parts)))
+             (ly:debug "No vox")
+             #{
+               <<
+                 \new VoxVoice = vox <<
+                   { \gridGetMusic "meta" }
+                   { \gridGetMusic "vox"  }
+                 >>
+                 \new Lyrics \lyricsto vox { \gridGetLyrics "vox" }
+               >>
+             #})
         \new StaffGroup <<
           \new GuitarVoice = gtr { \gridGetMusic "guitar" }
           #(if (not (member "guitar strum" (hash-ref music-grid-meta #:parts)))
@@ -70,7 +77,7 @@
         >>
         <<
           \new BassVoice = bass { \gridGetMusic "bass" }
->>
+        >>
         \new DrumStaff \with {
           drumStyleTable = #preston-drums
           instrumentName = "Drums"

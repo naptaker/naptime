@@ -25,6 +25,10 @@
   \override VerticalAxisGroup #'remove-first = ##t
   \clef F
 }
+\with {
+  \consists "Staff_performer"
+  midiInstrument = "voice oohs"
+}
 "default"
 #+END_SRC
 ** Guitar
@@ -276,10 +280,17 @@ Custom drum notation, based on a couple snippets from [[http://lilypond-cookbook
                  %% \context FretBoards { \gridGetMusic "chords" }
                >>
              #})
-        \new VoxVoice = vox <<
-          { \gridGetMusic "meta" }
-          { \gridGetMusic "vox"  }
-        >>
+        #(if (not (member "vox" (hash-ref music-grid-meta #:parts)))
+             (ly:debug "No vox")
+             #{
+               <<
+                 \new VoxVoice = vox <<
+                   { \gridGetMusic "meta" }
+                   { \gridGetMusic "vox"  }
+                 >>
+                 \new Lyrics \lyricsto vox { \gridGetLyrics "vox" }
+               >>
+             #})
         \new StaffGroup <<
           \new GuitarVoice = gtr { \gridGetMusic "guitar" }
           #(if (not (member "guitar strum" (hash-ref music-grid-meta #:parts)))

@@ -10,6 +10,10 @@
   \override VerticalAxisGroup #'remove-first = ##t
   \clef F
 }
+\with {
+  \consists "Staff_performer"
+  midiInstrument = "voice oohs"
+}
 "default"
 
 \newInstrument "Guitar"
