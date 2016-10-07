@@ -19,17 +19,18 @@ all: $(pdfs)
 	@echo 'Converting $< to PNG ...'
 	@gm convert $^ $@
 
-%/main.pdf: export format = $(patsubst main.%,%,$(notdir $@))
+# %/main.pdf: export format = $(patsubst main.%,%,$(notdir $@))
+%/main.pdf: export format = pdf
 %/main.pdf: %/main.ly include/* %/include/* %/notes/* %/parts/*
 	@echo -n 'Engraving $@ ... '
 	@$(lilypond) $(defaults) $(includes) \
 	-I $(PWD)/$*/include -o $*/main --$(format) $< $(output)
 	@echo "\xF0\x9F\x8E\xB5"
 
-%/main.ly: %/README.org
-	@mkdir -p $*/include $*/notes $*/parts
-	@echo 'Tangling $< ...'
-	@emacsclient -e '(org-babel-tangle-file "$<")' >/dev/null 2>&1
+# %/main.ly: %/README.org
+# 	@mkdir -p $*/include $*/notes $*/parts
+# 	@echo 'Tangling $< ...'
+# 	@emacsclient -e '(org-babel-tangle-file "$<")' >/dev/null 2>&1
 
 %.wav: %.mid
 	@timidity -Ow -o $@ $^
