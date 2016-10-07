@@ -76,7 +76,16 @@
           }
         >>
         <<
-          \new BassVoice = bass { \gridGetMusic "bass" }
+          #(if (member "vox" (hash-ref music-grid-meta #:parts))
+               #{
+                 \new BassVoice = bass \gridGetMusic "bass"
+               #}
+               #{
+                 \new BassVoice = bass <<
+                   { \gridGetMusic "meta" }
+                   { \gridGetMusic "bass"  }
+                 >>
+              #})
         >>
         \new DrumStaff \with {
           drumStyleTable = #preston-drums
