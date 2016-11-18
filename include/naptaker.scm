@@ -31,7 +31,7 @@
     #{
       %% \new StaffGroup
       <<
-        #(if (not (member "chords" (hash-ref music-grid-meta #:parts)))
+        #(if (part-missing? "chords")
              (ly:debug "No chords set")
              #{
                <<
@@ -42,7 +42,7 @@
                  %% \context FretBoards { \gridGetMusic "chords" }
                >>
              #})
-        #(if (not (member "vox" (hash-ref music-grid-meta #:parts)))
+        #(if (part-missing? "vox")
              (ly:debug "No vox")
              #{
                <<
@@ -53,45 +53,59 @@
                  \new Lyrics \lyricsto vox { \gridGetLyrics "vox" }
                >>
              #})
-        \new StaffGroup <<
-          \new GuitarVoice = gtr { \gridGetMusic "guitar" }
-          #(if (not (member "guitar strum" (hash-ref music-grid-meta #:parts)))
-               (ly:debug "No guitar strum part set")
-               #{
-                 \new RhythmicStaff \with {
+        #(if (part-missing? "guitar")
+             (ly:debug "No guitar part")
+             #{
+               \new StaffGroup <<
+                 #(if (and (part-missing? "vox") (part-missing? "bass"))
+                      (begin (ly:warning "HEY")
+                          #{
+                        \new GuitarVoice = gtr <<
+                          { \gridGetMusic "meta" }
+                          { \gridGetMusic "guitar"  }
+                        >>
+                      #})
+                      #{
+                        \new GuitarVoice = gtr { \gridGetMusic "guitar" }
+                      #})
+                 #(if (part-missing? "guitar strum")
+                      (ly:warning "No guitar strum part set")
+                      #{
+                        \new RhythmicStaff \with {
+                          \RemoveEmptyStaves
+                          \override VerticalAxisGroup.remove-first = ##t
+                          \remove "Staff_performer"
+                          \consists Pitch_squash_engraver
+                        } {
+                          \improvisationOn
+                          \gridGetMusic "guitar strum"
+                        }
+                      #})
+                 \new TabStaff \with {
+                   stringTunings       = #the-guitar-tuning
+                   %% FIXME: This is a bad hack.
+                   minimumFret         = #2
+                   restrainOpenStrings = ##t
                    \RemoveEmptyStaves
                    \override VerticalAxisGroup.remove-first = ##t
                    \remove "Staff_performer"
-                   \consists Pitch_squash_engraver
                  } {
-                   \improvisationOn
-                   \gridGetMusic "guitar strum"
+                   %% \tabFullNotation
+                   \gridGetMusic "guitar"
                  }
-               #})
-          \new TabStaff \with {
-            stringTunings       = #the-guitar-tuning
-            %% FIXME: This is a bad hack.
-            minimumFret         = #2
-            restrainOpenStrings = ##t
-            \RemoveEmptyStaves
-            \override VerticalAxisGroup.remove-first = ##t
-            \remove "Staff_performer"
-          } {
-            %% \tabFullNotation
-            \gridGetMusic "guitar"
-          }
-        >>
+               >>
+             #})
         <<
-          #(if (member "vox" (hash-ref music-grid-meta #:parts))
-               #{
-                 \new BassVoice = bass \gridGetMusic "bass"
-               #}
+          #(if (part-missing? "vox")
                #{
                  \new BassVoice = bass <<
                    { \gridGetMusic "meta" }
                    { \gridGetMusic "bass"  }
                  >>
-              #})
+               #}
+               #{
+                 \new BassVoice = bass \gridGetMusic "bass"
+               #})
         >>
         \new DrumStaff \with {
           drumStyleTable = #preston-drums
