@@ -19,6 +19,12 @@
      (lowtom        default #f         -1)
      (bassdrum      default #f         -3))))
 
+(define (part-missing? part)
+  (or (not (member part (hash-ref music-grid-meta #:parts)))
+      (let* ((num-segments (hash-ref music-grid-meta #:segments))
+             (segments (map 1+ (iota num-segments))))
+           (not (any (lambda (seg) (get-music-cell part seg)) segments)))))
+
 (define Naptaker
   (define-music-function (parser location the-guitar-tuning) (list?)
     "Return the makings of a Naptaker score."
