@@ -5,8 +5,8 @@
   \set predefinedDiagramTable = #intro-fret-table
   \repeat unfold 2 {
     ees2:7 d:7 |
-    ees2:7 r   |
+    ees2:7 s   |
     ees2:7 d:7 |
-    ees2   r   |
+    s1         |
   }
 }

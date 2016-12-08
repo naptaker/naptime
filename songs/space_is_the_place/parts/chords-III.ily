@@ -7,6 +7,6 @@
     \repeat unfold 3 {
       s4 ees8:7 s4 ges8:7 bes4 |
     }
-    r1
+    s1
   }
 }
