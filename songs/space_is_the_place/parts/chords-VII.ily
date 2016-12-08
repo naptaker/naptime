@@ -2,6 +2,7 @@
 
 \gridPutMusic "chords" 7
 \chordmode {
+  \set predefinedDiagramTable = #stoner-jam-fret-table
   e2.                    16  d8.      |
   b2   ~ 8     16    bes b   d8.      |
   e2     16 d  e     g8      e8.      |

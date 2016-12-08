@@ -1,9 +1,13 @@
 \version "2.19.24"
 
-#(load "../../include/naptaker.scm")
+\include "openlilylib"
+\addGuilePath "../../../include"
+#(load-from-path "naptaker.scm")
+\include "fretboards.ily"
+%% #(ly:set-option 'relative-includes #t)
 \include "preamble.ily"
 \include "instruments.ily"
-\include "openlilylib"
+
 \useLibrary gridly
 
 Key    = { \key c \major }
