@@ -1,3 +1,4 @@
+;; (set-default-paper-size "arch a" 'portrait)
 ;; (set-default-paper-size "arch a" 'landscape)
 (set-default-paper-size "letter" 'landscape)
 ;; (set-global-staff-size 18)
@@ -26,7 +27,7 @@
         (not (any (lambda (seg) (get-music-cell part seg)) segments)))))
 
 (define napChords
-  (define-music-function (parser location) ()
+  (define-music-function (parser location the-guitar-tuning) (list?)
     (if (part-missing? "chords")
         (begin (ly:debug "No chords set") #{ #})
         #{
@@ -35,7 +36,11 @@
               \set chordChanges = ##t
               \gridGetMusic "chords"
             }
-            %% \context FretBoards { \gridGetMusic "chords" }
+            \context FretBoards {
+              \set stringTunings = #the-guitar-tuning
+              \override FretBoard.fret-diagram-details.orientation = #'landscape
+              \gridGetMusic "chords"
+            }
           >>
         #})))
 
@@ -154,7 +159,7 @@
     #{
       %% \new StaffGroup
       <<
-        \napChords
+        \napChords #the-guitar-tuning
         \napVox
         \napGuitar #the-guitar-tuning
         \napBass
