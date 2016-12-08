@@ -1,6 +1,6 @@
 ;; (set-default-paper-size "arch a" 'landscape)
-;; (set-global-staff-size 18)
 (set-default-paper-size "letter" 'landscape)
+;; (set-global-staff-size 18)
 (set-global-staff-size 14)
 
 (define preston-drums
@@ -23,90 +23,112 @@
   (or (not (member part (hash-ref music-grid-meta #:parts)))
       (let* ((num-segments (hash-ref music-grid-meta #:segments))
              (segments (map 1+ (iota num-segments))))
-           (not (any (lambda (seg) (get-music-cell part seg)) segments)))))
+        (not (any (lambda (seg) (get-music-cell part seg)) segments)))))
 
-(define Naptaker
+(define napChords
+  (define-music-function (parser location) ()
+    (if (part-missing? "chords")
+        (begin (ly:debug "No chords set") #{ #})
+        #{
+          <<
+            \context ChordNames {
+              \set chordChanges = ##t
+              \gridGetMusic "chords"
+            }
+            %% \context FretBoards { \gridGetMusic "chords" }
+          >>
+        #})))
+
+(define napVox
+  (define-music-function (parser location) ()
+    (if (part-missing? "vox")
+        (begin (ly:debug "No vox") #{ #})
+        #{
+          <<
+            \new VoxVoice = vox <<
+              { \gridGetMusic "meta" }
+              { \gridGetMusic "vox"  }
+            >>
+            \new Lyrics \lyricsto vox { \gridGetLyrics "vox" }
+          >>
+        #})))
+
+(define napGuitarStrum
+  (define-music-function (parser location) ()
+    (if (part-missing? "guitar strum")
+        (begin (ly:debug "No guitar strum part set") #{ #})
+        #{
+          \new RhythmicStaff \with {
+            \RemoveEmptyStaves
+            \override VerticalAxisGroup.remove-first = ##t
+            \remove "Staff_performer"
+            \consists Pitch_squash_engraver
+          } {
+            \improvisationOn
+            \gridGetMusic "guitar strum"
+          }
+        #})))
+
+(define napGuitarTab
   (define-music-function (parser location the-guitar-tuning) (list?)
-    "Return the makings of a Naptaker score."
     #{
-      %% \new StaffGroup
-      <<
-        #(if (part-missing? "chords")
-             (ly:debug "No chords set")
-             #{
-               <<
-                 \context ChordNames {
-                   \set chordChanges = ##t
-                   \gridGetMusic "chords"
-                 }
-                 %% \context FretBoards { \gridGetMusic "chords" }
-               >>
-             #})
-        #(if (part-missing? "vox")
-             (ly:debug "No vox")
-             #{
-               <<
-                 \new VoxVoice = vox <<
-                   { \gridGetMusic "meta" }
-                   { \gridGetMusic "vox"  }
-                 >>
-                 \new Lyrics \lyricsto vox { \gridGetLyrics "vox" }
-               >>
-             #})
-        #(if (part-missing? "guitar")
-             (ly:debug "No guitar part")
-             #{
-               \new StaffGroup <<
-                 #(if (and (part-missing? "vox") (part-missing? "bass"))
-                      (begin (ly:warning "HEY")
-                          #{
-                        \new GuitarVoice = gtr <<
-                          { \gridGetMusic "meta" }
-                          { \gridGetMusic "guitar"  }
-                        >>
-                      #})
-                      #{
-                        \new GuitarVoice = gtr { \gridGetMusic "guitar" }
-                      #})
-                 #(if (part-missing? "guitar strum")
-                      (ly:warning "No guitar strum part set")
-                      #{
-                        \new RhythmicStaff \with {
-                          \RemoveEmptyStaves
-                          \override VerticalAxisGroup.remove-first = ##t
-                          \remove "Staff_performer"
-                          \consists Pitch_squash_engraver
-                        } {
-                          \improvisationOn
-                          \gridGetMusic "guitar strum"
-                        }
-                      #})
-                 \new TabStaff \with {
-                   stringTunings       = #the-guitar-tuning
-                   %% FIXME: This is a bad hack.
-                   minimumFret         = #2
-                   restrainOpenStrings = ##t
-                   \RemoveEmptyStaves
-                   \override VerticalAxisGroup.remove-first = ##t
-                   \remove "Staff_performer"
-                 } {
-                   %% \tabFullNotation
-                   \gridGetMusic "guitar"
-                 }
-               >>
-             #})
-        <<
-          #(if (part-missing? "vox")
-               #{
-                 \new BassVoice = bass <<
-                   { \gridGetMusic "meta" }
-                   { \gridGetMusic "bass"  }
-                 >>
-               #}
-               #{
-                 \new BassVoice = bass \gridGetMusic "bass"
-               #})
+      \new TabStaff \with {
+        stringTunings       = #the-guitar-tuning
+        %% FIXME: This is a bad hack.
+        minimumFret         = #2
+        restrainOpenStrings = ##t
+        \RemoveEmptyStaves
+        \override VerticalAxisGroup.remove-first = ##t
+        \remove "Staff_performer"
+      } {
+        %% \tabFullNotation
+        \gridGetMusic "guitar"
+      }
+    #}))
+
+(define napGuitar
+  (define-music-function (parser location the-guitar-tuning) (list?)
+    (if (part-missing? "guitar")
+        (begin (ly:debug "No guitar part") #{ #})
+        #{
+          \new StaffGroup <<
+            #(if (and (part-missing? "vox") (part-missing? "bass"))
+                 #{
+                   \new GuitarVoice = gtr <<
+                     { \gridGetMusic "meta" }
+                     { \gridGetMusic "guitar"  }
+                   >>
+                 #}
+                 #{
+                   \new GuitarVoice = gtr { \gridGetMusic "guitar" }
+                 #})
+          \napGuitarStrum
+          \napGuitarTab #the-guitar-tuning
         >>
+      #})))
+
+(define napBass
+  (define-music-function (parser location) ()
+    (if (part-missing? "vox")
+        #{
+          \new BassVoice = bass <<
+            { \gridGetMusic "meta" }
+            { \gridGetMusic "bass"  }
+          >>
+        #}
+        #{
+          \new BassVoice = bass \gridGetMusic "bass"
+        #})))
+
+(define napDrums
+  (define-music-function (parser location) ()
+    (cond
+     ((part-missing? "drums up")
+      (begin #(ly:debug "No drums up part set") #{ #}))
+     ((part-missing? "drums down")
+      (begin (ly:debug "No drums down part set") #{ #}))
+     (else
+      #{
         \new DrumStaff \with {
           drumStyleTable = #preston-drums
           instrumentName = "Drums"
@@ -116,8 +138,7 @@
         } {
           <<
             \new DrumVoice { \voiceOne \gridGetMusic "drums up" }
-            \new DrumVoice
-            \with {
+            \new DrumVoice \with {
               \remove "Rest_engraver"
               \remove "Multi_measure_rest_engraver"
             } {
@@ -125,6 +146,19 @@
             }
           >>
         }
+      #}))))
+
+(define Naptaker
+  (define-music-function (parser location the-guitar-tuning) (list?)
+    "Return the makings of a Naptaker score."
+    #{
+      %% \new StaffGroup
+      <<
+        \napChords
+        \napVox
+        \napGuitar #the-guitar-tuning
+        \napBass
+        \napDrums
       >>
     #}))
 
