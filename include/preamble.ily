@@ -1,6 +1,15 @@
 fuzzOn     = \set midiInstrument = #"overdriven guitar"
 fuzzOff    = \set midiInstrument = #"electric guitar (clean)"
 
+xOn  = {
+  \deadNotesOn
+  \set midiInstrument = #"electric guitar (muted)"
+}
+xOff = {
+  \deadNotesOff
+  \set midiInstrument = #"electric guitar (clean)"
+}
+
 %% Basically \hideNotes, except deliberately excluding TabNoteHead
 hideNotesNotTabStaff = {
   %% hide notes, accidentals, etc.
@@ -46,3 +55,9 @@ restartStaff = {
   \undo \hide Script
   %% \once \override Staff.BarLine.break-visibility = #end-of-line-invisible
 }
+
+gridGetCellMusic =
+#(define-music-function (parser location part segment) (string? number?)
+   (check-grid)
+   (check-coords part segment)
+   (cell:music (get-music-cell part segment)))
