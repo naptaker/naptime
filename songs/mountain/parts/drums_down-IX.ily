@@ -1,8 +1,8 @@
 \include "global.ily"
 
-\gridPutMusic "drums down" 1
+\gridPutMusic "drums down" 9
 \drummode {
-  \repeat unfold 4 {
+  \repeat unfold 2 {
     \repeat unfold 3 {
       \repeat unfold 2 { \include "notes/drums_down-Ia.ily" } |
     }
@@ -11,4 +11,4 @@
   }
 }
 
-\gridCompileCell "drums down" 1
+\gridCompileCell "drums down" 9
