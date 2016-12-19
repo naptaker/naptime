@@ -1,2 +1,2 @@
 << { cymc2 } \\
-   { sn4:16 8:16 tomml8:16 } >> |
+   { \repeat unfold 6 { sn16 } tomml16 tomml16 } >> |
