@@ -2,11 +2,15 @@
 
 \gridPutMusic "drums up" 7
 \drummode {
-  \repeat unfold 4 {
-    \include "notes/drums_up-VIIa.ily"
+  \repeat volta 2 {
+    \repeat percent 3 {
+      \repeat unfold 2 { \include "notes/drums_up-Ia.ily" } |
+    }
   }
-  \repeat unfold 2 {
-    \include "notes/drums_up-VIIb.ily"
+  \alternative {
+    { \include "notes/drums_up-Ia.ily" cymc2 | }
+    { % #(make-music 'PercentEvent 'length (ly:make-moment 1)) |
+      \include "notes/drums_up-Ia.ily" cymc2 | }
   }
 }
 

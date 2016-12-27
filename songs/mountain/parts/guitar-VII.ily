@@ -1,9 +1,16 @@
 \include "global.ily"
 
-\gridPutMusic "guitar" 7
-\relative c' {
-  \repeat unfold 2 {
-    \include "notes/guitar-VII.ily"
+\gridPutMusic "guitar" 7 {
+  \relative c {
+    \repeat volta 2 {
+      \repeat percent 3 {
+        \include "notes/guitar-Ia.ily"
+      }
+    }
+    \alternative {
+      { \include "notes/guitar-Ib.ily" }
+      { \include "notes/guitar-VII.ily" }
+    }
   }
 }
 

@@ -1,3 +1,5 @@
-\set TabStaff.minimumFret = #3
-<aes, es'> |
-<f c'>4
+\set TabStaff.minimumFret = #6
+<aes c>4
+\glissando
+\set TabStaff.minimumFret = #15
+<f' a>4

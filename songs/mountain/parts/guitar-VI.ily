@@ -2,8 +2,13 @@
 
 \gridPutMusic "guitar" 6
 \relative c {
-  \repeat unfold 4 {
-    \include "notes/guitar-VI.ily"
+  \include "notes/guitar-IVa.ily"
+  \include "notes/guitar-IVb.ily"
+  \set countPercentRepeats = ##t
+  %% \override PercentRepeatCounter.staff-padding = #1
+  %% \omit TabStaff.PercentRepeatCounter
+  \repeat unfold 2 {
+    #(make-music 'DoublePercentEvent 'length (ly:make-moment 2/1))
   }
 }
 

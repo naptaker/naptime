@@ -10,3 +10,5 @@ songs/space_is_the_place/main.mp3 filter=lfs diff=lfs merge=lfs -text
 songs/mountain/main.wav filter=lfs diff=lfs merge=lfs -text
 songs/mountain/main.mp3 filter=lfs diff=lfs merge=lfs -text
 songs/mountain/main.flac filter=lfs diff=lfs merge=lfs -text
+songs/mountain/resources/at_the_mountains_of_madness.eps filter=lfs diff=lfs merge=lfs -text
+songs/mountain/resources/bassline_junkie.eps filter=lfs diff=lfs merge=lfs -text

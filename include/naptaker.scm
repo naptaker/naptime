@@ -85,6 +85,8 @@
         \RemoveEmptyStaves
         \override VerticalAxisGroup.remove-first = ##t
         \remove "Staff_performer"
+        \omit PercentRepeatCounter
+        \omit DoublePercentRepeatCounter
       } {
         %% \tabFullNotation
         \gridGetMusic "guitar"
@@ -97,7 +99,7 @@
         (begin (ly:debug "No guitar part") #{ #})
         #{
           \new StaffGroup <<
-            #(if (and (part-missing? "vox") (part-missing? "bass"))
+            #(if (part-missing? "vox")
                  #{
                    \new GuitarVoice = gtr <<
                      { \gridGetMusic "meta" }
@@ -114,7 +116,7 @@
 
 (define napBass
   (define-music-function (parser location) ()
-    (if (part-missing? "vox")
+    (if (and (part-missing? "vox") (part-missing? "guitar"))
         #{
           \new BassVoice = bass <<
             { \gridGetMusic "meta" }

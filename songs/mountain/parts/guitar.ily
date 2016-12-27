@@ -6,5 +6,3 @@
 \include "guitar-V.ily"
 \include "guitar-VI.ily"
 \include "guitar-VII.ily"
-\include "guitar-VIII.ily"
-\include "guitar-IX.ily"

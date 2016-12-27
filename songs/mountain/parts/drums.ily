@@ -13,7 +13,3 @@
 \include "drums_down-VI.ily"
 \include "drums_up-VII.ily"
 \include "drums_down-VII.ily"
-\include "drums_up-VIII.ily"
-\include "drums_down-VIII.ily"
-\include "drums_up-IX.ily"
-\include "drums_down-IX.ily"

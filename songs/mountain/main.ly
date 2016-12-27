@@ -3,6 +3,14 @@
 \include "parts/bass.ily"
 \include "parts/drums.ily"
 
+#(if #t ; <- toggle arch a / letter
+  (begin
+    (set-default-paper-size "arch a" 'landscape)
+    (set-global-staff-size 18))
+  (begin
+   (set-default-paper-size "letter" 'landscape)
+   (set-global-staff-size 16)))
+
 \gridDisplay
 \gridCheck
 
@@ -19,9 +27,4 @@
 
     \override Score.BarNumber.padding = #3
   }
-}
-
-\score {
-  \unfoldRepeats { \Naptaker #guitar-open-d-tuning }
-  \midi { }
 }

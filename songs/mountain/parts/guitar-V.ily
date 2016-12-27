@@ -1,7 +1,10 @@
 \include "global.ily"
 
-\gridPutMusic "guitar" 5 {
-  R1*4*2
+\gridPutMusic "guitar" 5
+\relative c' {
+  \repeat unfold 2 {
+    \include "notes/guitar-V.ily"
+  }
 }
 
 \gridCompileCell "guitar" 5

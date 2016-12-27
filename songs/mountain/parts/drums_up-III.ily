@@ -1,9 +1,9 @@
 \include "global.ily"
 
-\gridPutMusic "drums up" 3 {
-  \drummode {
-    << { \gridGetCellMusic "drums up" 1 } \\
-       { cymc1 } >>
+\gridPutMusic "drums up" 3
+\drummode {
+  \repeat volta 4 {
+    \include "notes/drums_up-III.ily"
   }
 }
 

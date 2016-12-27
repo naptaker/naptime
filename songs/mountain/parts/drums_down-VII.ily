@@ -2,11 +2,14 @@
 
 \gridPutMusic "drums down" 7
 \drummode {
-  \repeat unfold 4 {
-    \include "notes/drums_down-VIIa.ily"
+  \repeat volta 2 {
+    \repeat percent 3 {
+      \repeat unfold 2 { \include "notes/drums_down-Ia.ily" } |
+    }
   }
-  \repeat unfold 2 {
-    \include "notes/drums_down-VIIb.ily"
+  \alternative {
+    { \include "notes/drums_down-Ia.ily" s2 | }
+    { \include "notes/drums_down-Ia.ily" s2 | }
   }
 }
 

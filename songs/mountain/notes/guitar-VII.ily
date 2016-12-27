@@ -1,8 +1,9 @@
-f1:16\2 ~ |
-f2:16\2 es:16\3 |
-b1:16\4 ~ |
-b2:16\4 c:16\4 |
-b1:16\4 ~ |
-b2:16\4 bes4:16\4 aes:16\4 |
-f1:16\5 |
-ges1:16\5 |
+\fuzzOn
+\set TabStaff.minimumFret = #6
+<f' a c es>8 8
+\set TabStaff.minimumFret = #3
+\xOn <f, c'>8 [ 8 ] \xOff
+\fuzzOn
+\set TabStaff.minimumFret = #5
+<e' aes b d>8 8
+r4 |
