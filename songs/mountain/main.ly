@@ -14,8 +14,21 @@
 \gridDisplay
 \gridCheck
 
+%% HACK
+\gridPutMusic "bass" 3 {
+  \tag #'main {
+    << { \gridGetCellMusic "bass" 3 } \\
+       %% HACK: see ../include/global.ily for info
+       { \gridGetCellMusic "meta" 3 } >>
+  }
+  %% FIXME: Need to add tag support to naptaker.scm
+  %% \tag #'bass { \bassSecC }
+}
+
 \score {
-  \keepWithTag #'main { \Naptaker #guitar-open-d-tuning }
+  %% FIXME: support tags in naptaker.scm (pass them down)
+  %% \keepWithTag #'main { \Naptaker #guitar-open-d-tuning }
+  \Naptaker #guitar-open-d-tuning
 
   \layout {
     %% Increase the size of bar numbers by 2

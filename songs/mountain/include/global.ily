@@ -97,6 +97,7 @@ fourX = {
   \repeat volta 4 {
     s1 s2 s4. s8
   }
+  %% FIXME: this gets hidden in the main score when hiding the guitar staff...
   \fourX
 }
 
