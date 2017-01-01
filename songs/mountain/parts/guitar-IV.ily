@@ -2,7 +2,7 @@
 
 \gridPutMusic "guitar" 4
 \relative c {
-  \repeat volta 2 {
+  \repeat volta 4 {
     \include "notes/guitar-IVa.ily"
     \include "notes/guitar-IVb.ily"
   }

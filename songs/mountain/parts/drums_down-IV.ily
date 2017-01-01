@@ -2,7 +2,7 @@
 
 \gridPutMusic "drums down" 4
 \drummode {
-  \repeat volta 2 {
+  \repeat volta 4 {
     s1*4
   }
 }

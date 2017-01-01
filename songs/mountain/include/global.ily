@@ -103,7 +103,7 @@ fourX = {
 
 \gridPutMusic "meta" 4 {
   \mark 4
-  s1*4 \mainBreak
+  s1*4 \fourX \mainBreak
 }
 
 \gridPutMusic "meta" 5 {

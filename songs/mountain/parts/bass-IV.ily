@@ -2,7 +2,7 @@
 
 \gridPutMusic "bass" 4
 \relative c, {
-  \repeat volta 2 {
+  \repeat volta 4 {
     \set countPercentRepeats = ##f
     \repeat percent 2 {
       \include "notes/bass-IIIa.ily"

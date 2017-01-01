@@ -2,7 +2,7 @@
 
 \gridPutMusic "drums up" 4
 \drummode {
-  \repeat volta 2 {
+  \repeat volta 4 {
     \set countPercentRepeats = ##f
     \repeat percent 2 {
       \include "notes/drums_up-IVa.ily"
