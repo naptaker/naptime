@@ -38,7 +38,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
                  "bass"
                  "drums up"
                  "drums down")
-#'(13 3 2 4 16 8 5)
+              #'(13 3 2 4 16 8 5)
 
 mainBreak     = { \tag #'main { \break } }
 mainPageBreak = { \tag #'main { \pageBreak } }
