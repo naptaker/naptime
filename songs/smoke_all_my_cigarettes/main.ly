@@ -20,7 +20,7 @@
   }
 }
 
-\score {
-  \unfoldRepeats \Naptaker #guitar-open-d-tuning
-  \midi { }
-}
+% \score {
+%   \unfoldRepeats \Naptaker #guitar-open-d-tuning
+%   \midi { }
+% }
