@@ -1,7 +1,9 @@
 \include "global.ily"
+\include "parts/chords.ily"
 \include "parts/guitar.ily"
 \include "parts/guitar_strum.ily"
 \include "parts/bass.ily"
+\include "parts/drums.ily"
 
 \gridDisplay
 \gridCheck
@@ -21,7 +23,3 @@
   }
 }
 
-\score {
-  \unfoldRepeats \Naptaker #guitar-open-d-tuning
-  \midi { }
-}
