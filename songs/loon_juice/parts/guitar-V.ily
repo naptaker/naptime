@@ -1,10 +1,8 @@
 \include "global.ily"
 
 \gridPutMusic "guitar" 5
-\chordmode {
-  \stopStaffNotTabStaff
-  \include "notes/guitar-III.ily"
-  \restartStaff
+\relative c' {
+  \include "notes/guitar-V.ily"
 }
 
 \gridCompileCell "guitar" 5

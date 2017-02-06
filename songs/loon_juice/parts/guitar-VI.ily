@@ -1,10 +1,8 @@
 \include "global.ily"
 
 \gridPutMusic "guitar" 6
-\relative c' {
-  \set minimumFret = #3
-  \include "notes/guitar-I.ily"
-  \include "notes/guitar-IV.ily"
+\relative c {
+  <g d' g b>4
 }
 
 \gridCompileCell "guitar" 6
