@@ -175,21 +175,23 @@
   (define-void-function (parser location parts segments) (list? list?)
     (ly:debug "===> Initializing template")
     (ly:debug (format #f " --> parts: ~{~a ~}" parts))
-    (ly:debug (format #f " --> segment lengths: ~{~d ~}" segments))
+    (ly:debug (format #f " --> segment lengths: ~{~a ~}" segments))
     (let* ((segment    0)
            (bar-number 1))
       (cons #{ \gridInit #(length segments) $parts #}
-            (map (lambda (measures)
+            (map (lambda (len)
                    (let ((this-bar-number bar-number))
                      (set! segment (1+ segment))
-                     (set! bar-number (+ bar-number measures))
+                     ;; (set! bar-number (+ bar-number measures))
                      #{
                        \gridSetSegmentTemplate $segment
                        \with {
-                         barNumber = $this-bar-number
+                         % barNumber = $this-bar-number
                          music     = {
-                           #(make-music 'SkipEvent
-                             'duration (ly:make-duration 0 0 measures 1))
+                           #(make-music 'SkipEvent 'duration
+                             (if (pair? len)
+                                 (ly:make-duration 0 0 (car len) (cdr len))
+                                 (ly:make-duration 0 0 len 1)))
                          }
                        }
                      #}))
