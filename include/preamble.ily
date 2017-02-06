@@ -61,3 +61,9 @@ gridGetCellMusic =
    (check-grid)
    (check-coords part segment)
    (cell:music (get-music-cell part segment)))
+
+% https://bitbucket.org/sinbad/drum-music/src/0ef24490e1b6ef4704539f561886a076d594608a/sjs_drumconfig.ly?at=master&fileviewer=file-view-default
+flam = \drummode {
+  \once \override Stem.length = #4
+  \acciaccatura { sn8 }
+}
