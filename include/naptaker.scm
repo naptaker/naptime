@@ -62,19 +62,34 @@
 
 (define napGuitarStrum
   (define-music-function (parser location) ()
-    (if (part-missing? "guitar strum")
-        (begin (ly:debug "No guitar strum part set") #{ #})
-        #{
-          \new RhythmicStaff \with {
-            \RemoveEmptyStaves
-            \override VerticalAxisGroup.remove-first = ##t
-            \remove "Staff_performer"
-            \consists Pitch_squash_engraver
-          } {
-            \improvisationOn
-            \gridGetMusic "guitar strum"
-          }
-        #})))
+    (cond ((part-missing? "guitar strum")
+           (begin (ly:debug "No guitar strum part set") #{ #}))
+          ((part-missing? "vox")
+           #{
+             \new RhythmicStaff \with {
+               \RemoveEmptyStaves
+               \override VerticalAxisGroup.remove-first = ##t
+               \remove "Staff_performer"
+               \consists Pitch_squash_engraver
+             }
+             <<
+               { \gridGetMusic "meta" }
+               { \improvisationOn
+                 \gridGetMusic "guitar strum" }
+             >>
+           #})
+          (else
+           #{
+             \new RhythmicStaff \with {
+               \RemoveEmptyStaves
+               \override VerticalAxisGroup.remove-first = ##t
+               \remove "Staff_performer"
+               \consists Pitch_squash_engraver
+             } {
+               \improvisationOn
+               \gridGetMusic "guitar strum"
+             }
+           #}))))
 
 (define napGuitarTab
   (define-music-function (parser location the-guitar-tuning) (list?)
@@ -101,17 +116,17 @@
         (begin (ly:debug "No guitar part") #{ #})
         #{
           \new StaffGroup <<
-            #(if (part-missing? "vox")
+            \napGuitarStrum
+            #(if (and (part-missing? "vox") (part-missing? "guitar strum"))
                  #{
                    \new GuitarVoice = gtr <<
                      { \gridGetMusic "meta" }
-                     { \gridGetMusic "guitar"  }
+                     { \gridGetMusic "guitar" }
                    >>
                  #}
                  #{
                    \new GuitarVoice = gtr { \gridGetMusic "guitar" }
                  #})
-          \napGuitarStrum
           \napGuitarTab #the-guitar-tuning
         >>
       #})))
