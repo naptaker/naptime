@@ -6,7 +6,8 @@ ifeq ($(DEBUG),1)
 	lilypond = lilypond -V
 	output   =
 else
-	lilypond = lilypond -dwarning-as-error -dlog-file=$*/main
+	# lilypond = lilypond -dwarning-as-error -dlog-file=$*/main
+	lilypond = lilypond -dlog-file=$*/main
 	output   = >$*/PROGRESS 2>/dev/null
 endif
 

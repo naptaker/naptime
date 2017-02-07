@@ -39,8 +39,10 @@
             \context FretBoards {
               \set chordChanges = ##t
               \set stringTunings = #the-guitar-tuning
+              \override FretBoard.fret-diagram-details.barre-type  = #'straight
+              \override FretBoard.fret-diagram-details.finger-code = #'in-dot
+              \override FretBoard.fret-diagram-details.number-type = #'arabic
               \override FretBoard.fret-diagram-details.orientation = #'landscape
-              \override FretBoard.fret-diagram-details.barre-type = #'straight
               \gridGetMusic "chords"
             }
           >>
