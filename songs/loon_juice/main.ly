@@ -1,9 +1,24 @@
 \include "global.ily"
-\include "parts/chords.ily"
 \include "parts/guitar.ily"
 \include "parts/guitar_strum.ily"
+\include "parts/chords.ily"
 \include "parts/bass.ily"
 \include "parts/drums.ily"
+
+#(if #t ; <- toggle arch a / letter
+  (begin
+    (set-default-paper-size "arch a" 'landscape)
+    (set-global-staff-size 14))
+  (begin
+   (set-default-paper-size "letter" 'landscape)
+   (set-global-staff-size 16)))
+
+\paper {
+  two-sided = ##t
+  ragged-bottom = ##t
+  ragged-last-bottom = ##t
+  print-first-page-number = ##t
+}
 
 \gridDisplay
 \gridCheck
@@ -22,4 +37,3 @@
     \override Score.BarNumber.padding = #3
   }
 }
-

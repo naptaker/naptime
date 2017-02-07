@@ -27,7 +27,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
                  "guitar" "guitar strum"
                  "bass"
                  "drums up" "drums down")
-              #'(6 8 6 8 8 (1 . 4))
+              #'(6 6 6 4 6 (1 . 4))
 
 \gridPutMusic "meta" 1 {
  \global
@@ -38,20 +38,27 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \gridPutMusic "meta" 2 {
   \mark \markup { \musicglyph #"scripts.segno" }
-  s1*8
+  s1*6
   \break
 }
 
 \gridPutMusic "meta" 3 {
   \mark 3
-  s1*6
+  \set Score.repeatCommands = #'(start-repeat)
+  s1*2
+  \set Score.repeatCommands = #'((volta "1, 3") end-repeat)
+  s1*2
+  \set Score.repeatCommands = #'((volta #f) (volta "2, 4") end-repeat)
+  s1*2
+  \set Score.repeatCommands = #'((volta #f))
+  \bar "||"
   \pageBreak
 }
 
 \gridPutMusic "meta" 4 {
   \mark 4
   \tempo 4 = 82
-  s1*8
+  s1*4
   \bar "||"
   \break
 }
@@ -59,7 +66,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 \gridPutMusic "meta" 5 {
   \mark 5
   \tempo 4 = 192
-  s1*8
+  s1*6
 }
 
 \gridPutMusic "meta" 6 {
