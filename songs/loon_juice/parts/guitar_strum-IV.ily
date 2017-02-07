@@ -2,7 +2,7 @@
 
 \gridPutMusic "guitar strum" 4
 \relative c {
-  \repeat unfold 2 {
+  \repeat volta 2 {
     \include "notes/guitar_strum-IV.ily"
   }
 }
