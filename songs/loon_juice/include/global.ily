@@ -58,8 +58,11 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 \gridPutMusic "meta" 4 {
   \mark 4
   \tempo 4 = 82
+  %% \set Score.repeatCommands = #'(start-repeat)
+  \bar ".|:"
   s1*4
-  \bar "||"
+  \bar ":|."
+  %% \set Score.repeatCommands = #'((volta #f))
   \break
 }
 
