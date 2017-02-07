@@ -1,4 +1,5 @@
 \include "global.ily"
+\include "parts/vox.ily"
 \include "parts/guitar.ily"
 \include "parts/guitar_strum.ily"
 \include "parts/chords.ily"
