@@ -1,10 +1,7 @@
 \include "global.ily"
 
-\gridPutMusic "bass" 3
-\relative c, {
-  \repeat unfold 2 {
-    \include "notes/bass-II.ily"
-  }
+\gridPutMusic "bass" 3 {
+  \gridGetCellMusic "bass" 2
 }
 
 \gridCompileCell "bass" 3

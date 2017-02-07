@@ -1,4 +1,4 @@
-\repeat volta 2 {
+\repeat volta 4 {
   g4 g8 f g   bes f fis |
   g4 g8 f d'4     f     |
 }

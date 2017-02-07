@@ -2,8 +2,8 @@
 
 \gridPutMusic "bass" 4
 \relative c, {
-  \repeat unfold 2 {
-    \include "notes/bass-II.ily"
+  \repeat volta 2 {
+    \include "notes/bass-IV.ily"
   }
 }
 
