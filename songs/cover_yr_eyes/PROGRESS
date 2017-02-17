@@ -1,0 +1,13 @@
+
+=== Music grid ===
+             1 2 3 4 5
+<template>   o o o o o
+meta         o o o o o
+vox          - o o - -
+chords       o - - - -
+guitar       o - o o -
+guitar strum o - o - -
+bass         o o o o o
+drums up     o o - - -
+drums down   o o - - -
+
