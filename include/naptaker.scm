@@ -129,7 +129,7 @@
                  #{
                    \new GuitarVoice = gtr { \gridGetMusic "guitar" }
                  #})
-          \napGuitarTab #the-guitar-tuning
+          %% \napGuitarTab #the-guitar-tuning
         >>
       #})))
 
