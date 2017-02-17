@@ -59,6 +59,9 @@
               { \gridGetMusic "vox"  }
             >>
             \new Lyrics \lyricsto vox { \gridGetLyrics "vox" }
+            #(if (defined? 'extraLyrics)
+                 #{ \extraLyrics #}
+                 #{ #})
           >>
         #})))
 
