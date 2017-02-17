@@ -55,3 +55,9 @@ all: $(pdfs)
 	-metadata album="Naptime"          \
 	-metadata date="$(shell date +%Y)" \
 	-c:a libmp3lame -q:a 3 $@
+
+# watch:
+# 	watchman-make \
+# 	-p 'songs/cover_yr_eyes/**/*.ily' 'songs/cover_yr_eyes/**/*.ly' \
+# 	'songs/cover_yr_eyes/**/*.scm' 'include/*' \
+# 	-t songs/cover_yr_eyes/main.pdf
