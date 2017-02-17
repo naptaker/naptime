@@ -30,6 +30,10 @@ hideNotesNotTabStaff = {
   \omit Staff.Slur \omit Staff.Tie
 }
 
+dead = {
+  \once \deadNotesOn
+}
+
 stopStaffNotTabStaff = {
   \stopStaff
   \omit Staff.Clef \omit Staff.ClefModifier
