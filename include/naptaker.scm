@@ -165,8 +165,8 @@
           <<
             \new DrumVoice { \voiceOne \gridGetMusic "drums up" }
             \new DrumVoice \with {
-              \remove "Rest_engraver"
-              \remove "Multi_measure_rest_engraver"
+              %% \remove "Rest_engraver"
+              %% \remove "Multi_measure_rest_engraver"
             } {
               \voiceTwo \gridGetMusic "drums down"
             }
