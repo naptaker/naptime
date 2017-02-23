@@ -1,3 +1,5 @@
 \include "global.ily"
 \include "guitar_strum-I.ily"
 \include "guitar_strum-III.ily"
+\include "guitar_strum-IV.ily"
+\include "guitar_strum-V.ily"

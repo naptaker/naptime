@@ -20,7 +20,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   composer  = "Preston Y. Drum"
   poet      = "Preston Y. Drum"
   arranger  = "Arr. Naptaker"
-  %% copyright = "© 2016-2017 Naptaker"
+  copyright = "© 2016-2017 Naptaker"
 }
 
 \templateInit #'("meta"
@@ -33,7 +33,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \gridPutMusic "meta" 1 {
   \global
-  \mark \markup Intro
+  %% \mark \markup Intro
   s1*4 \break
   s1*4
   \bar "||"
@@ -58,13 +58,13 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 }
 
 \gridPutMusic "meta" 3 {
-  \mark Chorus
+  %% \mark Chorus
   s1*8
   \break
 }
 
 \gridPutMusic "meta" 4 {
-  \mark "Bridge / Outro"
+  %% \mark "Bridge / Outro"
   s1*8
   \bar "||"
 }

@@ -10,6 +10,7 @@
   f4 f f8 f d c ~ |
   c4 c c8 c c cis8 ~ |
   cis2 r2 |
+  \stopStaff
 }
 
 \gridCompileCell "guitar strum" 3
