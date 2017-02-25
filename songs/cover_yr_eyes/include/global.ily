@@ -9,7 +9,7 @@
 
 \useLibrary gridly
 
-Key    = { \key d \major }
+Key    = { \key d \minor }
 Tempo  = { \tempo 4 = 182 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
@@ -18,7 +18,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   opus      = "Naptime"
   composer  = "Preston Y. Drum"
   poet      = "Preston Y. Drum"
-  arranger  = "Arr. Naptaker"
+  arranger  = "Naptaker"
   copyright = "© 2016-2017 Naptaker"
 }
 
@@ -40,10 +40,16 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 }
 
 \gridPutMusic "meta" 2 {
-  %% \mark Verse
+  %% \mark \markup {
+  %%   \center-column {
+  %%     Verse
+  %%     \null
+  %%     \musicglyph #"scripts.segno"
+  %%   }
+  %% }
   \mark \markup { \musicglyph #"scripts.segno" }
   \set Score.repeatCommands = #'(start-repeat)
-  s1*6
+  s1*6^\markup { \small \italic { ad lib minimal blues guitar } }
   \break
   \set Score.repeatCommands = #'((volta "1.") end-repeat)
   s1*2
