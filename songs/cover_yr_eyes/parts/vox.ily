@@ -1,21 +1,75 @@
+%%% ================================================================ [ vox.ily ]
+
 \include "global.ily"
-\include "vox-II.ily"
-\include "vox-III.ily"
 
-#(define stanza
-   (define-music-function (parser location n) (number?)
-     #{ \set stanza = #(format #f "~d. " n) #}))
+%%% ============================================================ [ Verse Music ]
 
-#(define colorLyrics
-   (define-music-function (parsre location color) (list?)
-     #{
-       \override Lyrics.LyricText.color = $color
-       \override Lyrics.LyricText.font-series = #'bold
-       \override Lyrics.LyricHyphen.color = $color
-       \override Lyrics.LyricExtender.color = $color
-     #}))
+\gridPutMusic "vox" 2
+\with {
+  lyrics = \lyricmode { } %% NOTE: see extraLyrics
+  music = {
+    \stopStaff \override Staff.StaffSymbol.line-count = #1 \startStaff
+    \new Voice = "verse" \relative {
+      \improvisationOn
+      \set melismaBusyProperties = #'()
+      \slurDashed
+      \phrasingSlurDotted
+      \repeat volta 4 {
+        r4 d8 d( d)\( d( d)\) d( |
+        d8) \parenthesize d r4 r2 |
+        r8 \parenthesize d d( d) d d( d) d8 |
+        R1 |
+        r8 \parenthesize d d d\( d d( d)(\) \parenthesize d)(|
+        d8)\(( d)( d)\) d( d)( d) d( d) |
+      }
+      \alternative {
+        { d8 d d d d4( d8) d ~ |
+          d4 r r2 | }
+        { d8 d d4 d8\( d( d)\) d8 ~ |
+          d4 r r2 | }
+        { d8 d4( d8) d( d) d d |
+          r8 d8 d d16 d d8 d d d | }
+      }
+    }
+    \stopStaff \override Staff.StaffSymbol.line-count = #5 \startStaff
+  }
+}
+
+%%% =========================================================== [ Chorus Music ]
+
+\gridPutMusic "vox" 3
+\with {
+  lyrics = \lyricmode { } %% NOTE: see extra
+  music = {
+    \new Voice = "chorus" \relative {
+      \repeat volta 2 {
+        d8 d d d d d d d |
+        d8 d d d d cis c a |
+        R1*2 |
+        f'8 f f f f f f f |
+        f8 f f f f e d c |
+        R1*2 |
+      }
+    }
+  }
+}
+
+%%% ================================================================= [ Lyrics ]
+
+%% Chorus lyrics
+
+coverYrEyes = \lyricmode {
+  Cov -- er, cov -- er, cov -- er, cov -- er,
+  cov -- er, cov -- er, cov -- er yr eyes
+}
+
+gonnaLayDownAndDie = \lyricmode {
+  Gon -- na, gon -- na, gon -- na, gon -- na,
+  gon -- na, gon -- na lay down and die
+}
 
 extraLyrics = <<
+  %% Verse 1 lyrics
   \new Lyrics \lyricsto "verse" {
     \lyricmode {
       \colorLyrics #(x11-color 'firebrick3)
@@ -81,15 +135,16 @@ extraLyrics = <<
   \new Lyrics \lyricsto "chorus" { \coverYrEyes \coverYrEyes }
   \new Lyrics \lyricsto "chorus" { \gonnaLayDownAndDie \coverYrEyes }
 
+  %% Verse 2 lyrics
 
   \new Lyrics \lyricsto "verse" {
     \colorLyrics #(x11-color 'MediumBlue)
 
-    \stanza #5 In a world, __ _ _ ba __ _ -- by,
+    \stanza #2 In a world, __ _ _ ba __ _ -- by,
     \skip 1 where the blind __ _ can see,
     \skip 1 is there an -- y __ _ chance, __ _ _ _ chance __ _ _ that __ _
 
-    %% \stanza #5
+    %% \stanza #2
     you gon' __ _ _ love __ _ me?
   }
 
@@ -135,3 +190,5 @@ extraLyrics = <<
     cool -- er, __ yr cool -- er than me
   }
 >>
+
+%%% ==================================================================== [ EOF ]
