@@ -1,30 +1,51 @@
+;;; =========================================================== [ naptaker.scm ]
+;;; Description: Scheme functions for engraving Naptaker scores.
+;;; Copyright:   (c) 2016-2017 Eric Bailey
+;;; TODO: License:     see LICENSE
+
+;;; =========================================================== [ Paper Config ]
+
 ;; (set-default-paper-size "arch a" 'portrait)
 ;; (set-default-paper-size "arch a" 'landscape)
 (set-default-paper-size "letter" 'landscape)
 ;; (set-global-staff-size 18)
 (set-global-staff-size 14)
 
-(define preston-drums
-  (alist->hash-table
-   '((ridecymbal    cross   #f          5)
-     (crashcymbal   cross   #f          6)
-     (hihat         cross   "stopped"   5)
-     (closedhihat   cross   "stopped"   5)
-     (openhihat     cross   "open"      5)
-     (halfopenhihat cross   "halfopen"  5)
-     (pedalhihat    cross   #f         -5)
-     (snare         default #f          1)
-     (sidestick     cross   #f          1)
-     (hightom       default #f          3)
-     (lowmidtom     default #f          0)
-     (lowtom        default #f         -1)
-     (bassdrum      default #f         -3))))
+;;; ======================================================= [ Helper Functions ]
 
 (define (part-missing? part)
   (or (not (member part (hash-ref music-grid-meta #:parts)))
       (let* ((num-segments (hash-ref music-grid-meta #:segments))
              (segments (map 1+ (iota num-segments))))
         (not (any (lambda (seg) (get-music-cell part seg)) segments)))))
+
+(define templateInit
+  (define-void-function (parser location parts segments) (list? list?)
+    (ly:debug "===> Initializing template")
+    (ly:debug (format #f " --> parts: ~{~a ~}" parts))
+    (ly:debug (format #f " --> segment lengths: ~{~a ~}" segments))
+    (let* ((segment    0)
+           (bar-number 1))
+      (cons #{ \gridInit #(length segments) $parts #}
+            (map (lambda (len)
+                   (let ((this-bar-number bar-number))
+                     (set! segment (1+ segment))
+                     ;; (set! bar-number (+ bar-number measures))
+                     #{
+                       \gridSetSegmentTemplate $segment
+                       \with {
+                         % barNumber = $this-bar-number
+                         music     = {
+                           #(make-music 'SkipEvent 'duration
+                             (if (pair? len)
+                                 (ly:make-duration 0 0 (car len) (cdr len))
+                                 (ly:make-duration 0 0 len 1)))
+                         }
+                       }
+                     #}))
+                 segments)))))
+
+;;; ================================================================= [ Chords ]
 
 (define napChords
   (define-music-function (parser location the-guitar-tuning) (list?)
@@ -48,6 +69,21 @@
           >>
         #})))
 
+;;; ================================================================= [ Vocals ]
+
+(define colorLyrics
+  (define-music-function (parsre location color) (list?)
+    #{
+      \override Lyrics.LyricText.color = $color
+      \override Lyrics.LyricText.font-series = #'bold
+      \override Lyrics.LyricHyphen.color = $color
+      \override Lyrics.LyricExtender.color = $color
+      #}))
+
+(define stanza
+  (define-music-function (parser location n) (number?)
+    #{ \set stanza = #(format #f "~d. " n) #}))
+
 (define napVox
   (define-music-function (parser location) ()
     (if (part-missing? "vox")
@@ -64,6 +100,8 @@
                  #{ #})
           >>
         #})))
+
+;;; ================================================================= [ Guitar ]
 
 (define napGuitarStrum
   (define-music-function (parser location) ()
@@ -136,6 +174,8 @@
         >>
       #})))
 
+;;; =================================================================== [ Bass ]
+
 (define napBass
   (define-music-function (parser location) ()
     (if (and (part-missing? "vox") (part-missing? "guitar"))
@@ -148,6 +188,24 @@
         #{
           \new BassVoice = bass \gridGetMusic "bass"
         #})))
+
+;;; ================================================================== [ Drums ]
+
+(define preston-drums
+  (alist->hash-table
+   '((ridecymbal    cross   #f          5)
+     (crashcymbal   cross   #f          6)
+     (hihat         cross   "stopped"   5)
+     (closedhihat   cross   "stopped"   5)
+     (openhihat     cross   "open"      5)
+     (halfopenhihat cross   "halfopen"  5)
+     (pedalhihat    cross   #f         -5)
+     (snare         default #f          1)
+     (sidestick     cross   #f          1)
+     (hightom       default #f          3)
+     (lowmidtom     default #f          0)
+     (lowtom        default #f         -1)
+     (bassdrum      default #f         -3))))
 
 (define napDrums
   (define-music-function (parser location) ()
@@ -177,6 +235,8 @@
         }
       #}))))
 
+;;; ========================================================= [ Naptaker Score ]
+
 (define Naptaker
   (define-music-function (parser location the-guitar-tuning) (list?)
     "Return the makings of a Naptaker score."
@@ -191,28 +251,4 @@
       >>
     #}))
 
-(define templateInit
-  (define-void-function (parser location parts segments) (list? list?)
-    (ly:debug "===> Initializing template")
-    (ly:debug (format #f " --> parts: ~{~a ~}" parts))
-    (ly:debug (format #f " --> segment lengths: ~{~a ~}" segments))
-    (let* ((segment    0)
-           (bar-number 1))
-      (cons #{ \gridInit #(length segments) $parts #}
-            (map (lambda (len)
-                   (let ((this-bar-number bar-number))
-                     (set! segment (1+ segment))
-                     ;; (set! bar-number (+ bar-number measures))
-                     #{
-                       \gridSetSegmentTemplate $segment
-                       \with {
-                         % barNumber = $this-bar-number
-                         music     = {
-                           #(make-music 'SkipEvent 'duration
-                             (if (pair? len)
-                                 (ly:make-duration 0 0 (car len) (cdr len))
-                                 (ly:make-duration 0 0 len 1)))
-                         }
-                       }
-                     #}))
-                 segments)))))
+;;; ==================================================================== [ EOF ]
