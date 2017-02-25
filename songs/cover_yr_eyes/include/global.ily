@@ -3,7 +3,6 @@
 \include "openlilylib"
 \addGuilePath "../../../include"
 #(load-from-path "naptaker.scm")
-\include "fretboards.ily"
 %% TODO: %% #(ly:set-option 'relative-includes #t)
 \include "preamble.ily"
 \include "instruments.ily"
