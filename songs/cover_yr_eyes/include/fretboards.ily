@@ -31,3 +31,17 @@
 #'((place-fret 6 11)
    (place-fret 4 11)
    (barre 6 4 11))
+
+\storePredefinedDiagram #fuzz-fret-table
+\chordmode { a }
+#guitar-open-d-tuning
+#'((place-fret 6 7)
+   (place-fret 4 7)
+   (barre 6 4 7))
+
+\storePredefinedDiagram #fuzz-fret-table
+\chordmode { gis }
+#guitar-open-d-tuning
+#'((place-fret 6 6)
+   (place-fret 4 6)
+   (barre 6 4 6))
