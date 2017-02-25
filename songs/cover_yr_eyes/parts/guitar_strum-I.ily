@@ -8,11 +8,9 @@
       \include "notes/guitar_strum-Ib.ily"
     }
   }
-  %% \mark \markup simile
+  \stopStaff
+  \once \omit Staff.TimeSignature
   s1*4
-  %% }
-  %% \include "notes/guitar_strum-Ia.ily"
-  %% s4.
 }
 
 \gridCompileCell "guitar strum" 1

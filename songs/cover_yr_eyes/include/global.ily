@@ -33,24 +33,22 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 \gridPutMusic "meta" 1 {
   \global
   %% \mark \markup Intro
-  s1*4 \break
-  s1*4
-  \bar "||"
+  s1*8
+  \bar ".|:-||"
   \pageBreak
 }
 
 \gridPutMusic "meta" 2 {
-  %% \mark \markup {
-  %%   \center-column {
-  %%     Verse
-  %%     \null
-  %%     \musicglyph #"scripts.segno"
-  %%   }
-  %% }
-  \mark \markup { \musicglyph #"scripts.segno" }
+  \overrideProperty Score.NonMusicalPaperColumn.line-break-system-details
+  #'((Y-offset . 10))
+  %% \mark \markup \box \smallCaps Verse
+  \mark \markup \musicglyph #"scripts.segno"
   \set Score.repeatCommands = #'(start-repeat)
-  s1*6^\markup { \small \italic { ad lib minimal blues guitar } }
+  s1*6^\markup \small \italic "ad lib minimal blues guitar"
   \break
+
+  \overrideProperty Score.NonMusicalPaperColumn.line-break-system-details
+  #'((Y-offset . 75))
   \set Score.repeatCommands = #'((volta "1.") end-repeat)
   s1*2
   \set Score.repeatCommands = #'((volta "2, 3") end-repeat)
@@ -63,8 +61,10 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 }
 
 \gridPutMusic "meta" 3 {
-  %% \mark Chorus
-  s1*8
+  %% \mark \markup \box \smallCaps Chorus
+  \repeat volta 2 {
+    s1*8
+  }
   \break
 }
 

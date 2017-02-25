@@ -2,6 +2,7 @@
 
 \gridPutMusic "guitar strum" 3
 \relative c {
+  \startStaff
   d4 d d d |
   d4 d d8 d c a ~ |
   a2 a8 a a gis ~ |

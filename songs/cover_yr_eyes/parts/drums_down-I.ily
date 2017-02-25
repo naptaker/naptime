@@ -7,6 +7,8 @@
       bd4 sn8 bd r bd sn << { \slurUp \stemDown \drag \once \omit Flag sn } \\ { bd } >> |
     }
   }
+
+  \once \omit Staff.TimeSignature
   \repeat percent 3 {
     bd4 sn8 bd r bd sn << { \slurUp \stemDown \drag \once \omit Flag sn } \\ { bd } >> |
   }

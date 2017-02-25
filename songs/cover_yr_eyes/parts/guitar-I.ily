@@ -2,20 +2,23 @@
 
 \gridPutMusic "guitar" 1
 \relative c'' {
+  \once \omit Staff.Clef
+  \once \omit Staff.ClefModifier
+  \once \omit Staff.TimeSignature
+  \stopStaff
   s1*4
-  \break
+  \startStaff
+  \set Staff.forceClef = ##t
+  \time 4/4
+
   \ottava #1
-  %% \set TabStaff.minimumFret = #12
-  \appoggiatura { \stemDown \slurUp \include "notes/guitar-Ia.ily" }
+  %% \appoggiatura { \stemDown \slurUp \include "notes/guitar-Ia.ily" }
   \repeat percent 3 {
     \include "notes/guitar-Ib.ily"
     \include "notes/guitar-Ic.ily"
   }
-  %% \include "notes/guitar-Ib.ily"
-  %% r8 r4 |
   \include "notes/guitar-Id.ily"
   \ottava #0
-  \break
 }
 
 \gridCompileCell "guitar" 1
