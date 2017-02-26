@@ -22,6 +22,6 @@
 }
 
 \score {
-  \unfoldRepeats \Naptaker #guitar-open-d-tuning ##t
+  \unfoldRepeats \Naptaker #guitar-open-d-tuning ##f
   \midi { }
 }

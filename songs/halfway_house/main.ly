@@ -8,7 +8,7 @@
 openDminorTuning = \stringTuning  <d, a, d f a d'>
 
 \score {
-  \Naptaker \openDminorTuning
+  \Naptaker \openDminorTuning ##t
 
   \layout {
     %% Increase the size of bar numbers by 2
@@ -23,6 +23,6 @@ openDminorTuning = \stringTuning  <d, a, d f a d'>
 }
 
 \score {
-  \unfoldRepeats \Naptaker \openDminorTuning
+  \unfoldRepeats \Naptaker \openDminorTuning ##f
   \midi { }
 }

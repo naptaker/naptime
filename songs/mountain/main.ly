@@ -16,8 +16,8 @@
 
 \score {
   %% FIXME: support tags in naptaker.scm (pass them down)
-  %% \keepWithTag #'main { \Naptaker #guitar-open-d-tuning }
-  \Naptaker #guitar-open-d-tuning
+  %% \keepWithTag #'main { \Naptaker #guitar-open-d-tuning ##t }
+  \Naptaker #guitar-open-d-tuning ##t
 
   \layout {
     %% Increase the size of bar numbers by 2
