@@ -1,6 +1,6 @@
-songdirs := $(dir $(wildcard songs/*/README.org))
+# songdirs := $(dir $(wildcard songs/*/README.org))
 # songs    := $(notdir $(patsubst %/,%,$(songdirs)))
-pdfs     := $(addsuffix main.pdf,$(songdirs))
+# pdfs     := $(addsuffix main.pdf,$(songdirs))
 
 ifeq ($(DEBUG),1)
 	lilypond = lilypond -V
@@ -14,7 +14,8 @@ endif
 includes := -I $(PWD)/openlilylib -I $(PWD)/openlilylib/ly -I $(PWD)/include
 defaults  = -djob-count=8 -dmidi-extension=mid
 
-all: $(pdfs)
+all:
+	echo "There's nothing to see here..."
 
 %/main.png: %/main.pdf
 	@echo 'Converting $< to PNG ...'
