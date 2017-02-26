@@ -1,4 +1,3 @@
-\include "global.ily"
 \include "fretboards.ily"
 
 \gridPutMusic "chords" 1

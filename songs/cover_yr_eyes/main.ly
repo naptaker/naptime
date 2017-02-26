@@ -19,7 +19,7 @@
 \gridCheck
 
 \score {
-  \Naptaker #guitar-open-d-tuning
+  \Naptaker #guitar-open-d-tuning ##f
 
   \layout {
     %% Increase the size of bar numbers by 2
@@ -31,5 +31,5 @@
 
     \override Score.BarNumber.padding = #3
   }
-  \midi { }
+  %% \midi { }
 }
