@@ -7,7 +7,7 @@
 \gridCheck
 
 \score {
-  \Naptaker #guitar-open-d-tuning
+  \Naptaker #guitar-open-d-tuning ##t
 
   \layout {
     %% Increase the size of bar numbers by 2
@@ -22,6 +22,6 @@
 }
 
 \score {
-  \unfoldRepeats \Naptaker #guitar-open-d-tuning
+  \unfoldRepeats \Naptaker #guitar-open-d-tuning ##t
   \midi { }
 }

@@ -154,7 +154,7 @@
     #}))
 
 (define napGuitar
-  (define-music-function (parser location the-guitar-tuning) (list?)
+  (define-music-function (parser location the-guitar-tuning tab) (list? boolean?)
     (if (part-missing? "guitar")
         (begin (ly:debug "No guitar part") #{ #})
         #{
@@ -170,7 +170,7 @@
                  #{
                    \new GuitarVoice = gtr { \gridGetMusic "guitar" }
                  #})
-          %% \napGuitarTab #the-guitar-tuning
+          #(if tab #{ \napGuitarTab #the-guitar-tuning #} #{ #})
         >>
       #})))
 
@@ -238,14 +238,14 @@
 ;;; ========================================================= [ Naptaker Score ]
 
 (define Naptaker
-  (define-music-function (parser location the-guitar-tuning) (list?)
+  (define-music-function (parser location the-guitar-tuning tab) (list? boolean?)
     "Return the makings of a Naptaker score."
     #{
       %% \new StaffGroup
       <<
         \napChords #the-guitar-tuning
         \napVox
-        \napGuitar #the-guitar-tuning
+        \napGuitar #the-guitar-tuning $tab
         \napBass
         \napDrums
       >>
