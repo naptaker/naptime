@@ -70,7 +70,12 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \gridPutMusic "meta" 4 {
   %% \mark "Bridge / Outro"
-  s1*8
+  s1*7
+  s2.
+  \once \override Score.RehearsalMark.X-offset = #-7.5
+  \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
+  \mark "D.S. al Fine"
+  s4
   \bar "||"
 }
 
