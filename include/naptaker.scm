@@ -191,10 +191,12 @@
 
 ;;; ================================================================== [ Drums ]
 
+;; NOTE: http://web.mit.edu/merolish/Public/drums.pdf
 (define preston-drums
   (alist->hash-table
-   '((ridecymbal    cross   #f          5)
+   '((ridecymbal    cross   #f          4)
      (crashcymbal   cross   #f          6)
+     (splashcymbal  cross   #f          7)
      (hihat         cross   "stopped"   5)
      (closedhihat   cross   "stopped"   5)
      (openhihat     cross   "open"      5)
