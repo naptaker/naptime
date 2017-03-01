@@ -44,7 +44,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   %% \mark \markup \box \smallCaps Verse
   \mark \markup \musicglyph #"scripts.segno"
   \set Score.repeatCommands = #'(start-repeat)
-  s1*6^\markup \small \italic "ad lib minimal blues guitar"
+  s1*6^\markup \small \italic "ad lib minimal guitar"
   \break
 
   \overrideProperty Score.NonMusicalPaperColumn.line-break-system-details
