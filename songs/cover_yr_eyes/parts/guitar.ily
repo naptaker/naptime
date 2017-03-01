@@ -12,38 +12,28 @@
     \time 4/4
 
     \ottava #1
-    %% \appoggiatura { \stemDown \slurUp \include "notes/guitar-Ia.ily" }
     \repeat percent 3 {
-      \include "notes/guitar-Ib.ily"
-      \include "notes/guitar-Ic.ily"
+      \include "notes/guitar-Ia.ily"
     }
-    \include "notes/guitar-Id.ily"
+    \include "notes/guitar-Ib.ily"
     \ottava #0
   }
 }
 
 \gridPutMusic "guitar" 3 \relative c'' {
   \fuzzOn
-  a4 a a a |
-  a4 a a8( b a gis) ~ |
-  gis1 |
-  a1 |
-  \ottava #1
-  f'4 f f f |
-  f4 f f8( g f e) ~ |
-  e1 |
-  f2. \ottava #0 \parenthesize a,,4 |
+  \include "notes/guitar-III.ily"
 }
 
 \gridPutMusic "guitar" 4 \relative c'' {
   \fuzzOn
   \ottava #1
   \repeat percent 6 {
-    d4. f4 c8( c cis) |
+    \include "notes/guitar-IV.ily"
   }
 
   \slurUp
-  \include "notes/guitar-Id.ily"
+  \include "notes/guitar-Ib.ily"
   \ottava #0
   \makeClusters { b,8 a gis g fis f e d } |
   \stopStaff
