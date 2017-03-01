@@ -92,12 +92,11 @@
           <<
             \new VoxVoice = vox <<
               { \gridGetMusic "meta" }
-              { \gridGetMusic "vox"  }
+              { \gridGetMusic "vox" }
             >>
-            \new Lyrics \lyricsto vox { \gridGetLyrics "vox" }
             #(if (defined? 'extraLyrics)
                  #{ \extraLyrics #}
-                 #{ #})
+                 #{ \new Lyrics \lyricsto vox { \gridGetLyrics "vox" } #})
           >>
         #})))
 
