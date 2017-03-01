@@ -14,24 +14,23 @@
 \gridPutMusic "drums down" 1 \drummode {
   \repeat percent 2 {
     \repeat percent 2 {
-      bd4 sn8 bd r bd sn << { \slurUp \stemDown \drag \once \omit Flag sn } \\ { bd } >> |
+      \include "notes/drums_down-Ia.ily"
     }
   }
 
   \once \omit Staff.TimeSignature
   \repeat percent 3 {
-    bd4 sn8 bd r bd sn << { \slurUp \stemDown \drag \once \omit Flag sn } \\ { bd } >> |
+    \include "notes/drums_down-Ia.ily"
   }
-  \repeat unfold 8 { bd8 }
+  \include "notes/drums_down-Ib.ily"
 }
 
 
 \gridPutMusic "drums up" 2 \drummode {
   \repeat volta 4 {
-    cymr4 \repeat unfold 6 { toml8 } |
-    \repeat unfold 5 {
-      %% \repeat unfold 8 { toml8 } |
-      #(make-music 'PercentEvent 'length (ly:make-moment 1))
+    cymr4 <toml sn>8 toml toml toml <toml sn> toml |
+    \repeat percent 5 {
+      toml8 toml <toml sn> toml toml toml <toml sn> toml |
     }
   }
   \alternative {
@@ -46,12 +45,9 @@
 
 \gridPutMusic "drums down" 2 \drummode {
   \repeat volta 4 {
-    << { \omit Flag
-         s4  sn8 s  s s  sn s  } \\
-       { bd4 r8  bd r bd r  bd } >> |
-    \repeat unfold 5 {
-      %% r8 bd sn bd r bd sn bd |
-      #(make-music 'PercentEvent 'length (ly:make-moment 1))
+    bd4 r8 bd r bd r bd |
+    \repeat percent 5 {
+      r8 bd r bd r bd r bd |
     }
   }
   \alternative {
@@ -114,14 +110,14 @@
 \gridPutMusic "drums down" 4 \drummode {
   \repeat percent 2 {
     \repeat percent 2 {
-      bd4 sn8 bd r bd sn << { \slurUp \stemDown \drag \once \omit Flag sn } \\ { bd } >> |
+      \include "notes/drums_down-Ia.ily"
     }
   }
   \repeat unfold 2 {
-    bd4 sn8 bd r bd sn << { \slurUp \stemDown \drag \once \omit Flag sn } \\ { bd } >> |
+    \include "notes/drums_down-Ia.ily"
   }
   \repeat unfold 2 {
-    \repeat unfold 8 { bd8 } |
+    \include "notes/drums_down-Ib.ily"
   }
 }
 
