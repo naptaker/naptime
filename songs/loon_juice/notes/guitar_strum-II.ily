@@ -4,7 +4,7 @@
 }
 \alternative {
   { bes1 ~ |
-    bes2 des4 des | }
+    bes2 des4 ges, | }
   { bes2 \acciaccatura { \once \slurDown bes16 bes } bes2 |
-    d8 d d d des4-. c-. | }
+    bes8 bes bes bes a4-. aes-. | }
 }

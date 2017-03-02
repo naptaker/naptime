@@ -31,4 +31,6 @@
 
     \override Score.BarNumber.padding = #3
   }
+
+  \midi { }
 }

@@ -42,35 +42,42 @@
 \chordmode { des }
 #guitar-open-d-tuning
 #'(;(capo 3)
-   (place-fret 6 11 2)
-   (place-fret 3 11 2)
+   (place-fret 6 11 3)
+   (place-fret 3 11 3)
    (barre 6 3 11))
 
+\storePredefinedDiagram #trem-fret-table
+\chordmode { ges }
+#guitar-open-d-tuning
+#'((capo 3)
+   (place-fret 6 4 1)
+   (place-fret 3 4 1)
+   (barre 6 3 4))
 
 %%% High Fret Table
 
 #(define high-fret-table (make-fretboard-table))
 
 \storePredefinedDiagram #high-fret-table
-\chordmode { d }
+\chordmode { bes }
 #guitar-open-d-tuning
-#'(;(capo 3)
+#'((capo 3)
    (place-fret 3 8 3)
    (place-fret 1 8 3)
    (barre 3 1 8))
 
 \storePredefinedDiagram #high-fret-table
-\chordmode { des }
+\chordmode { a }
 #guitar-open-d-tuning
-#'(;(capo 3)
+#'((capo 3)
    (place-fret 3 7 2)
    (place-fret 1 7 2)
    (barre 3 1 7))
 
 \storePredefinedDiagram #high-fret-table
-\chordmode { c }
+\chordmode { aes }
 #guitar-open-d-tuning
-#'(;(capo 3)
+#'((capo 3)
    (place-fret 3 6 1)
    (place-fret 1 6 1)
    (barre 3 1 6))
