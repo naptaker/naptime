@@ -6,18 +6,12 @@
 \include "parts/bass.ily"
 \include "parts/drums.ily"
 
-#(if #t ; <- toggle arch a / letter
-  (begin
-    (set-default-paper-size "arch a" 'landscape)
-    (set-global-staff-size 14))
-  (begin
-   (set-default-paper-size "letter" 'landscape)
-   (set-global-staff-size 16)))
-
 \paper {
   two-sided = ##t
-  ragged-bottom = ##t
-  ragged-last-bottom = ##t
+  % NOTE: margins and offset are scaled to paper-size
+  inner-margin = 0.375\in
+  outer-margin = 0.375\in
+  binding-offset = 0.5\in
   print-first-page-number = ##t
 }
 

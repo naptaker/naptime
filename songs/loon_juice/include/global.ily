@@ -28,8 +28,8 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   %%     }
   %%   }
   %% }
-  opus      = "Naptime"
   composer  = "Naptaker"
+  opus      = "Naptime"
   copyright = "© 2016 Naptaker"
 }
 
@@ -61,20 +61,22 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   \set Score.repeatCommands = #'((volta "1, 3") end-repeat)
   s1*2
   \set Score.repeatCommands = #'((volta #f) (volta "2, 4") end-repeat)
-  s1*2
+  s1
+  s2.
+  \once \override Score.RehearsalMark.X-offset = #-6
+  \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
+  \mark "D.S. al Fine"
+  s4
   \set Score.repeatCommands = #'((volta #f))
-  \bar "||"
+  \bar ".|:-||"
   \pageBreak
 }
 
 \gridPutMusic "meta" 4 {
   \mark 4
   \tempo 4 = 82
-  %% \set Score.repeatCommands = #'(start-repeat)
-  \bar ".|:"
   s1*4
   \bar ":|."
-  %% \set Score.repeatCommands = #'((volta #f))
   \break
 }
 

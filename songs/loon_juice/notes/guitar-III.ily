@@ -9,7 +9,7 @@
     b4    b8( a)  e'4    bes        | }
   { \set minimumFret = #6
     f'4    f8  f   f4     f8  f      |
-    f8  f f   f   e4     ees^\markup { \translate #'(-4 . 2) "D.S. al Fine" } % HACK
+    f8  f f   f   e4     ees
   }
 }
 \set minimumFret = #3
