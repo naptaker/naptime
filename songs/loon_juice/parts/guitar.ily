@@ -12,7 +12,7 @@
     <<
       {
         \stopStaff
-        \once \omit Staff.BarLine
+        \once \override Staff.BarLine.color = #red
         \once \omit Staff.Clef \once \omit Staff.ClefModifier
         s1*3
         \startStaff

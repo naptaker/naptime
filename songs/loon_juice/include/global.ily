@@ -68,7 +68,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   \mark "D.S. al Fine"
   s4
   \set Score.repeatCommands = #'((volta #f))
-  \bar ".|:-||"
+  \bar ":|.:"
   \pageBreak
 }
 
