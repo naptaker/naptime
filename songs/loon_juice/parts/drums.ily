@@ -3,11 +3,11 @@
   \override Rest.staff-position = #0
   \repeat volta 2 {
     R1 |
-    r2 sn4 sn |
+    r2 s |
   }
   \alternative {
     { R1 |
-      r2 sn4 sn | }
+      r2 s | }
     { R1 |
       sn16 sn sn sn tomml sn sn sn tomml tomml toml toml toml toml toml toml | }
   }
@@ -16,11 +16,11 @@
 \gridPutMusic "drums down" 1 \drummode {
   \repeat volta 2 {
     s1 |
-    s2 bd4 bd |
+    s2 <bd sn>4 <bd sn> |
   }
   \alternative {
     { s1 |
-      s2 bd4 bd | }
+      s2 <bd sn>4 <bd sn> | }
     { s1 |
       bd4 bd bd bd | }
   }
@@ -29,41 +29,48 @@
 
 \gridPutMusic "drums up" 2 \drummode {
   \repeat volta 2 {
-    cymr4 <toml sn>8 toml toml toml <toml sn> toml |
-    %% <<
-    %%   {
-    toml8 toml <toml sn> \flam <toml sn> hho4 <sn cymc> |
-    %%   } \new DrumStaff \with {
-    %%     \omit TimeSignature
-    %%   } {
-    %%     \drummode {
-    %%       <<
-    %%         { toml8 toml <toml sn> \flam <toml sn> cymr4 <sn hho>8 \flam sn | } \\
-    %%         { bd4. bd8 bd bd bd bd | }
-    %%       >>
-    %%     }
-    %%   }
-    %% >>
+    cymr1 ~ |
+    cymr2
+    <<
+      {
+        hho4 cymc |
+      } \new DrumStaff \with {
+        drumStyleTable = #preston-drums
+        instrumentName = "Drums"
+        \omit TimeSignature
+      } {
+        <<
+          \new DrumVoice {
+            \voiceOne
+            cymr4 hho |
+          }
+          \new DrumVoice {
+            \voiceTwo
+            bd8 bd <bd sn> \once \slurUp \flam <bd sn> |
+          }
+        >>
+      }
+    >>
   }
   \alternative {
-    { hh4 <toml sn>8 toml toml toml <toml sn> toml |
-      toml8 toml <toml sn> toml toml <toml sn> <toml sn> <toml sn> | }
-    { hhho4 <toml sn>8 toml toml toml <toml sn> \flam <toml sn> |
-      cymr8 \flam sn cymr \flam sn cymr sn sn sn | }
+    { hh4 s2. |
+      s1 | }
+    { hhho4 s2. |
+      cymr4 cymr cymr2 | }
   }
 }
 
 \gridPutMusic "drums down" 2 \drummode {
+  \slurUp
   \repeat volta 2 {
-    bd2 bd |
-    bd4. bd8 bd bd4 bd8 | % bd4. bd8 bd \once \tieUp bd ~ bd bd |
-    % bd4. bd8 bd bd bd bd |
+    bd4 <toml sn>8 toml <bd toml> toml <toml sn> toml |
+    <bd toml>8 toml <toml sn> <bd toml sn> bd bd sn bd |
   }
   \alternative {
-    { bd2 bd |
-      bd2 bd4 bd | }
-    { bd2 bd4. bd8 |
-      bd4 bd bd bd | }
+    { bd4 <toml sn>8 toml <bd toml> toml <toml sn> toml |
+      <bd toml>8 toml <toml sn> toml <bd toml> <toml sn> <bd toml sn> <toml sn> | }
+    { bd4 <toml sn>8 toml <bd toml> toml <toml sn> \flam <bd toml sn> |
+      bd8[ \flam sn] bd[ \flam sn] bd sn <bd sn> sn | }
   }
 }
 
@@ -71,26 +78,27 @@
 \gridPutMusic "drums up" 3 \drummode {
   \slurDown
   \repeat volta 4 {
-    cymr4 <sn hhho>8 \flam <sn hhho> hhho8 hhho <sn hhho> \flam <sn hhho> |
-    hhho8 hhho <sn hhho> \flam <sn hhho> cymc4 <sn cymr> |
+    cymr4 hhho8 hhho hhho hhho hhho hhho |
+    hhho8 hhho hhho hhho cymc4 cymr |
   }
   \alternative {
-    { cymr4 <sn hhho>8 \flam <sn hhho> hhho8 hhho <sn hhho> \flam <sn hhho> |
-      hhho8 hhho <sn hhho> \flam <sn hhho> cymc4 <sn cymr> | }
-    { cymc4 <sn cymr>8 <sn cymr> cymr cymr <sn cymr> \flam <sn cymr> |
+    { cymr4 hhho8 hhho hhho hhho hhho hhho |
+      hhho8 hhho hhho hhho cymc4 cymr | }
+    { cymc4 cymr8 cymr cymr cymr cymr cymr |
       cymr16 \flam sn sn sn tomml sn sn sn tomml tomml toml toml toml toml toml toml | }
   }
 }
 
 \gridPutMusic "drums down" 3 \drummode {
+  \slurUp
   \repeat volta 4 {
-    bd2 bd8 bd s4 |
-    bd4. bd8 bd2 |
+    bd4 sn8 \flam sn bd bd sn \flam sn |
+    bd8 r sn8 \flam <bd sn> bd4 sn |
   }
   \alternative {
-    { bd2 bd8 bd4 bd8 |
-      bd2 bd | }
-    { bd2 s8 bd s bd | % FIXME
+    { bd4 sn8 \flam sn bd bd sn \flam <bd sn> |
+      bd8 r sn8 \flam sn bd4 sn | }
+    { bd4 sn8 sn r bd sn \flam <bd sn> |
       bd8 bd bd bd bd bd bd bd | }
   }
 }
@@ -124,7 +132,7 @@
   }
   \alternative {
     { R1 |
-      r2 hhho4 hhho4 | }
+      r4 r8 s hhho4 hhho4 | }
     { cyms4 hhho8 hhho hhho hhho hhho hhho  |
       cymr16 sn sn sn tomml sn sn sn tomml tomml toml toml toml toml toml toml | }
   }
