@@ -12,7 +12,7 @@
     <<
       {
         \stopStaff
-        \once \override Staff.BarLine.color = #red
+        \once \override Staff.BarLine.break-visibility = #begin-of-line-invisible
         \once \omit Staff.Clef \once \omit Staff.ClefModifier
         s1*3
         \startStaff
