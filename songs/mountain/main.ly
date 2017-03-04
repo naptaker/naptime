@@ -1,5 +1,3 @@
-#(ly:set-option 'relative-includes #t)
-
 \include "include/global.ily"
 \include "parts/guitar.ily"
 \include "parts/bass.ily"
