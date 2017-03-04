@@ -1,24 +1,22 @@
 #+STARTUP: showall
 #+OPTIONS: title:t toc:t date:nil author:t email:nil num:nil
-#+TITLE: Songs
+#+TITLE: Naptime
 #+DATE: [2017-02-26 Sun]
 #+AUTHOR: Eric Bailey
 #+EMAIL: naptakerband@gmail.com
 #+LANGUAGE: en
 #+CREATOR: Emacs 25.0.94.1 (Org mode 8.3.4)
 
-* Capo 3
-- I Want You (Greasy)
-- [[file:songs/loon_juice/][Loon Juice]]
-- (To the Top of the) Mountain
-- The Rustler
-- [[file:songs/space_is_the_place/][Space Is the Place]]
-* Open
-- [[file:songs/cover_yr_eyes/][Cover Yr Eyes]]
-- [[file:disco_ball/README.org][Disco Ball]]
-- Funeral Town
-- (It's) No Fun (To Grow Up)
-- [[file:songs/smoked_all_my_smokes/][Smoked All My Smokes]]
-* Capo 4 (D minor)
-- [[file:halfway_house/README.org][Halfway House]]
-- I'm Already Dead (William Blake)
+* Song List
+1. [[file:songs/loon_juice/][Loon Juice]]
+2. The Rustler
+3. [[file:songs/disco_ball/][Disco Ball]]
+4. [[file:songs/i_want_you/][I Want You (Greasy)]]
+5. [[file:songs/no_fun/][(It's) No Fun (To Grow Up)]]
+6. [[file:songs/cover_yr_eyes/][Cover Yr Eyes]]
+7. [[file:songs/halfway_haus/][Halfway Haus]]
+8. [[file:songs/smoked_all_my_smokes/][Smoked All My Smokes]]
+9. [[file:songs/mountain/][(Together, We Are A) Mountain (Range)]]
+10. [[file:songs/space_is_the_place/][Space Is the Place]]
+11. [[file:songs/funeral_town/][Funeral Town]]
+12. [[file:songs/already_dead/][I'm Already Dead (William Blake)]]

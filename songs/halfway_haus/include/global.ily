@@ -11,7 +11,7 @@ Tempo  = { \tempo 4 = 220 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \header {
-  title     = "Halfway House"
+  title     = "Halfway Haus"
   opus      = "Naptime"
   composer  = "Sam Albers"
   %% poet      = "Preston Y. Drum"

@@ -11,7 +11,7 @@ Tempo  = { \tempo 4 = 138 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \header {
-  title    = "Smoke All My Cigarettes"
+  title    = "Smoked All My Smokes"
   opus     = "Naptime"
   composer = "Eric Bailey"
   poet     = "Preston Y. Drum"

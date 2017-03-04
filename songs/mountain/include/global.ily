@@ -13,8 +13,7 @@ Tempo  = { \tempo 4 = 160 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \header {
-  dedication = "(To the Top of the)"
-  title      = "Mountain"
+  title      = "(Together, We Are A) Mountain (Range)"
   subtitle   = \markup {
     \fill-line {
       \center-column {
@@ -27,10 +26,10 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
       }
     }
   }
-  %% opus       = "Naptime"
   composer   = "E. Bailey, P. Drum and S. Albers"
-  arranger   = "är Naptaker"
-  copyright  = "© 2016 Naptaker"
+  arranger   = "Naptaker"
+  opus       = "Naptime"
+  copyright  = "© 2016-2017 Naptaker"
 }
 
 \templateInit #'("meta"
