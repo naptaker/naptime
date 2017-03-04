@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+watchman-make \
+    -p songs/$1/**/*.ily include/* Makefile \
+    -t songs/$1/main.pdf
