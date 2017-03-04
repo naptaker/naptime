@@ -5,7 +5,7 @@ ifeq (${DEBUG},1)
 	output   =
 else
 	lilypond = lilypond -dlog-file=$(basename $<)
-	output   = >$*/PROGRESS 2>/dev/null
+	output   = >$*/PROGRESS
 endif
 
 includes := -I ${PWD}/openlilylib -I ${PWD}/openlilylib/ly -I ${PWD}/include
