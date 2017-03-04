@@ -16,18 +16,6 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \header {
   title     = "Loon Juice"
-  %% subtitle  = \markup {
-  %%   \fill-line {
-  %%     \center-column {
-  %%       \null
-  %%       \epsfile #X #100 #"../../mountain/resources/at_the_mountains_of_madness.eps"
-  %%       \teeny {
-  %%         \line { \italic "At the Mountains of Madness" "by Jonathan Kriz" }
-  %%         "https://flic.kr/p/9xRUX4"
-  %%       }
-  %%     }
-  %%   }
-  %% }
   composer  = "Naptaker"
   opus      = "Naptime"
   copyright = "© 2016 Naptaker"
