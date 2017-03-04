@@ -13,6 +13,7 @@ lilypond_flags ?= \
 	-djob-count=8 \
 	-dmidi-extension=mid \
 	-dno-point-and-click \
+	-dpreview \
 	-drelative-includes \
 	-dwarning-as-error \
 	${includes}
