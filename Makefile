@@ -1,22 +1,24 @@
 songs := $(notdir $(wildcard songs/*))
-# pdfs     := $(addsuffix main.pdf,$(songdirs))
 
-ifeq ($(DEBUG),1)
+ifeq (${DEBUG},1)
 	lilypond = lilypond -V
 	output   =
 else
-	lilypond = lilypond -dno-point-and-click -dwarning-as-error -dlog-file=$*
-	output   = >$(subst main,PROGRESS,$*) 2>/dev/null
+	lilypond = lilypond -dlog-file=$(basename $<)
+	output   = >$*/PROGRESS 2>/dev/null
 endif
 
-includes := -I $(PWD)/openlilylib -I $(PWD)/openlilylib/ly -I $(PWD)/include
-defaults  = -djob-count=8 -dmidi-extension=mid
+includes := -I ${PWD}/openlilylib -I ${PWD}/openlilylib/ly -I ${PWD}/include
+lilypond_flags ?= \
+	-djob-count=8 \
+	-dmidi-extension=mid \
+	-dno-point-and-click \
+	-drelative-includes \
+	-dwarning-as-error \
+	${includes}
+lilypond += ${lilypond_flags}
 
-.SUFFIXES: .ly .pdf .mid .wav .png
-.ly.pdf: include/* %/include/* %/notes/* %/parts/*
-	@echo -n 'Engraving $@ ... '
-	@$(lilypond) $(defaults) $(includes) -o $* --pdf $< $(output)
-	@echo "\xF0\x9F\x8E\xB5"
+.SUFFIXES: .mid .wav .pdf .png
 .mid.wav:
 	@timidity -Ow -o $@ $^
 .pdf.png:
@@ -32,6 +34,11 @@ halfway_haus: songs/halfway_haus/main.pdf
 smoked_all_my_smokes: songs/smoked_all_my_smokes/main.pdf
 mountain: songs/mountain/main.pdf
 space_is_the_place: songs/space_is_the_place/main.pdf
+
+%/main.pdf: %/main.ly include/* %/include/* %/notes/* %/parts/*
+	@echo -n 'Engraving $@ ... '
+	@${lilypond} -o $* --pdf $< $(output)
+	@echo "\xF0\x9F\x8E\xB5"
 
 %.flac: export song   = $(notdir $(patsubst %/,%,$(dir $@)))
 %.flac: export title  = $(shell echo $(song) | sed 's/_/ /g' | titlecase)
