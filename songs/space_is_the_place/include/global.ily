@@ -4,7 +4,6 @@
 \addGuilePath "../../../include"
 #(load-from-path "naptaker.scm")
 \include "fretboards.ily"
-%% #(ly:set-option 'relative-includes #t)
 \include "preamble.ily"
 \include "instruments.ily"
 
