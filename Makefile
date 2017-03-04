@@ -1,23 +1,22 @@
 songs := $(notdir $(wildcard songs/*))
 
 ifeq (${DEBUG},1)
-	lilypond = lilypond -V
-	output   =
+	loglevel = DEBUG
 else
-	lilypond = lilypond -dlog-file=$(basename $<)
+	loglevel = BASIC
 	output   = >$*/PROGRESS
 endif
 
 includes := -I ${PWD}/openlilylib -I ${PWD}/openlilylib/ly -I ${PWD}/include
 lilypond_flags ?= \
+	--loglevel=${loglevel} \
 	-djob-count=8 \
 	-dmidi-extension=mid \
 	-dno-point-and-click \
 	-dpreview \
 	-drelative-includes \
-	-dwarning-as-error \
-	${includes}
-lilypond += ${lilypond_flags}
+	-dwarning-as-error
+lilypond = lilypond ${lilypond_flags} ${includes}
 
 .SUFFIXES: .mid .wav .pdf .png
 .mid.wav:
@@ -38,8 +37,7 @@ space_is_the_place: songs/space_is_the_place/main.pdf
 
 %/main.pdf: %/main.ly include/* %/include/* %/notes/* %/parts/*
 	@echo -n 'Engraving $@ ... '
-	@${lilypond} -o $* --pdf $< $(output)
-	@echo "\xF0\x9F\x8E\xB5"
+	@${lilypond} -o $* --pdf $< ${output}
 
 %.flac: export song   = $(notdir $(patsubst %/,%,$(dir $@)))
 %.flac: export title  = $(shell echo $(song) | sed 's/_/ /g' | titlecase)
