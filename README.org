@@ -9,7 +9,7 @@
 
 * Song List
 1. [[file:songs/loon_juice/][Loon Juice]]
-2. The Rustler
+2. [[file:songs/rustler/][The Rustler]]
 3. [[file:songs/disco_ball/][Disco Ball]]
 4. [[file:songs/i_want_you/][I Want You (Greasy)]]
 5. [[file:songs/no_fun/][(It's) No Fun (To Grow Up)]]
