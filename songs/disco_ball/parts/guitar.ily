@@ -1,6 +1,8 @@
-\include "global.ily"
-\include "guitar-I.ily"
-\include "guitar-II.ily"
-\include "guitar-III.ily"
-\include "guitar-IV.ily"
-\include "guitar-V.ily"
+\gridPutMusic "guitar" 2 \relative d' {
+  \include "notes/guitar-II.ily"
+}
+
+\gridPutMusic "guitar" 5 \relative d, {
+  \startStaff
+  \include "notes/guitar-V.ily"
+}
