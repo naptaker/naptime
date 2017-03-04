@@ -1,4 +1,3 @@
-\include "global.ily"
 
 \gridPutMusic "drums down" 7
 \drummode {

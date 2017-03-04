@@ -1,4 +1,3 @@
-\include "global.ily"
 \include "drums_up-I.ily"
 \include "drums_down-I.ily"
 \include "drums_up-II.ily"

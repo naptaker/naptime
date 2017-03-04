@@ -39,30 +39,13 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
                  "drums down")
               #'(13 3 2 4 16 8 5)
 
-mainBreak     = { \tag #'main { \break } }
-mainPageBreak = { \tag #'main { \pageBreak } }
-
 \gridPutMusic "meta" 1 {
   \global
-  \mark 1
-  s1*8 \bar "||" \mainBreak
-  s1*4 s1 \mainBreak
-}
-
-%% http://stackoverflow.com/a/18795802/1793234
-dcAlFineMarkup = \markup { \translate #'(0 . 3) "D.C. al Fine" }
-dcAlFine = {
-  \once \override Staff.BarLine #'stencil =
-  #(lambda (grob)
-     (ly:stencil-combine-at-edge
-       (ly:bar-line::print grob)
-       X LEFT
-       (grob-interpret-markup grob dcAlFineMarkup)
-       10.0))
+  s1*8 \bar "||" \break
+  s1*4 s1 \break
 }
 
 \gridPutMusic "meta" 2 {
-  \mark 2
   \set Score.repeatCommands = #'(start-repeat)
   s1 s2
   \bar "!"
@@ -71,11 +54,14 @@ dcAlFine = {
   \set Score.repeatCommands = #'((volta #f) (volta "2") end-repeat)
   s2
   \set Score.repeatCommands = #'((volta #f) (volta "4") end-repeat)
-  s4 s4^"D.C. al Fine"
+  s4
+  \once \override Score.RehearsalMark.X-offset = #-3.5
+  \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
+  \mark "D.C. al Fine"
+  s4
   \set Score.repeatCommands = #'((volta #f))
-  % \dcAlFine
   \bar "||"
-  \mainBreak
+  \break
 }
 
 %% http://stackoverflow.com/a/18795802/1793234
@@ -91,32 +77,26 @@ fourX = {
 }
 
 \gridPutMusic "meta" 3 {
-  \mark 3
   \bar ".|:"
   \repeat volta 4 {
     s1 s2 s4. s8
   }
-  %% FIXME: this gets hidden in the main score when hiding the guitar staff...
   \fourX
 }
 
 \gridPutMusic "meta" 4 {
-  \mark 4
-  s1*4 \fourX \mainBreak
+  s1*4 \fourX \break
 }
 
 \gridPutMusic "meta" 5 {
-  \mark 5
-  s1*8 % \mainBreak
-  s1*8 \mainBreak
+  s1*8
+  s1*8 \break
 }
 
 \gridPutMusic "meta" 6 {
-  \mark 6
-  s1*8 \mainBreak
+  s1*8 \break
 }
 
 \gridPutMusic "meta" 7 {
-  \mark 7
   s1*5 \bar "|."
 }
