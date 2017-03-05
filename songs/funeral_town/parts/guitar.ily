@@ -11,7 +11,6 @@
 }
 
 \gridPutMusic "guitar" 2 {
-  \set minimumFret = #0
   \repeat volta 3 {
     <<
       {
@@ -57,7 +56,6 @@
 }
 
 \gridPutMusic "guitar" 3 {
-  \set minimumFret = #8
   \relative es' {
     \include "notes/guitar-Va.ily"
     \include "notes/guitar-Vb.ily"
@@ -71,41 +69,15 @@
 }
 
 \gridPutMusic "guitar" 5 {
-  \set minimumFret = #8
   \relative es' {
     \include "notes/guitar-Va.ily"
   }
 }
 
-%% \gridPutMusic "guitar" 6 {
-%%   \gridGetCellMusic "guitar" 4
-%% }
-
-
 \gridPutMusic "guitar" 6 {
-  \set minimumFret = #8
   \relative es' {
     \repeat unfold 2 {
       \include "notes/guitar-Va.ily"
     }
   }
 }
-
-%% \gridPutMusic "guitar" 8 {
-%%   \gridGetCellMusic "guitar" 4
-%% }
-
-                                % \gridPutMusic "guitar" 9 {
-                                %   \set minimumFret = #8
-                                %   \relative es' {
-                                %     \include "notes/guitar-Va.ily"
-                                %   }
-                                % }
-
-%%%% \gridPutMusic "guitar" 10 {
-%%%%   \set minimumFret = #4
-%%%%   \relative es, {
-%%%%     \override NoteHead.color = #red
-%%%%     \include "notes/guitar-IV.ily"
-%%%%   }
-%%%% }

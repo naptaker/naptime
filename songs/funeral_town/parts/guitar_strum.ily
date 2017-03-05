@@ -11,7 +11,6 @@
   % \override TupletNumber.extra-offset = #'(0 . -9.35)
 
   % \override Score.ChordName.extra-offset = #'(0 . -9.35)
-  % \override Score.FretBoard.extra-offset = #'(0 . -9.35)
 
   s1*4
   % \once \override Staff.BarLine.bar-extent = #'(-8 . -8)
