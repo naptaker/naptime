@@ -34,6 +34,7 @@ halfway_haus: songs/halfway_haus/main.pdf
 smoked_all_my_smokes: songs/smoked_all_my_smokes/main.pdf
 mountain: songs/mountain/main.pdf
 space_is_the_place: songs/space_is_the_place/main.pdf
+funeral_town: songs/funeral_town/main.pdf
 
 %/main.pdf: %/main.ly include/* %/include/* %/notes/* %/parts/*
 	@echo -n 'Engraving $@ ... '
