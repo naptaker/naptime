@@ -50,6 +50,7 @@
   \Naptaker #guitar-open-d-tuning ##f
   \layout {
     \omit Staff.InstrumentName
+    \omit Score.FretBoard
     indent = 0\in
 
     \override Score.BarNumber.font-size = #2
