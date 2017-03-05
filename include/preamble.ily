@@ -4,10 +4,15 @@ fuzzOff    = \set midiInstrument = #"electric guitar (clean)"
 xOn  = {
   \deadNotesOn
   \set midiInstrument = #"electric guitar (muted)"
+  \omit ChordName
+  \omit FretBoard
 }
 xOff = {
   \deadNotesOff
   \set midiInstrument = #"electric guitar (clean)"
+  \undo \omit ChordName
+  \undo \omit FretBoard
+  \once \once \set chordChanges = ##f
 }
 
 %% Basically \hideNotes, except deliberately excluding TabNoteHead

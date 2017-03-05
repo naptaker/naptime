@@ -55,6 +55,7 @@
           <<
             \context ChordNames {
               \set chordChanges = ##t
+              \set noChordSymbol = ##f
               \gridGetMusic "chords"
             }
             \context FretBoards {
@@ -112,6 +113,7 @@
                \RemoveEmptyStaves
                \override VerticalAxisGroup.remove-first = ##t
                \remove "Staff_performer"
+               \remove "Time_signature_engraver"
                \consists Pitch_squash_engraver
              }
              <<
