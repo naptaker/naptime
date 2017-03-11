@@ -82,6 +82,7 @@ let
        else map (songName: mkSong { inherit songName; })
                 (splitString " " scores);
 
+  ## FIXME: Look into $outputLib and "multiple-output derivations"
   drv = stdenv.mkDerivation {
     name = "naptime-${version}";
     inherit version;
@@ -105,5 +106,5 @@ in
 {
   env = env;
   drv = drv;
-  songs = songs;
+  scores = engravedScores;
 }
