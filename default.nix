@@ -14,6 +14,8 @@ let
     fonts = with openlilylib-fonts; [ improviso ];
   };
 
+  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ ]; };
+
   openlilylib = fetchFromGitHub {
     owner = "yurrriq";
     repo = "snippets";
@@ -24,10 +26,8 @@ let
   mkSong = a@{ songName, pdfName ? songName, ... }:
     stdenv.mkDerivation (a // rec {
       name = "naptime-${songName}-${version}";
-      inherit pdfName songName version;
+      inherit FONTCONFIG_FILE pdfName songName version;
       src = ./. + "/songs/${songName}";
-
-      nativeBuildInputs = [ lilypond-with-improviso openlilylib ];
 
       buildPhase = ''
         install -m755 -d $out
@@ -71,8 +71,7 @@ let
 
   env = stdenv.mkDerivation rec {
     name = "naptime-${version}-env";
-    inherit openlilylib version;
-
+    inherit FONTCONFIG_FILE openlilylib version;
     buildInputs = [ lilypond-with-improviso ];
   };
 
@@ -85,10 +84,8 @@ let
   ## FIXME: Look into $outputLib and "multiple-output derivations"
   drv = stdenv.mkDerivation {
     name = "naptime-${version}";
-    inherit version;
+    inherit FONTCONFIG_FILE engravedScores openlilylib version;
     src = ./songs;
-
-    nativeBuildInputs = engravedScores;
 
     buildPhase = "true";
 
