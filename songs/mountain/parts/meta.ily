@@ -28,11 +28,17 @@
   \repeat volta 4 {
     s1 s2 s4. s8
   }
-  \fourX
+  \mark \markup \italic "4x"
 }
 
 \gridPutMusic "meta" 4 {
-  s1*4 \fourX \break
+  s1*3
+  s2.
+  \once \override Score.RehearsalMark.X-offset = #7
+  \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
+  \mark \markup \italic "4x"
+  s4
+  \break
 }
 
 \gridPutMusic "meta" 5 {

@@ -50,7 +50,6 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
       empty-stencil
       (interpret-markup layout props arg)))
 
-
 \paper {
   two-sided = ##t
   print-first-page-number = ##t
@@ -77,21 +76,6 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
       }
     }
   }
-}
-
-%%% ================================================================== [ Hacks ]
-
-%% FIXME
-%% http://stackoverflow.com/a/18795802/1793234
-fourXMarkup = \markup { \translate #'(0 . 3) \italic 4x }
-fourX = {
-  \once \override Staff.BarLine #'stencil =
-  #(lambda (grob)
-     (ly:stencil-combine-at-edge
-       (ly:bar-line::print grob)
-       X LEFT
-       (grob-interpret-markup grob fourXMarkup)
-       -1.0))
 }
 
 %%% =================================================================== [ Grid ]
