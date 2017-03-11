@@ -64,6 +64,7 @@ let
     all = [
       cover_yr_eyes
       funeral_town
+      loon_juice
       # FIXME: mountain
     ];
   };
