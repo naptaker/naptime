@@ -54,6 +54,9 @@ let
     funeral_town = mkSong {
       songName = "funeral_town";
     };
+    loon_juice = mkSong {
+      songName = "loon_juice";
+    };
     # FIXME:
     # mountain = mkSong {
     #   songName = "mountain";
