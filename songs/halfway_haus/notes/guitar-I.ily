@@ -1,4 +1,4 @@
-\repeat unfold 2 {
+\repeat percent 2 {
   \repeat percent 2 { <c g' c ees g c>4 8 } 4 |
 }
 \repeat percent 2 { <a e' a c e a>4 8 } 4 |
