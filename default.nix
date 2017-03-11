@@ -72,7 +72,11 @@ let
   env = stdenv.mkDerivation rec {
     name = "naptime-${version}-env";
     inherit FONTCONFIG_FILE openlilylib version;
-    buildInputs = [ lilypond-with-improviso ];
+    buildInputs = [
+      lilypond-with-improviso
+      watchman
+      pkgs.python27Packages.pywatchman
+    ];
   };
 
   engravedScores =
