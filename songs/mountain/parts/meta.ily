@@ -1,6 +1,7 @@
 \gridPutMusic "meta" 1 {
   \global
-  s1*8 \bar "||" \break
+  s1*4 \break
+  s1*4 \bar "||" \break
   s1*4 s1 \break
 }
 

@@ -12,7 +12,7 @@
 
 \useLibrary Naptaker
 
-\setOption naptaker.staff-size #16
+\setOption naptaker.staff-size #17
 \setOption naptaker.guitar-tabs ##t
 
 %%% ================================================================= [ Header ]
@@ -22,7 +22,7 @@ Tempo  = { \tempo 4 = 160 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \header {
-  title      = "(Together, We Are A) Mountain (Range)"
+  title      = \markup \fontsize #2 { "(Together, We Are A) Mountain (Range)" }
   subtitle   = \markup {
     \fill-line {
       \center-column {
@@ -60,15 +60,16 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
       \concat {
         \on-the-fly #not-part-first-page
         \concat {
-          \fromproperty #'header:opus ": " \fromproperty #'header:title ", "
+          \fromproperty #'header:opus ": "
+          { \fontsize #-3 \fromproperty #'header:title } ", "
         }
         \fromproperty #'header:copyright
       }
     }
     \on-the-fly #last-page
     \column {
-      \fill-line { \fontsize #5 \fromproperty #'header:title }
-      \fill-line { \fontsize #3 "by Naptaker" }
+      \fill-line { \fontsize #3 \fromproperty #'header:title }
+      \fill-line { \fontsize #4 "by Naptaker" }
       \fill-line { \line { "from" \fromproperty #'header:opus } }
       \tiny \fill-line {
         %% Tagline header field only on last page in the book.
