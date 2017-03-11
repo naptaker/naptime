@@ -12,7 +12,12 @@
 
 \useLibrary Naptaker
 
-\setOption naptaker.staff-size #18
+\setOption naptaker.staff-size #13
+
+\setOption naptaker.extra-layout \layout {
+  \omit Score.FretBoard
+}
+
 
 %%% ================================================================= [ Header ]
 
@@ -21,7 +26,7 @@ Tempo  = { \tempo 4 = 182 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \header {
-  title     = "Cover Yr Eyes"
+  title     = \markup \fontsize #6 { "Cover Yr Eyes" }
   opus      = "Naptime"
   composer  = "Preston Y. Drum"
   poet      = "Preston Y. Drum"

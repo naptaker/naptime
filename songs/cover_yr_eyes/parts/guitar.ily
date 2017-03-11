@@ -6,7 +6,7 @@
   s1*4
   \startStaff
   \set Staff.forceClef = ##t
-  \time 4/4
+  %% \time 4/4
 
   \ottava #1
   \repeat percent 3 {

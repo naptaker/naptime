@@ -1,9 +1,15 @@
 \gridPutMusic "meta" 1 {
   \global
   %% \mark \markup Intro
-  s1*8
+  \override Score.ChordName.extra-offset = #'(0 . -7.24)
+  \override Score.FretBoard.extra-offset = #'(0 . -7.24)
+  %% TODO: Tempo marking
+  s1*4
+  \revert Score.ChordName.extra-offset
+  \revert Score.FretBoard.extra-offset
+  s1*4
   \bar ".|:-||"
-  \pageBreak
+  \break
 }
 
 \gridPutMusic "meta" 2 {
@@ -12,10 +18,8 @@
   %% \mark \markup \box \smallCaps Verse
   \mark \markup \musicglyph #"scripts.segno"
   \set Score.repeatCommands = #'(start-repeat)
-  s1*3^\markup \small \italic "ad lib minimal guitar"
+  s1*6^\markup \small \italic "ad lib minimal guitar"
   \break
-  s1*3
-  \pageBreak
 
   %% \overrideProperty Score.NonMusicalPaperColumn.line-break-system-details
   %% #'((Y-offset . 75))
@@ -33,7 +37,8 @@
 \gridPutMusic "meta" 3 {
   %% \mark \markup \box \smallCaps Chorus
   \repeat volta 2 {
-    s1*8
+    s1*4 \break
+    s1*4 \break
   }
   \break
 }
@@ -50,6 +55,8 @@
 }
 
 \gridPutMusic "meta" 5 {
+  \override Score.ChordName.extra-offset = #'(0 . -7.24)
+  \override Score.FretBoard.extra-offset = #'(0 . -7.24)
   s4
   \bar "|."
 }
