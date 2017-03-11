@@ -20,7 +20,6 @@ includes := -I ${openlilylib} -I ${openlilylib}/ly
 lilypond_flags ?= \
 	--loglevel=${loglevel} \
 	-djob-count=8 \
-	-dmidi-extension=mid \
 	-dno-point-and-click \
 	-dpreview \
 	-drelative-includes \
