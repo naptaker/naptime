@@ -1,35 +1,59 @@
-\include "global.ily"
-\include "parts/vox.ily"
-\include "parts/guitar.ily"
-\include "parts/guitar_strum.ily"
-\include "parts/chords.ily"
-\include "parts/bass.ily"
-\include "parts/drums.ily"
+%%% ================================================================ [ main.ly ]
+%%% Description: Naptime - Main score for "Cover Yr Eyes"
+%%% Copyright:   (c) 2016-2017 Eric Bailey
+%%% TODO: License:     see LICENSE
+%%% ==================================================================== [ EOH ]
+
+\version "2.19.24"
+
+\include "openlilylib"
+
+%%% ======================================================== [ Naptaker Config ]
+
+\useLibrary Naptaker
+
+\setOption naptaker.staff-size #18
+
+%%% ================================================================= [ Header ]
+
+Key    = { \key d \minor }
+Tempo  = { \tempo 4 = 182 }
+global = { \Tempo \defaultTimeSignature \time 4/4 }
+
+\header {
+  title     = "Cover Yr Eyes"
+  opus      = "Naptime"
+  composer  = "Preston Y. Drum"
+  poet      = "Preston Y. Drum"
+  arranger  = "Naptaker"
+  copyright = "© 2016-2017 Naptaker"
+}
+
+%%% ================================================================= [ Layout ]
 
 \paper {
   two-sided = ##t
-  % NOTE: margins and offset are scaled to paper-size
-  inner-margin = 0.375\in
-  outer-margin = 0.375\in
-  binding-offset = 0.5\in
   print-first-page-number = ##t
+
+  %% NOTE: margins and offset are scaled to paper-size
+  %% inner-margin = 0.375\in
+  %% outer-margin = 0.375\in
+  %% binding-offset = 0.5\in
 }
+
+%%% =================================================================== [ Grid ]
+
+\templateInit
+#'("meta" "vox" "chords" "guitar" "guitar strum" "bass" "drums up" "drums down")
+#'(8 12 8 8 (1 . 4))
+
+\include "parts/lyrics.ily"
+
+\Naptaker
 
 \gridDisplay
 \gridCheck
 
-\score {
-  \Naptaker #guitar-open-d-tuning ##f
+\include "naptaker/mtf-improviso.ily"
 
-  \layout {
-    %% Increase the size of bar numbers by 2
-    \override Score.BarNumber.font-size = #2
-
-    %% Draw a box around bar numbers
-    \override Score.BarNumber.stencil =
-    #(make-stencil-boxer 0.1 0.25 ly:text-interface::print)
-
-    \override Score.BarNumber.padding = #3
-  }
-  %% \midi { }
-}
+%%% ==================================================================== [ EOF ]

@@ -1,23 +1,19 @@
-\gridPutMusic "guitar" 1 \with {
-  opening = {
-    \once \omit Staff.Clef
-    \once \omit Staff.ClefModifier
-    \once \omit Staff.TimeSignature
-    \stopStaff
-  }
-  music = \relative c'' {
-    s1*4
-    \startStaff
-    \set Staff.forceClef = ##t
-    \time 4/4
+\gridPutMusic "guitar" 1 \relative c'' {
+  \once \omit Staff.Clef
+  \once \omit Staff.ClefModifier
+  \once \omit Staff.TimeSignature
+  \stopStaff
+  s1*4
+  \startStaff
+  \set Staff.forceClef = ##t
+  \time 4/4
 
-    \ottava #1
-    \repeat percent 3 {
-      \include "notes/guitar-Ia.ily"
-    }
-    \include "notes/guitar-Ib.ily"
-    \ottava #0
+  \ottava #1
+  \repeat percent 3 {
+    \include "notes/guitar-Ia.ily"
   }
+  \include "notes/guitar-Ib.ily"
+  \ottava #0
 }
 
 \gridPutMusic "guitar" 3 \relative c'' {
