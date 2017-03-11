@@ -57,15 +57,15 @@ let
     loon_juice = mkSong {
       songName = "loon_juice";
     };
-    # FIXME:
-    # mountain = mkSong {
-    #   songName = "mountain";
-    # };
+    mountain = mkSong {
+      songName = "mountain";
+    };
     all = [
       cover_yr_eyes
       funeral_town
       loon_juice
-      # FIXME: mountain
+      # FIXME: https://github.com/NixOS/nix/issues/759
+      # mountain
     ];
   };
 
