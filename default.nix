@@ -19,8 +19,8 @@ let
   openlilylib = fetchFromGitHub {
     owner = "yurrriq";
     repo = "snippets";
-    rev = "0180270";
-    sha256 = "0mahv9r12gscsykaf9r1lqpb4z0v987b1d3nyv7mznpy384bl5s5";
+    rev = "a62d43c";
+    sha256 = "00znlnhqp12p4yqny1s346dqczjc3z0rgdf7zcaasbz94p6fm30y";
   };
 
   mkSong = a@{ songName, pdfName ? songName, ... }:
@@ -54,18 +54,26 @@ let
     funeral_town = mkSong {
       songName = "funeral_town";
     };
+    halfway_haus = mkSong {
+      songName = "halfway_haus";
+    };
     loon_juice = mkSong {
       songName = "loon_juice";
     };
     mountain = mkSong {
       songName = "mountain";
     };
+    smoked_all_my_smokes = mkSong {
+      songName = "smoked_all_my_smokes";
+    };
     all = [
       cover_yr_eyes
       funeral_town
+      halfway_haus
       loon_juice
       # FIXME: https://github.com/NixOS/nix/issues/759
       # mountain
+      smoked_all_my_smokes
     ];
   };
 
