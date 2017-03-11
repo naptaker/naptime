@@ -7,7 +7,7 @@ else
 	output   = >$*/PROGRESS
 endif
 
-includes := -I ${PWD}/openlilylib -I ${PWD}/openlilylib/ly -I ${PWD}/include
+includes := -I ${PWD}/openlilylib -I ${PWD}/openlilylib/ly
 lilypond_flags ?= \
 	--loglevel=${loglevel} \
 	-djob-count=8 \
@@ -36,7 +36,7 @@ mountain: songs/mountain/main.pdf
 space_is_the_place: songs/space_is_the_place/main.pdf
 funeral_town: songs/funeral_town/main.pdf
 
-%/main.pdf: %/main.ly include/* %/include/* %/notes/* %/parts/*
+%/main.pdf: %/main.ly %/notes/* %/parts/*
 	@echo -n 'Engraving $@ ... '
 	@${lilypond} -o $* --pdf $< ${output}
 
