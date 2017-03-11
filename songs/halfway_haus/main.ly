@@ -1,5 +1,5 @@
 %%% ================================================================ [ main.ly ]
-%%% Description: Naptime - Main score for "Funeral Town"
+%%% Description: Naptime - Main score for "Halfway Haus"
 %%% Copyright:   (c) 2016-2017 Eric Bailey
 %%% TODO: License:     see LICENSE
 %%% ==================================================================== [ EOH ]
@@ -30,7 +30,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   composer  = "Sam Albers"
   %% poet      = "Preston Y. Drum"
   arranger  = "Naptaker"
-  copyright = "© 2016 Naptaker"
+  copyright = "© 2016-2017 Naptaker"
 }
 
 %%% ================================================================= [ Layout ]
@@ -45,7 +45,8 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 \templateInit
 #'("meta"
    ;; TODO: "vox"
-   "guitar" "bass"
+   "guitar"
+   "bass"
    ;; TODO: "drums up" "drums down"
  )
 #'(16 16)

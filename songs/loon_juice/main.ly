@@ -1,5 +1,5 @@
 %%% ================================================================ [ main.ly ]
-%%% Description: Naptime - Main score for "Funeral Town"
+%%% Description: Naptime - Main score for "Loon Juice"
 %%% Copyright:   (c) 2016-2017 Eric Bailey
 %%% TODO: License:     see LICENSE
 %%% ==================================================================== [ EOH ]
@@ -12,11 +12,13 @@
 
 \useLibrary Naptaker
 
+
+\setOption naptaker.guitar-capo #3
+\setOption naptaker.guitar-tabs ##t
+\setOption naptaker.staff-size #17
 %% \setOption naptaker.guitar-tabs ##f
 %% \setOption naptaker.staff-size #18
 
-\setOption naptaker.guitar-tabs ##t
-\setOption naptaker.staff-size #17
 
 %%% ================================================================= [ Header ]
 
