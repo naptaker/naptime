@@ -29,9 +29,11 @@
 
 \gridPutMusic "bass" 7 \relative c, {
   R1*4
+  \set countPercentRepeats = ##t
   \repeat percent 24 {
     \include "notes/bass-VII.ily"
   }
+  \set countPercentRepeats = ##f
 }
 
 \gridPutMusic "bass" 8 \relative c, {
