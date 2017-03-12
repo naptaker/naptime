@@ -1,7 +1,6 @@
 \set minimumFret = #3
 \repeat volta 4 {
-  b4_\markup { \tiny \italic "bottoms up!" }
-  b8([ ais b   d]) a(  ais) |
+  b4    b8([ ais b   d]) a(  ais) |
   b4    b8( a)  e'4    g          |
 }
 \alternative {

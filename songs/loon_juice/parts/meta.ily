@@ -1,18 +1,25 @@
 \gridPutMusic "meta" 1 {
  \global
-  \mark 1
+  \mark Intro
   s1*6
   \break
 }
 
 \gridPutMusic "meta" 2 {
   \mark \markup { \musicglyph #"scripts.segno" }
-  s1*6
+  s1*3
+  s2
+  #(context-spec-music #{
+     \new ChordNames {
+       s2 \tweak extra-offset #'(-7.9 . -15) \mark \markup \fontsize #-7 \sans alternate
+     }
+     #} 'ChordNames)
+  s1*2
   \pageBreak
 }
 
 \gridPutMusic "meta" 3 {
-  \mark 3
+  \mark Chorus
   \set Score.repeatCommands = #'(start-repeat)
   s1*2
   \set Score.repeatCommands = #'((volta "1, 3") end-repeat)
@@ -30,15 +37,21 @@
 }
 
 \gridPutMusic "meta" 4 {
-  \mark 4
+  \once \override Score.MetronomeMark.X-offset = #-9.5
+  \tweak X-offset #-1 \mark Jam
   \tempo 4 = 82
-  s1*4
+  \omit Score.FretBoard
+  \override Score.ChordName.extra-offset = #'(0 . -5)
+
+  s1*3
+  \tweak X-offset #6.5 \mark MegaMan
+  s1
   \bar ":|."
   \pageBreak
 }
 
 \gridPutMusic "meta" 5 {
-  \mark 5
+  \mark Reprise
   \tempo 4 = 192
   s1*4 \break
   s1*2

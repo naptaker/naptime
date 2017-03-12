@@ -12,13 +12,9 @@
 
 \useLibrary Naptaker
 
-
 \setOption naptaker.guitar-capo #3
-\setOption naptaker.guitar-tabs ##t
+\setOption naptaker.guitar-tabs ##f
 \setOption naptaker.staff-size #17
-%% \setOption naptaker.guitar-tabs ##f
-%% \setOption naptaker.staff-size #18
-
 
 %%% ================================================================= [ Header ]
 
@@ -28,7 +24,7 @@ Tempo  = { \tempo 4 = 183 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \header {
-  title     = "Loon Juice"
+  title     = \markup \fontsize #10 "Loon Juice"
   composer  = "Naptaker"
   opus      = "Naptime"
   copyright = "© 2016-2017 Naptaker"
@@ -64,6 +60,28 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
     }
   }
 }
+
+%%% ================================================================== [ Hacks ]
+
+#(begin
+   (define bye
+     (define-music-function
+       (parser location) ()
+       #{
+         \stopStaff \hideNotes
+         \omit Staff.Rest \omit Staff.MultiMeasureRest
+         \once {
+           \omit Staff.Clef \omit Staff.ClefModifier
+           \omit Staff.TimeSignature
+         }
+       #}))
+   (define hi
+     (define-music-function
+       (parser location) ()
+       #{
+         \startStaff \unHideNotes
+         \undo \omit Staff.Rest \undo \omit Staff.MultiMeasureRest
+       #})))
 
 %%% =================================================================== [ Grid ]
 

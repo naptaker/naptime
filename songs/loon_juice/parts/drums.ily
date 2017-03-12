@@ -14,15 +14,16 @@
 }
 
 \gridPutMusic "drums down" 1 \drummode {
+  \once \override Staff.InstrumentName.extra-offset = #'(41 . 0)
   \repeat volta 2 {
-    s1 |
-    s2 <bd sn>4 <bd sn> |
+    \bye s1 |
+    s2 \hi \once \set Staff.forceClef = ##t <bd sn>4 <bd sn> |
   }
   \alternative {
-    { s1 |
-      s2 <bd sn>4 <bd sn> | }
-    { s1 |
-      bd4 bd bd bd | }
+    { \bye s1 |
+      s2 \hi <bd sn>4 <bd sn> | }
+    { \bye s1 |
+      \hi bd4 bd bd bd | }
   }
 }
 
@@ -140,30 +141,31 @@
 
 \gridPutMusic "drums down" 5 \drummode {
   \repeat volta 2 {
-    bd4 s s2 |
+    bd4 \bye s s2 |
     <<
-      { s2 <bd sn>4 <bd sn> | }
+      { s2 \hi <bd sn>4 <bd sn> | }
       \new DrumStaff \with {
         drumStyleTable = #preston-drums
         instrumentName = "Drums"
+        \omit Clef
+        \omit TimeSignature
       } {
         <<
           \new DrumVoice {
-            \voiceOne
-            \override Rest.staff-position = #0 r4 r8 s
+            \voiceOne s2
             hhho4 hhho |
           }
           \new DrumVoice {
             \voiceTwo
-            s4 s8 bd sn bd sn bd |
+            \bye s4 s8 \hi bd sn bd sn bd |
           }
         >>
       }
     >>
   }
   \alternative {
-    { s1 |
-      s4 s8 bd sn bd sn bd | }
+    { \bye s1 |
+      s4 s8 \hi bd sn bd sn bd | }
     { bd4 sn8 sn bd bd sn \flam <bd sn> |
       \repeat unfold 8 { bd8 } | }
   }

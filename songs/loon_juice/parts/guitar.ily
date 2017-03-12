@@ -3,17 +3,17 @@
 }
 
 \gridPutMusic "guitar" 3 {
-  << { \relative c' { \include "notes/guitar-III.ily" } } \\
+  << { \relative c' { \walkerHeadsMinor \override TabNoteHead.font-size = #-4.5 \include "notes/guitar-III.ily" } } \\
      { \relative c' { \include "notes/guitar-I.ily"   } } >>
 }
 
 \gridPutMusic "guitar" 4 \relative c {
+  \voiceNeutralStyle
   \repeat volta 2 {
     <<
       {
-        \stopStaff
+        \bye
         \once \override Staff.BarLine.break-visibility = #begin-of-line-invisible
-        \once \omit Staff.Clef \once \omit Staff.ClefModifier
         s1*3
         \startStaff
         s1
