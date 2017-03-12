@@ -32,9 +32,12 @@
   \repeat volta 2 {
     cymr1 ~ |
     cymr2
+%{
     <<
       {
+%}
         hho4 cymc |
+%{
       } \new DrumStaff \with {
         drumStyleTable = #preston-drums
         instrumentName = "Drums"
@@ -52,6 +55,7 @@
         >>
       }
     >>
+%}
   }
   \alternative {
     { hh4 s2. |
@@ -142,8 +146,13 @@
 \gridPutMusic "drums down" 5 \drummode {
   \repeat volta 2 {
     bd4 \bye s s2 |
+%{
     <<
-      { s2 \hi <bd sn>4 <bd sn> | }
+      {
+%}
+        s2 \hi <bd sn>4 <bd sn> |
+%{
+      }
       \new DrumStaff \with {
         drumStyleTable = #preston-drums
         instrumentName = "Drums"
@@ -162,6 +171,7 @@
         >>
       }
     >>
+%}
   }
   \alternative {
     { \bye s1 |
