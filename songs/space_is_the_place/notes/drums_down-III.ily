@@ -1,4 +1,3 @@
 \repeat unfold 3 {
-  bd4 s8 bd s bd s bd |
+  <bd ss>4 ss8 bd ss bd ss bd |
 }
-s8 bd s bd s bd bd bd |

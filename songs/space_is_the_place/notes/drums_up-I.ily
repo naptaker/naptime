@@ -1,4 +1,7 @@
-<ss hh>8 hh   <ss hh> hh   <ss hh> hh   <ss hh>   hh  |
-<ss hh>8 hh   <ss hh> hh   <ss hh> hhho <ss hhho> hho |
-<ss hh>8 hh   <ss hh> hh   <ss hh> hh   <ss hh>   hh  |
-<ss hh>8 hhho <ss hh> hhho <ss hh> hhho <ss hhho> hho |
+\repeat unfold 2 {
+  \repeat unfold 8 { hh8 } |
+}
+\alternative {
+  { hh8 hh hh hh hh hhho hhho hho | }
+  { hh8 hhho hh hhho hh hhho hhho hho | }
+}

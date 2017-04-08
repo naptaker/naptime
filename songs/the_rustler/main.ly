@@ -1,6 +1,6 @@
 %%% ================================================================ [ main.ly ]
-%%% Description: Naptime - Main score for "Loon Juice"
-%%% Copyright:   (c) 2016-2017 Eric Bailey
+%%% Description: Naptime - Main score for "The Rustler"
+%%% Copyright:   (c) 2013-2017 Eric Bailey
 %%% TODO: License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
@@ -14,51 +14,25 @@
 
 \setOption naptaker.guitar-capo #3
 \setOption naptaker.guitar-tabs ##f
-\setOption naptaker.staff-size #17
+\setOption naptaker.staff-size #14
+\setOption naptaker.extra-layout \layout {
+  \omit Score.FretBoard
+  \override Score.ChordName.extra-offset = #'(0 . -3)
+  \override Score.TrillSpanner.bound-details.left.text = ##f
+}
 
 %%% ================================================================= [ Header ]
 
-Key    = { \key c \major }
-Tempo  = { \tempo 4 = 183 }
+Key    = { \key f \minor }
+Tempo  = { \tempo 4 = 170 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \header {
-  title     = \markup \fontsize #10 "Loon Juice"
+  title     = \markup \fontsize #6 "The Rustler"
   opus      = "Naptime"
   composer  = "Eric Bailey"
   arranger  = "Naptaker"
-  copyright = "© 2016-2017 Naptaker"
-}
-
-%%% ================================================================= [ Layout ]
-
-\paper {
-  two-sided = ##t
-  print-first-page-number = ##t
-
-  evenHeaderMarkup = \markup {
-    \column {
-      \fill-line {
-        \null
-        \line {
-          \on-the-fly #print-page-number-check-first
-          \fromproperty #'page:page-number-string
-        }
-      }
-    }
-  }
-
-  oddHeaderMarkup = \markup {
-    \column {
-      \fill-line {
-        \line {
-          \on-the-fly #print-page-number-check-first
-          \fromproperty #'page:page-number-string
-        }
-        \null
-      }
-    }
-  }
+  copyright = "© 2013-2017 Naptaker"
 }
 
 %%% ================================================================== [ Hacks ]
@@ -86,8 +60,8 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 %%% =================================================================== [ Grid ]
 
 \templateInit
-#'("meta" "vox" "chords" "guitar" "guitar strum" "bass" "drums up" "drums down")
-#'(6 6 6 4 6 (1 . 4))
+#'("meta" "chords" "guitar strum" "guitar" "bass" "drums up" "drums down")
+#'(4 8 2 6 6 (1 . 4))
 
 \Naptaker
 

@@ -22,7 +22,7 @@ Tempo  = { \tempo 4 = 160 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \header {
-  title      = \markup \fontsize #2 { "(Together, We Are A) Mountain (Range)" }
+  title      = \markup \fontsize #2 { "Mountain" }
   subtitle   = \markup {
     \fill-line {
       \center-column {

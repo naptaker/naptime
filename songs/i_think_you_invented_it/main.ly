@@ -12,42 +12,47 @@
 
 \useLibrary Naptaker
 
-% \setOption naptaker.guitar-capo #2
+\setOption naptaker.guitar-tuning #guitar-open-d-tuning
+\setOption naptaker.guitar-capo #2
+
 \setOption naptaker.guitar-tabs ##t
-\setOption naptaker.staff-size #12
+
+\setOption naptaker.staff-size #20
 
 %%% ================================================================= [ Header ]
 
 Key    = { \key c \major }
-Tempo  = { \tempo 4 = 150 }
+Tempo  = { \tempo 4 = 138 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
-
 \header {
-  title     = "Space is the Place"
-  opus      = "Naptime"
-  composer  = "Eric Bailey"
-  poet      = "Preston Y. Drum"
-  arranger  = "Naptaker"
+  title    = "I Think You Invented It"
+  opus     = "Naptime"
+  composer = "Eric Bailey"
+  poet     = "Preston Y. Drum"
+  arranger = "Naptaker"
   copyright = "© 2016-2017 Naptaker"
+}
+
+%%% ================================================================= [ Layout ]
+
+\paper {
+  two-sided = ##t
+  print-first-page-number = ##t
 }
 
 %%% =================================================================== [ Grid ]
 
 \templateInit
-#'("meta" "vox" "chords" "guitar" "guitar strum" "bass" "drums up" "drums down")
-#'(4 4 5 4 8 8 7 1 16)
+#'("meta"
+   ;; TODO: "vox"
+   "guitar"
+   "bass"
+   ;; TODO: "drums up" "drums down"
+ )
+#'(4 8 8 8 8 8 52 8 18)
 
 \Naptaker
-
-\gridDisplay
-\gridCheck
-
-\include "parts/chords.ily"
-\include "parts/guitar.ily"
-\include "parts/guitar_strum.ily"
-\include "parts/bass.ily"
-\include "parts/drums.ily"
 
 \gridDisplay
 \gridCheck

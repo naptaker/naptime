@@ -8,7 +8,7 @@ with import nixpkgs { };
 with pkgs.lib;
 
 let
-  version = "0.0.1";
+  version = "0.1.1";
 
   lilypond-with-improviso = lilypond-with-fonts.override {
     fonts = with openlilylib-fonts; [ improviso ];
@@ -48,32 +48,56 @@ let
     });
 
   songs = rec {
+    loon_juice = mkSong {
+      songName = "loon_juice";
+    };
+    the_rustler = mkSong {
+      songName = "the_rustler";
+    };
+    # disco_ball = mkSong {
+    #   songName = "disco_ball";
+    # };
+    # i_want_you = mkSong {
+    #   songName = "i_want_you";
+    # };
+    # no_fun = mkSong {
+    #   songName = "no_fun";
+    # };
     cover_yr_eyes = mkSong {
       songName = "cover_yr_eyes";
-    };
-    funeral_town = mkSong {
-      songName = "funeral_town";
     };
     halfway_haus = mkSong {
       songName = "halfway_haus";
     };
-    loon_juice = mkSong {
-      songName = "loon_juice";
+    i_think_you_invented_it = mkSong {
+      songName = "i_think_you_invented_it";
     };
     mountain = mkSong {
       songName = "mountain";
     };
-    smoked_all_my_smokes = mkSong {
-      songName = "smoked_all_my_smokes";
+    space_is_the_place = mkSong {
+      songName = "space_is_the_place";
     };
+    funeral_town = mkSong {
+      songName = "funeral_town";
+    };
+    # im_already_dead = mkSong {
+    #   songName = "im_already_dead";
+    # };
     all = [
-      cover_yr_eyes
-      funeral_town
-      halfway_haus
       loon_juice
+      the_rustler
+      # disco_ball
+      # i_want_you
+      # no_fun
+      cover_yr_eyes
+      halfway_haus
+      i_think_you_invented_it
       # FIXME: https://github.com/NixOS/nix/issues/759
       # mountain
-      smoked_all_my_smokes
+      space_is_the_place
+      funeral_town
+      # im_already_dead
     ];
   };
 
@@ -111,9 +135,9 @@ let
   };
 in
 
-# if inNixShell then env else drv
-{
-  env = env;
-  drv = drv;
-  scores = engravedScores;
-}
+if inNixShell then env else drv
+# {
+#   env = env;
+#   drv = drv;
+#   scores = engravedScores;
+# }
