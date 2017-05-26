@@ -1,0 +1,19 @@
+#! /usr/bin/env nix-shell
+#! nix-shell --pure ../default.nix -i bash
+
+usage ()
+{
+    echo "Usage: watch [song_name] (./songs/[song_name]/Makefile)"
+    exit 1
+}
+
+# Ensure a song name is given
+[ -n $1 ] || usage;
+
+# Ensure sure the given name points to a real-looking song
+[ -f ./songs/$1/Makefile ] || usage
+
+# Watch LilyPond source files and continuously engrave the score
+watchman-make \
+    -p songs/$1/**/*.ily songs/$1/main.ly \
+    -t "-C songs/$1"

@@ -4,6 +4,6 @@ ees4\5 ees8.\5\noBeam \stemUp
 \once \override Glissando.style = #'dashed-line
 bes4\6\)\glissando
 \ottava #-1
-bes8.\6\noBeam \stemDown a16\6\( bes8\6 des\5 bes\6 a\6 |
+bes8.\6\noBeam \stemDown a16\6\( bes8\6 des\6 bes\6 a\6 |
 aes4\6\) \stemNeutral aes8.\6 ges16\6 ges8\6 aes4\6 f8\6 |
 ges8\6 ges\6 ges\6 ges\6 ges\6 bes\6( a\6 f\6) |

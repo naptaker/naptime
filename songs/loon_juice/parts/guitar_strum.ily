@@ -1,4 +1,21 @@
-\include "global.ily"
-\include "guitar_strum-III.ily"
-\include "guitar_strum-V.ily"
-\include "guitar_strum-VII.ily"
+\gridPutMusic "guitar strum" 2 \relative c {
+  <<
+    {
+      \include "notes/guitar_strum-II.ily" }
+    \\ {
+      \repeat volta 2 {
+        s1.\startTrillSpan s4\stopTrillSpan s4 |
+      }
+      \alternative {
+        { s1.\startTrillSpan s4\stopTrillSpan s4 | }
+        { s1*2 | }
+      }
+    }
+  >>
+}
+
+\gridPutMusic "guitar strum" 4 \relative c {
+  \repeat volta 2 {
+    \include "notes/guitar_strum-IV.ily"
+  }
+}

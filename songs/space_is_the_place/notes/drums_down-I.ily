@@ -1,4 +1,7 @@
-bd4   s     s     s     |
-s4    s     s8 bd s bd  |
-bd4   s     s     s     |
-s8 bd s  bd s  bd bd bd |
+\repeat unfold 2 {
+  bd4 ss ss ss |
+}
+\alternative {
+  { ss4 ss ss8 bd ss bd | }
+  { ss8 bd ss bd ss bd <bd ss> bd | }
+}

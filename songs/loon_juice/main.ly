@@ -1,27 +1,102 @@
-\include "global.ily"
-\include "parts/guitar.ily"
-\include "parts/guitar_strum.ily"
-\include "parts/bass.ily"
+%%% ================================================================ [ main.ly ]
+%%% Description: Naptime - Main score for "Loon Juice"
+%%% Copyright:   (c) 2016-2017 Eric Bailey
+%%% TODO: License:     see LICENSE
+%%% ==================================================================== [ EOH ]
+
+\version "2.19.24"
+
+\include "openlilylib"
+
+%%% ======================================================== [ Naptaker Config ]
+
+\useLibrary Naptaker
+
+\setOption naptaker.guitar-capo #3
+\setOption naptaker.guitar-tabs ##f
+\setOption naptaker.staff-size #15
+\setOption naptaker.extra-layout \layout {
+  \override Score.TrillSpanner.bound-details.left.text = ##f
+}
+
+%%% ================================================================= [ Header ]
+
+Key    = { \key c \major }
+Tempo  = { \tempo 4 = 183 }
+global = { \Tempo \defaultTimeSignature \time 4/4 }
+
+\header {
+  title     = \markup \fontsize #8 "Loon Juice"
+  opus      = "Naptime"
+  composer  = "Eric Bailey"
+  arranger  = "Naptaker"
+  copyright = "© 2016-2017 Eric Bailey"
+}
+
+%%% ================================================================= [ Layout ]
+
+\paper {
+  two-sided = ##t
+  print-first-page-number = ##t
+
+  evenHeaderMarkup = \markup {
+    \column {
+      \fill-line {
+        \null
+        \line {
+          \on-the-fly #print-page-number-check-first
+          \fromproperty #'page:page-number-string
+        }
+      }
+    }
+  }
+
+  oddHeaderMarkup = \markup {
+    \column {
+      \fill-line {
+        \line {
+          \on-the-fly #print-page-number-check-first
+          \fromproperty #'page:page-number-string
+        }
+        \null
+      }
+    }
+  }
+}
+
+%%% ================================================================== [ Hacks ]
+
+#(begin
+   (define bye
+     (define-music-function
+       (parser location) ()
+       #{
+         \stopStaff \hideNotes
+         \omit Staff.Rest \omit Staff.MultiMeasureRest
+         \once {
+           \omit Staff.Clef \omit Staff.ClefModifier
+           \omit Staff.TimeSignature
+         }
+       #}))
+   (define hi
+     (define-music-function
+       (parser location) ()
+       #{
+         \startStaff \unHideNotes
+         \undo \omit Staff.Rest \undo \omit Staff.MultiMeasureRest
+       #})))
+
+%%% =================================================================== [ Grid ]
+
+\templateInit
+#'("meta" "vox" "chords" "guitar" "guitar strum" "bass" "drums up" "drums down")
+#'(6 6 6 4 6 (1 . 4))
+
+\Naptaker
 
 \gridDisplay
 \gridCheck
 
-\score {
-  \Naptaker #guitar-open-d-tuning
+\include "naptaker/mtf-improviso.ily"
 
-  \layout {
-    %% Increase the size of bar numbers by 2
-    \override Score.BarNumber.font-size = #2
-
-    %% Draw a box around bar numbers
-    \override Score.BarNumber.stencil =
-    #(make-stencil-boxer 0.1 0.25 ly:text-interface::print)
-
-    \override Score.BarNumber.padding = #3
-  }
-}
-
-\score {
-  \unfoldRepeats \Naptaker #guitar-open-d-tuning
-  \midi { }
-}
+%%% ==================================================================== [ EOF ]
