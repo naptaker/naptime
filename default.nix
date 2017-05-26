@@ -52,6 +52,7 @@ let
           -B
           openlilylib=${openlilylib}
           lilypond=${lilypond-with-improviso}/bin/lilypond
+          job-count=''${NIX_BUILD_CORES:-1}
           pdfName=${pdfName}
           prefix=$out/
           ${optionalString debug "DEBUG=1"}

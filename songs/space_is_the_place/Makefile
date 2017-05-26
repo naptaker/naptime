@@ -2,6 +2,7 @@
 ###   - openlilylib (required)
 ###   - lilypond
 ###   - lilypondFlags
+###   - job-count
 ###   - pdfName
 ###   - prefix
 
@@ -19,7 +20,7 @@ endif
 includes := -I ${openlilylib} -I ${openlilylib}/ly
 lilypondFlags ?= \
 	--loglevel=${loglevel} \
-	-djob-count=8 \
+	-djob-count=${job-count} \
 	-dno-point-and-click \
 	-dpreview \
 	-drelative-includes \
