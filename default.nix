@@ -106,7 +106,7 @@ let
       # no_fun
       cover_yr_eyes
       halfway_haus
-      i_think_you_invented_it
+      # FIXME: i_think_you_invented_it
       # FIXME: https://github.com/NixOS/nix/issues/759
       # mountain
       space_is_the_place
