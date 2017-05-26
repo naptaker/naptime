@@ -3,7 +3,17 @@
 , debug ? false
 }:
 
-with import nixpkgs { };
+with import nixpkgs {
+  config = {
+    packageOverrides = pkgs: rec {
+      # HACK
+      # https://github.com/NixOS/nixpkgs/pull/26118
+      lilypond-with-fonts = pkgs.callPackage ../../../.nix-defexpr/nixpkgs/pkgs/misc/lilypond/with-fonts.nix {
+        lilypond = pkgs.lilypond-unstable;
+      };
+    };
+  };
+};
 
 with pkgs.lib;
 
@@ -28,6 +38,10 @@ let
       name = "naptime-${songName}-${version}";
       inherit FONTCONFIG_FILE pdfName songName version;
       src = ./. + "/songs/${songName}";
+
+      # configurePhase = ''
+      #   ${lilypond-with-improviso}/bin/lilypond -dshow-available-fonts
+      # '';
 
       buildPhase = ''
         install -m755 -d $out
