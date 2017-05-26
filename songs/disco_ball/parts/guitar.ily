@@ -1,8 +1,8 @@
-\gridPutMusic "guitar" 2 \relative d' {
-  \include "notes/guitar-II.ily"
+\gridPutMusic "guitar" 3 \relative d' {
+  \include "notes/guitar-III.ily"
 }
 
-\gridPutMusic "guitar" 5 \relative d, {
-  \startStaff
-  \include "notes/guitar-V.ily"
-}
+% \gridPutMusic "guitar" 6 \relative d, {
+%   \startStaff
+%   \include "notes/guitar-VI.ily"
+% }

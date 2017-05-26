@@ -54,9 +54,9 @@ let
     the_rustler = mkSong {
       songName = "the_rustler";
     };
-    # disco_ball = mkSong {
-    #   songName = "disco_ball";
-    # };
+    disco_ball = mkSong {
+      songName = "disco_ball";
+    };
     # i_want_you = mkSong {
     #   songName = "i_want_you";
     # };
@@ -87,7 +87,7 @@ let
     all = [
       loon_juice
       the_rustler
-      # disco_ball
+      disco_ball
       # i_want_you
       # no_fun
       cover_yr_eyes
