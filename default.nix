@@ -136,8 +136,3 @@ let
 in
 
 if inNixShell then env else drv
-# {
-#   env = env;
-#   drv = drv;
-#   scores = engravedScores;
-# }
