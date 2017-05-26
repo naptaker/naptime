@@ -12,7 +12,7 @@
 
 \useLibrary Naptaker
 
-% \setOption naptaker.guitar-capo #2
+%% \setOption naptaker.guitar-capo #2
 \setOption naptaker.guitar-tabs ##t
 \setOption naptaker.staff-size #12
 
@@ -39,15 +39,6 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 #'(4 4 5 4 8 8 7 1 16)
 
 \Naptaker
-
-\gridDisplay
-\gridCheck
-
-\include "parts/chords.ily"
-\include "parts/guitar.ily"
-\include "parts/guitar_strum.ily"
-\include "parts/bass.ily"
-\include "parts/drums.ily"
 
 \gridDisplay
 \gridCheck
