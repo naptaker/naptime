@@ -8,7 +8,7 @@
       }
       \alternative {
         { s1.\startTrillSpan s4\stopTrillSpan s4 | }
-        { s1\startTrillSpan | s1\stopTrillSpan | }
+        { s1*2 | }
       }
     }
   >>

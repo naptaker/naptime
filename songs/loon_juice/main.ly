@@ -14,7 +14,10 @@
 
 \setOption naptaker.guitar-capo #3
 \setOption naptaker.guitar-tabs ##f
-\setOption naptaker.staff-size #17
+\setOption naptaker.staff-size #15
+\setOption naptaker.extra-layout \layout {
+  \override Score.TrillSpanner.bound-details.left.text = ##f
+}
 
 %%% ================================================================= [ Header ]
 
@@ -23,11 +26,11 @@ Tempo  = { \tempo 4 = 183 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \header {
-  title     = \markup \fontsize #10 "Loon Juice"
+  title     = \markup \fontsize #8 "Loon Juice"
   opus      = "Naptime"
   composer  = "Eric Bailey"
   arranger  = "Naptaker"
-  copyright = "© 2016-2017 Naptaker"
+  copyright = "© 2016-2017 Eric Bailey"
 }
 
 %%% ================================================================= [ Layout ]

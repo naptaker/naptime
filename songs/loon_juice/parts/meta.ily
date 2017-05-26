@@ -15,7 +15,7 @@
      }
      #} 'ChordNames)
   s1*2
-  \pageBreak
+  \break
 }
 
 \gridPutMusic "meta" 3 {
@@ -33,7 +33,7 @@
   s4
   \set Score.repeatCommands = #'((volta #f))
   \bar ":|.:"
-  \break
+  \pageBreak
 }
 
 \gridPutMusic "meta" 4 {
@@ -47,7 +47,7 @@
   \tweak X-offset #6.5 \mark MegaMan
   s1
   \bar ":|."
-  \pageBreak
+  \break
 }
 
 \gridPutMusic "meta" 5 {
@@ -55,7 +55,6 @@
   \tempo 4 = 192
   s1*4 \break
   s1*2
-  % \break
 }
 
 \gridPutMusic "meta" 6 {
