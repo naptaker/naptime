@@ -19,8 +19,8 @@ let
   openlilylib = fetchFromGitHub {
     owner = "yurrriq";
     repo = "snippets";
-    rev = "a62d43c";
-    sha256 = "00znlnhqp12p4yqny1s346dqczjc3z0rgdf7zcaasbz94p6fm30y";
+    rev = "2dc9c7dba9fa5a93005939f42d907f6260519941";
+    sha256 = "17ncdkh2q4v6m378rj9qhmq5q5x52br23c68hj142zk5k897p69s";
   };
 
   mkSong = a@{ songName, pdfName ? songName, ... }:
