@@ -18,7 +18,10 @@
         \startStaff
         s1
       } \\ {
+        s1*3 |
+        \ottava #1
         \include "notes/guitar-IV.ily"
+        \ottava #0
       }
     >>
   }
