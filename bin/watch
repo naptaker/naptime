@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell --pure ../default.nix -i bash -A env
+#! nix-shell --pure ../default.nix -i bash
 
 usage ()
 {
