@@ -139,12 +139,17 @@ let
 
     buildPhase = "true";
 
+    outputs = [ "out" ] ++ map (score: score.songName) engravedScores;
+
     installPhase = ''
-      install -m755 -d $out
       ${concatMapStringsSep "\n"
-          (score: "install -m644 -t $out ${score}/*")
+          (score: ''
+            install -m644 -Dt ''$${score.songName} ${score}/*
+            install -m644 -Dt $out ''$${score.songName}/${score.pdfName}.pdf
+          '')
           engravedScores}
     '';
+
     # TODO: meta
   };
 in
