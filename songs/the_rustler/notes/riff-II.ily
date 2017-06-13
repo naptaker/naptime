@@ -1,3 +1,4 @@
+\once \set Staff.forceClef = ##t
 \repeat unfold 2 {
   f4 f es'8( f) as4-- |
 }
