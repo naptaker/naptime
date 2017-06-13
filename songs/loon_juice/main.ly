@@ -30,7 +30,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   opus      = "Naptime"
   composer  = "Eric Bailey"
   arranger  = "Naptaker"
-  copyright = "© 2016-2017 Naptaker"
+  copyright = "© 2016-2017 Eric Bailey"
 }
 
 %%% ================================================================= [ Layout ]
