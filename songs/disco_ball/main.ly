@@ -1,7 +1,7 @@
 %%% ================================================================ [ main.ly ]
 %%% Description: Naptime - Main score for "Disco Ball"
-%%% Copyright:   (c) 2016-2017 Eric Bailey
-%%% TODO: License:     see LICENSE
+%%% Copyright:   (c) 2016-2017 Naptaker
+%%% License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
 \version "2.19.24"
@@ -25,12 +25,12 @@ Tempo  = { \tempo 4 = 192 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \header {
-  title     = "Disco Ball"
+  title     = \markup \fontsize #8 "Disco Ball"
   opus      = "Naptime"
   composer  = "Preston Y. Drum"
   poet      = "Preston Y. Drum"
   arranger  = "Naptaker"
-  copyright = "© 2016 Naptaker"
+  copyright = "© 2016-2017 Naptaker"
 }
 
 %%% ================================================================== [ Hacks ]

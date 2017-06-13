@@ -18,7 +18,7 @@ with import nixpkgs {
 with pkgs.lib;
 
 let
-  version = "0.1.1";
+  version = builtins.readFile ./VERSION;
 
   lilypond-with-improviso = lilypond-with-fonts.override {
     fonts = with openlilylib-fonts; [ improviso ];
@@ -132,7 +132,6 @@ let
        else map (songName: mkSong { inherit songName; })
                 (splitString " " scores);
 
-  ## FIXME: Look into $outputLib and "multiple-output derivations"
   drv = stdenv.mkDerivation {
     name = "naptime-${version}";
     inherit FONTCONFIG_FILE engravedScores openlilylib version;
