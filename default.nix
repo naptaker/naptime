@@ -39,10 +39,6 @@ let
       inherit FONTCONFIG_FILE pdfName songName version;
       src = ./. + "/songs/${songName}";
 
-      # configurePhase = ''
-      #   ${lilypond-with-improviso}/bin/lilypond -dshow-available-fonts
-      # '';
-
       buildPhase = ''
         install -m755 -d $out
       '';
