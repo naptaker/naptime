@@ -1,7 +1,7 @@
 %%% ================================================================ [ main.ly ]
 %%% Description: Naptime - Main score for "Funeral Town"
-%%% Copyright:   (c) 2016-2017 Eric Bailey
-%%% TODO: License:     see LICENSE
+%%% Copyright:   (c) 2016-2017 Naptaker
+%%% License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
 \version "2.19.24"

@@ -1,7 +1,7 @@
 %%% ================================================================ [ main.ly ]
 %%% Description: Naptime - Main score for "The Rustler"
-%%% Copyright:   (c) 2013-2017 Eric Bailey
-%%% TODO: License:     see LICENSE
+%%% Copyright:   (c) 2013-2017 Naptaker
+%%% License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
 \version "2.19.24"
