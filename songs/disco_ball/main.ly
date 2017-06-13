@@ -25,12 +25,12 @@ Tempo  = { \tempo 4 = 192 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 \header {
-  title     = "Disco Ball"
+  title     = \markup \fontsize #8 "Disco Ball"
   opus      = "Naptime"
   composer  = "Preston Y. Drum"
   poet      = "Preston Y. Drum"
   arranger  = "Naptaker"
-  copyright = "© 2016 Naptaker"
+  copyright = "© 2016-2017 Naptaker"
 }
 
 %%% ================================================================== [ Hacks ]
