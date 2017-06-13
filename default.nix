@@ -18,7 +18,7 @@ with import nixpkgs {
 with pkgs.lib;
 
 let
-  version = "0.1.1";
+  version = builtins.readFile ./VERSION;
 
   lilypond-with-improviso = lilypond-with-fonts.override {
     fonts = with openlilylib-fonts; [ improviso ];
