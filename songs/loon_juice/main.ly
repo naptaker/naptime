@@ -35,6 +35,8 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 %%% ================================================================= [ Layout ]
 
+pageNumberColor = #(if (defined? 'pageNumberColor) pageNumberColor black)
+
 \paper {
   two-sided = ##t
   print-first-page-number = ##t
@@ -44,6 +46,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
       \fill-line {
         \null
         \line {
+          \with-color \pageNumberColor
           \on-the-fly #print-page-number-check-first
           \fromproperty #'page:page-number-string
         }
@@ -55,6 +58,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
     \column {
       \fill-line {
         \line {
+          \with-color \pageNumberColor
           \on-the-fly #print-page-number-check-first
           \fromproperty #'page:page-number-string
         }
