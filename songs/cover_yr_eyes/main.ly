@@ -36,6 +36,8 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 
 %%% ================================================================= [ Layout ]
 
+pageNumberColor = #(if (defined? 'pageNumberColor) pageNumberColor black)
+
 \paper {
   two-sided = ##t
   print-first-page-number = ##t
@@ -44,6 +46,32 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   %% inner-margin = 0.375\in
   %% outer-margin = 0.375\in
   %% binding-offset = 0.5\in
+
+  evenHeaderMarkup = \markup {
+    \column {
+      \fill-line {
+        \null
+        \line {
+          \with-color \pageNumberColor
+          \on-the-fly #print-page-number-check-first
+          \fromproperty #'page:page-number-string
+        }
+      }
+    }
+  }
+
+  oddHeaderMarkup = \markup {
+    \column {
+      \fill-line {
+        \line {
+          \with-color \pageNumberColor
+          \on-the-fly #print-page-number-check-first
+          \fromproperty #'page:page-number-string
+        }
+        \null
+      }
+    }
+  }
 }
 
 %%% =================================================================== [ Grid ]
