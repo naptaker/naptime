@@ -1,0 +1,17 @@
+#! /usr/bin/env bash
+
+set -euxo pipefail
+
+
+rev="$1"
+shift
+
+sha256=$(nix-prefetch-url --unpack "https://github.com/NixOS/nixpkgs/archive/${rev}.tar.gz")
+
+
+cat <<EOF >nixpkgs-src.json
+{
+    "rev": "$rev",
+    "sha256": "$sha256"
+}
+EOF

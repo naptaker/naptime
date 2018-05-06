@@ -1,7 +1,8 @@
 ### Params:
 ###   - openlilylib (required)
 ###   - lilypond
-###   - lilypond_flags
+###   - lilypondFlags
+###   - job-count
 ###   - pdfName
 ###   - prefix
 
@@ -17,9 +18,9 @@ else
 endif
 
 includes := -I ${openlilylib} -I ${openlilylib}/ly
-lilypond_flags ?= \
+lilypondFlags ?= \
 	--loglevel=${loglevel} \
-	-djob-count=8 \
+	-djob-count=${job-count} \
 	-dno-point-and-click \
 	-dpreview \
 	-drelative-includes \
@@ -35,5 +36,5 @@ all: install
 install: ${prefix}${pdfName}.pdf
 
 ${prefix}${pdfName}.pdf: main.ly notes/* parts/*
-	${lilypond} ${lilypond_flags} ${includes} \
+	${lilypond} ${lilypondFlags} ${includes} \
 		--pdf -o ${prefix}${pdfName} $< ${output}
