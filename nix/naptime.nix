@@ -3,7 +3,7 @@
 
 let
 
-  _songs = splitString "\n" (builtins.readFile ../SONGS);
+  _songs = splitString "\n" (builtins.readFile ../SONGLIST);
 
   openlilylib = fetchTarball {
     url = "https://github.com/yurrriq/snippets/archive/ca6e9cd9.tar.gz";
