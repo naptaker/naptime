@@ -24,7 +24,12 @@
 \gridPutMusic "guitar" 4 \relative c'' {
   \fuzzOn
   \ottava #1
-  \repeat percent 6 {
+  \repeat percent 2 {
+    \repeat percent 2 {
+      \include "notes/guitar-IV.ily"
+    }
+  }
+  \repeat percent 2 {
     \include "notes/guitar-IV.ily"
   }
 
