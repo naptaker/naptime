@@ -1,16 +1,24 @@
 with import ./nix/lib.nix;
 
-{ nixpkgs ? fetchNixpkgs (importJSON ./nixpkgs-src.json)
+{ system ? builtins.currentSystem
+, nixpkgs ? fetchNixpkgs (importJSON ./nixpkgs-src.json)."${system}"
 , songs ? null
 , debug ? false
 }:
 
 let
-  pkgs = import nixpkgs {};
-
-  lilypond = pkgs.lilypond-with-fonts.override {
-    fonts = with pkgs.openlilylib-fonts; [ improviso ];
+  pkgs = import nixpkgs {
+    inherit system;
+    config.packageOverrides = super: rec {
+      lilypond-with-improviso = super.lilypond-with-fonts.override {
+        fonts = with super.openlilylib-fonts; [ improviso ];
+      } // {
+        inherit (super.lilypond-unstable) meta;
+      };
+    };
   };
+
+  lilypond = pkgs.lilypond-with-improviso;
 
   version = builtins.readFile ./VERSION;
 in
@@ -28,7 +36,7 @@ pkgs.stdenv.mkDerivation rec {
   nativeBuildInputs = [
     lilypond
   ] ++ (with pkgs; [
-    nix      
+    nix
   ]);
 
   phases = "unpackPhase buildPhase installPhase";
@@ -49,7 +57,7 @@ pkgs.stdenv.mkDerivation rec {
     description = "Scores for the Naptaker album, Naptime";
     homepage = http://github.com/naptaker/naptime;
     maintainers = with maintainers; [ yurrriq ];
-    inherit (pkgs.lilypond-unstable.meta) platforms;
+    inherit (lilypond.meta) platforms;
     license = licenses.cc-by-nc-sa-40;
   };
 }
