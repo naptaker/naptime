@@ -1,17 +1,16 @@
-#! /usr/bin/env bash
+#! /usr/bin/env nix-shell
+#! nix-shell -p bash jq moreutils -i bash
 
 set -euxo pipefail
 
 
-rev="$1"
-shift
+: "${rev:=$1}"
+: "${system:=$(nix eval --raw '(builtins.currentSystem)')}"
+: "${sha256:=$(nix-prefetch-url --unpack "https://github.com/NixOS/nixpkgs/archive/${rev}.tar.gz")}"
 
-sha256=$(nix-prefetch-url --unpack "https://github.com/NixOS/nixpkgs/archive/${rev}.tar.gz")
 
-
-cat <<EOF >nixpkgs-src.json
-{
-    "rev": "$rev",
-    "sha256": "$sha256"
-}
-EOF
+jq --arg system "$system" \
+   --arg rev "$rev" \
+   --arg sha256 "$sha256" \
+   '.[$system] = {rev: $rev, sha256: $sha256}' \
+   <nixpkgs-src.json | sponge nixpkgs-src.json

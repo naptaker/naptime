@@ -1,16 +1,36 @@
 with import ./nix/lib.nix;
 
-{ nixpkgs ? fetchNixpkgs (importJSON ./nixpkgs-src.json)
+{ system ? builtins.currentSystem
+, nixpkgs ? fetchNixpkgs (importJSON ./nixpkgs-src.json)."${system}"
 , songs ? null
 , debug ? false
 }:
 
 let
-  pkgs = import nixpkgs {};
+  pkgs = import nixpkgs {
+    inherit system;
+    config.packageOverrides = super: rec {
+      lilypond-with-improviso = super.lilypond-with-fonts.override {
+        fonts = with super.openlilylib-fonts; [ improviso ];
+      } // {
+        inherit (lilypond-unstable) meta;
+      };
 
-  lilypond = pkgs.lilypond-with-fonts.override {
-    fonts = with pkgs.openlilylib-fonts; [ improviso ];
+      lilypond-unstable = super.stdenv.lib.overrideDerivation super.lilypond-unstable (p: rec {
+        majorVersion = "2.19";
+        minorVersion = "80";
+        version = "${majorVersion}.${minorVersion}";
+        name = "lilypond-${version}";
+
+        src = super.fetchurl {
+          url = "http://download.linuxaudio.org/lilypond/sources/v${majorVersion}/lilypond-${version}.tar.gz";
+          sha256 = "0lql4q946gna2pl1g409mmmsvn2qvnq2z5cihrkfhk7plcqdny9n";
+        };
+      });
+    };
   };
+
+  lilypond = pkgs.lilypond-with-improviso;
 
   version = builtins.readFile ./VERSION;
 in
@@ -28,7 +48,7 @@ pkgs.stdenv.mkDerivation rec {
   nativeBuildInputs = [
     lilypond
   ] ++ (with pkgs; [
-    nix      
+    nix
   ]);
 
   phases = "unpackPhase buildPhase installPhase";
@@ -49,7 +69,7 @@ pkgs.stdenv.mkDerivation rec {
     description = "Scores for the Naptaker album, Naptime";
     homepage = http://github.com/naptaker/naptime;
     maintainers = with maintainers; [ yurrriq ];
-    inherit (pkgs.lilypond-unstable.meta) platforms;
+    inherit (lilypond.meta) platforms;
     license = licenses.cc-by-nc-sa-40;
   };
 }
