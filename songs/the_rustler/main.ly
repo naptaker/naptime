@@ -1,6 +1,6 @@
 %%% ================================================================ [ main.ly ]
 %%% Description: Naptime - Main score for "The Rustler"
-%%% Copyright:   (c) 2013-2017 Naptaker
+%%% Copyright:   (c) 2013-2018 Naptaker
 %%% License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
@@ -32,30 +32,8 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   opus      = "Naptime"
   composer  = "Eric Bailey"
   arranger  = "Naptaker"
-  copyright = "© 2013-2017 Naptaker"
+  copyright = "© 2013-2018 Naptaker"
 }
-
-%%% ================================================================== [ Hacks ]
-
-#(begin
-   (define bye
-     (define-music-function
-       (parser location) ()
-       #{
-         \stopStaff \hideNotes
-         \omit Staff.Rest \omit Staff.MultiMeasureRest
-         \once {
-           \omit Staff.Clef \omit Staff.ClefModifier
-           \omit Staff.TimeSignature
-         }
-       #}))
-   (define hi
-     (define-music-function
-       (parser location) ()
-       #{
-         \startStaff \unHideNotes
-         \undo \omit Staff.Rest \undo \omit Staff.MultiMeasureRest
-       #})))
 
 %%% =================================================================== [ Grid ]
 

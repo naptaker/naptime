@@ -1,6 +1,6 @@
 %%% ================================================================ [ main.ly ]
 %%% Description: Naptime - Main score for "Loon Juice"
-%%% Copyright:   (c) 2016-2017 Naptaker
+%%% Copyright:   (c) 2016-2018 Eric Bailey
 %%% License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
@@ -30,7 +30,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   opus      = "Naptime"
   composer  = "Eric Bailey"
   arranger  = "Naptaker"
-  copyright = "© 2016-2017 Eric Bailey"
+  copyright = "© 2016-2018 Eric Bailey"
 }
 
 %%% ================================================================= [ Layout ]
@@ -68,27 +68,6 @@ pageNumberColor = #(if (defined? 'pageNumberColor) pageNumberColor black)
   }
 }
 
-%%% ================================================================== [ Hacks ]
-
-#(begin
-   (define bye
-     (define-music-function
-       (parser location) ()
-       #{
-         \stopStaff \hideNotes
-         \omit Staff.Rest \omit Staff.MultiMeasureRest
-         \once {
-           \omit Staff.Clef \omit Staff.ClefModifier
-           \omit Staff.TimeSignature
-         }
-       #}))
-   (define hi
-     (define-music-function
-       (parser location) ()
-       #{
-         \startStaff \unHideNotes
-         \undo \omit Staff.Rest \undo \omit Staff.MultiMeasureRest
-       #})))
 
 %%% =================================================================== [ Grid ]
 

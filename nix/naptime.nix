@@ -6,8 +6,8 @@ let
   _songs = splitString "\n" (builtins.readFile ../SONGLIST);
 
   openlilylib = fetchTarball {
-    url = "https://github.com/yurrriq/snippets/archive/ca6e9cd9.tar.gz";
-    sha256 = "15wr9iqbbvr3yk1jmwhxqmj5j58ji35dpynid0096rrh7mklb5qq";
+    url = "https://github.com/yurrriq/snippets/archive/138955a7.tar.gz";
+    sha256 = "0lgkisms8p4q5h1as69gzmdqra242q7lj8vm1pmdgnwwyy8s1i1v";
   };
 
   inherit (lib) concatMapStringsSep isString intersectLists optionalString splitString;
