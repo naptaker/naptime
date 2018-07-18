@@ -8,15 +8,18 @@
 
 \include "openlilylib"
 
+
 %%% ======================================================== [ Naptaker Config ]
 
 \useLibrary Naptaker
 
 \setOption naptaker.guitar-tabs ##f
-\setOption naptaker.staff-size #12
+\setOption naptaker.staff-size #13
 \setOption naptaker.extra-layout \layout {
   \omit Score.FretBoard
+  \override Score.ChordName.extra-offset = #'(0 . -3)
 }
+
 
 %%% ================================================================= [ Header ]
 
@@ -24,14 +27,16 @@ Key    = { \key c \major }
 Tempo  = { \tempo 4 = 192 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
+
 \header {
   title     = \markup \fontsize #8 "Disco Ball"
   opus      = "Naptime"
   composer  = "Preston Y. Drum"
   poet      = "Preston Y. Drum"
   arranger  = "Naptaker"
-  copyright = "© 2016-2018 Naptaker"
+  copyright = "© 2016-2018 Eric Bailey"
 }
+
 
 %%% =================================================================== [ Grid ]
 
@@ -48,5 +53,6 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 \gridCheck
 
 \include "naptaker/mtf-improviso.ily"
+
 
 %%% ==================================================================== [ EOF ]

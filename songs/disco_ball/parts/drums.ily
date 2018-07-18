@@ -14,6 +14,7 @@
   bd4 bd8 r bd r bd r |
 }
 
+
 \gridPutMusic "drums up" 2 \drummode {
   \repeat unfold 2 {
     cymr4 <toml sn> toml <toml sn> |

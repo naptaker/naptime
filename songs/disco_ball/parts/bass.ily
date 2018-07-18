@@ -5,11 +5,14 @@
   }
 }
 
+
 \gridPutMusic "bass" 3 \gridGetCellMusic "bass" 2
+
 
 \gridPutMusic "bass" 4 \relative c, {
   \include "notes/bass-IV.ily"
 }
+
 
 \gridPutMusic "bass" 5 \relative c, {
   \repeat unfold 4 {
@@ -21,6 +24,7 @@
     { } % HACK
   }
 }
+
 
 \gridPutMusic "bass" 6 \relative c, {
   g4 r g r |

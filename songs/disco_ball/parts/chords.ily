@@ -12,6 +12,7 @@
   }
 }
 
+
 \gridPutMusic "chords" 2 \chordmode {
   \repeat unfold 2 {
     s4 \once \set chordChanges = ##f d s cis |
@@ -24,10 +25,12 @@
   }
 }
 
+
 \gridPutMusic "chords" 4 \chordmode {
   \repeat unfold 2 {
     \gridGetCellMusic "chords" 2
   }
 }
+
 
 %%% ==================================================================== [ EOF ]

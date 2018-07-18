@@ -9,6 +9,7 @@
   R1 |
 }
 
+
 \gridPutMusic "guitar strum" 2 \relative c {
   \include "notes/guitar_strum-II.ily"
 }
@@ -19,6 +20,7 @@
     \include "notes/guitar_strum-II.ily"
   }
 }
+
 
 \gridPutMusic "guitar strum" 5 \relative d, {
   \repeat unfold 2 {

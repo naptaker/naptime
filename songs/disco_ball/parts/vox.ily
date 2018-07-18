@@ -15,6 +15,7 @@
   }
 }
 
+
 \gridPutMusic "vox" 2 \with {
   lyrics = \lyricmode { }
   music = \relative c {
@@ -29,12 +30,14 @@
   }
 }
 
+
 \gridPutMusic "vox" 3 \with {
   lyrics = \lyricmode { }
   music = {
     R1*8
   }
 }
+
 
 \gridPutMusic "vox" 4 \with {
   lyrics = \lyricmode { }
@@ -61,6 +64,7 @@
     R1 |
   }
 }
+
 
 \gridPutMusic "vox" 5 \with {
   lyrics = \lyricmode { }
