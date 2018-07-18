@@ -56,6 +56,7 @@
    (place-fret 3 4 1)
    (barre 6 3 4))
 
+
 %%% High Fret Table
 
 #(define high-fret-table (make-fretboard-table))
@@ -145,6 +146,7 @@
    (place-fret 4 15 3)
    (barre 6 4 15))
 
+
 %%% ================================================================= [ Chords ]
 
 \gridPutMusic "chords" 2 \chordmode {
@@ -163,11 +165,13 @@
   }
 }
 
+
 \gridPutMusic "chords" 4 \chordmode {
   \set predefinedDiagramTable = #stoner-fret-table
   \repeat volta 2 {
     \include "notes/guitar_strum-IV.ily"
   }
 }
+
 
 %%% ==================================================================== [ EOF ]

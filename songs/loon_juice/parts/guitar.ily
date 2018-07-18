@@ -2,10 +2,23 @@
   \include "notes/guitar-I.ily"
 }
 
+
 \gridPutMusic "guitar" 3 {
-  << { \relative c' { \walkerHeadsMinor \override TabNoteHead.font-size = #-4.5 \include "notes/guitar-III.ily" } } \\
-     { \relative c' { \include "notes/guitar-I.ily"   } } >>
+  <<
+    {
+      \relative c' {
+        \walkerHeadsMinor
+        \override TabNoteHead.font-size = #-4.5
+        \include "notes/guitar-III.ily"
+      }
+    } \\ {
+      \relative c' {
+        \include "notes/guitar-I.ily"
+      }
+    }
+  >>
 }
+
 
 \gridPutMusic "guitar" 4 \relative c {
   \voiceNeutralStyle
@@ -27,9 +40,11 @@
   }
 }
 
+
 \gridPutMusic "guitar" 5 \relative c' {
   \include "notes/guitar-V.ily"
 }
+
 
 \gridPutMusic "guitar" 6 \relative c {
   <g d' g b>4

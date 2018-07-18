@@ -5,18 +5,21 @@
   \break
 }
 
+
 \gridPutMusic "meta" 2 {
   \mark \markup { \musicglyph #"scripts.segno" }
   s1*3
   s2
   #(context-spec-music #{
      \new ChordNames {
-       s2 \tweak extra-offset #'(-7.9 . -15) \mark \markup \fontsize #-7 \sans alternate
+       s2 \tweak extra-offset #'(-7.9 . -15)
+       \mark \markup \fontsize #-7 \sans alternate
      }
      #} 'ChordNames)
   s1*2
   \break
 }
+
 
 \gridPutMusic "meta" 3 {
   \mark Chorus
@@ -36,6 +39,7 @@
   \pageBreak
 }
 
+
 \gridPutMusic "meta" 4 {
   \once \override Score.MetronomeMark.X-offset = #-9.5
   \tweak X-offset #-1 \mark Jam
@@ -50,12 +54,14 @@
   \break
 }
 
+
 \gridPutMusic "meta" 5 {
   \mark Reprise
   \tempo 4 = 192
   s1*4 \break
   s1*2
 }
+
 
 \gridPutMusic "meta" 6 {
   s4

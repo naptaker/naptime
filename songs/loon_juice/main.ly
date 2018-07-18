@@ -4,9 +4,10 @@
 %%% License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
-\version "2.19.24"
+\version "2.19.80"
 
 \include "openlilylib"
+
 
 %%% ======================================================== [ Naptaker Config ]
 
@@ -19,11 +20,13 @@
   \override Score.TrillSpanner.bound-details.left.text = ##f
 }
 
+
 %%% ================================================================= [ Header ]
 
 Key    = { \key c \major }
 Tempo  = { \tempo 4 = 183 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
+
 
 \header {
   title     = \markup \fontsize #8 "Loon Juice"
@@ -33,9 +36,11 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   copyright = "© 2016-2018 Eric Bailey"
 }
 
+
 %%% ================================================================= [ Layout ]
 
 pageNumberColor = #(if (defined? 'pageNumberColor) pageNumberColor black)
+
 
 \paper {
   two-sided = ##t
@@ -81,5 +86,6 @@ pageNumberColor = #(if (defined? 'pageNumberColor) pageNumberColor black)
 \gridCheck
 
 \include "naptaker/mtf-improviso.ily"
+
 
 %%% ==================================================================== [ EOF ]
