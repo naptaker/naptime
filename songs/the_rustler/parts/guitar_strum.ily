@@ -9,6 +9,7 @@
   >>
 }
 
+
 \gridPutMusic "guitar strum" 4 {
   \repeat volta 4 {
     f4. f f4 |
@@ -22,6 +23,7 @@
   }
 }
 
+
 \gridPutMusic "guitar strum" 5 {
   \repeat unfold 2 {
     #(make-music 'DoublePercentEvent 'length (ly:make-moment 2/1))
@@ -29,6 +31,7 @@
   f4. f f4 |
   << { f1 } \\ { s2.\startTrillSpan s8. s16\stopTrillSpan } >> |
 }
+
 
 \gridPutMusic "guitar strum" 6 {
   f4

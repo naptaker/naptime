@@ -13,6 +13,7 @@
   \drag sn8 <bd sn> r bd r bd r bd |
 }
 
+
 \gridPutMusic "drums up" 2 \drummode {
   cymr4 hh hh hh |
   hh4 hh hh hho |

@@ -3,6 +3,7 @@
   \global s1*4
 }
 
+
 \gridPutMusic "meta" 2 {
   \repeat volta 2 {
     s1*8
@@ -10,9 +11,11 @@
   \break
 }
 
+
 \gridPutMusic "meta" 3 {
   s1*2 \noBreak
 }
+
 
 \gridPutMusic "meta" 4 {
   \set Score.repeatCommands = #'(start-repeat)
@@ -28,6 +31,7 @@
   \break
 }
 
+
 \gridPutMusic "meta" 5 {
   s1*5
   s2.
@@ -38,6 +42,7 @@
   \bar "||"
   \noBreak
 }
+
 
 \gridPutMusic "meta" 6 {
   s4

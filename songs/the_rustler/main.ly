@@ -4,9 +4,10 @@
 %%% License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
-\version "2.19.24"
+\version "2.19.80"
 
 \include "openlilylib"
+
 
 %%% ======================================================== [ Naptaker Config ]
 
@@ -21,19 +22,22 @@
   \override Score.TrillSpanner.bound-details.left.text = ##f
 }
 
+
 %%% ================================================================= [ Header ]
 
 Key    = { \key f \minor }
 Tempo  = { \tempo 4 = 170 }
 global = { \Tempo \defaultTimeSignature \time 4/4 }
 
+
 \header {
   title     = \markup \fontsize #6 "The Rustler"
   opus      = "Naptime"
   composer  = "Eric Bailey"
   arranger  = "Naptaker"
-  copyright = "© 2013-2018 Naptaker"
+  copyright = "© 2013-2018 Eric Bailey"
 }
+
 
 %%% =================================================================== [ Grid ]
 
@@ -47,5 +51,6 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
 \gridCheck
 
 \include "naptaker/mtf-improviso.ily"
+
 
 %%% ==================================================================== [ EOF ]
