@@ -40,3 +40,30 @@
     { bd4 bd8 r bd r bd r | }
   }
 }
+
+
+\gridPutMusic "drums down" 3 \drummode {
+  \todoOn
+  \repeat unfold 8 { \repeat unfold 4 { bd4 } }
+  \todoOff
+}
+
+
+\gridPutMusic "drums down" 4 \drummode {
+  \todoOn
+  \repeat unfold 16 { \repeat unfold 4 { bd4 } }
+  \todoOff
+}
+
+
+\gridPutMusic "drums down" 5 \drummode {
+  \todoOn
+  \repeat unfold 14 { \repeat unfold 4 { bd4 } }
+  \todoOff
+}
+
+\gridPutMusic "drums down" 6 \drummode {
+  \todoOn
+  \repeat unfold 2 { \repeat unfold 4 { bd4 } }
+  \todoOff
+}

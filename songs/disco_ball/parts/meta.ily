@@ -16,7 +16,7 @@
 
 \gridPutMusic "meta" 4 {
   s1*8 \break
-  s1*8 \break
+  s1*8 \pageBreak
 }
 
 

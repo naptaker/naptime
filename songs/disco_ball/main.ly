@@ -37,6 +37,19 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   copyright = "© 2016-2018 Eric Bailey"
 }
 
+%%% ================================================================== [ Hacks ]
+
+todoOn = {
+  \temporary \override NoteHead.color = #red
+  \temporary \override Stem.color = #red
+}
+
+
+todoOff = {
+  \revert NoteHead.color
+  \revert Stem.color
+}
+
 
 %%% =================================================================== [ Grid ]
 

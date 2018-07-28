@@ -70,8 +70,9 @@
   lyrics = \lyricmode { }
   music = {
     \stopStaff \override Staff.StaffSymbol.line-count = #1
+    \bye
     \new Voice = "gym" {
-      \bye \improvisationOn
+      \improvisationOn
       s1*2
       s2 \hi d8 d4 d8 ~ |
       d8 d4 d8 d d d4 |
@@ -82,7 +83,8 @@
       \bye s1*2
       s4 s8 \hi d d d d4 |
       d4 d8 d4. \bye s4 |
-      s1*2 \hi
+      s1*2
     }
+    \hi
   }
 }
