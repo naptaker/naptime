@@ -1,12 +1,13 @@
 %%% ================================================================ [ main.ly ]
 %%% Description: Naptime - Main score for "Cover Yr Eyes"
-%%% Copyright:   (c) 2016-2017 Naptaker
+%%% Copyright:   (c) 2016-2018 Eric Bailey
 %%% License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
-\version "2.19.24"
+\version "2.19.80"
 
 \include "openlilylib"
+
 
 %%% ======================================================== [ Naptaker Config ]
 
@@ -31,8 +32,9 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   composer  = "Preston Y. Drum"
   poet      = "Preston Y. Drum"
   arranger  = "Naptaker"
-  copyright = "© 2016-2017 Naptaker"
+  copyright = "© 2016-2018 Eric Bailey"
 }
+
 
 %%% ================================================================= [ Layout ]
 
@@ -74,6 +76,7 @@ pageNumberColor = #(if (defined? 'pageNumberColor) pageNumberColor black)
   }
 }
 
+
 %%% =================================================================== [ Grid ]
 
 \templateInit
@@ -88,5 +91,6 @@ pageNumberColor = #(if (defined? 'pageNumberColor) pageNumberColor black)
 \gridCheck
 
 \include "naptaker/mtf-improviso.ily"
+
 
 %%% ==================================================================== [ EOF ]

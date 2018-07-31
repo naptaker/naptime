@@ -1,5 +1,5 @@
 \gridPutMusic "guitar strum" 1 \relative c {
-  #(let ((y -7.24))
+  #(let ((y -8.65))
      #{
        \override Beam.extra-offset = #`(0 . ,y)
        \override Dots.extra-offset = #`(0 . ,y)
@@ -46,7 +46,7 @@
 }
 
 \gridPutMusic "guitar strum" 5 \relative c {
-  #(let ((y -7.24))
+  #(let ((y -8.65))
      #{
        \override Beam.extra-offset = #`(0 . ,y)
        \override Dots.extra-offset = #`(0 . ,y)
