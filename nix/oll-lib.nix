@@ -2,10 +2,9 @@
 
 stdenv.mkDerivation {
   pname = "oll-lib";
-  version = "20200428";
+  version = "20200504";
   dontUnpack = true;
   dontBuild = true;
-  src = null;
   buildInputs = [ oll-core gridly naptaker ];
   installPhase = ''
     mkdir -p $out

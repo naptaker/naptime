@@ -1,5 +1,6 @@
 { pkgs ? import ./nix
-, debug ? false
+, loglevel ? "info"
+, CNAME ? "scores.naptaker.band"
 }:
 let
   version = builtins.readFile ./VERSION;
@@ -31,21 +32,21 @@ let
             lilypond
           ];
 
+          enableParallelBuilding = true;
+
           buildPhase = ''
             install -m644 ${Makefile} ./Makefile
             install -dm755 $out
           '';
 
-          preInstall = ''
-            installFlagsArray=(
-              job-count=''${NIX_BUILD_CORES:-1}
-              ${optionalString debug "loglevel=debug"}
-              pdfName=${pdfName}
-              prefix=$out/
-            );
-          '';
+          installFlags = [
+            "job-count=$${NIX_BUILD_CORES:-1}"
+            "loglevel=${loglevel}"
+            "pdfName=${pdfName}"
+            "prefix=${placeholder "out"}"
+          ];
 
-          postInstall = optionalString (!debug) ''
+          postInstall = optionalString (loglevel != "debug") ''
             rm -frv $out/*.log
           '';
 
@@ -54,21 +55,15 @@ let
           };
         }
       );
-
-  CNAME = pkgs.stdenv.mkDerivation {
-    name = "naptaker-scores-CNAME";
-    dontUnpack = true;
-    dontBuild = true;
-    installPhase = ''
-      install -dm755 $out
-      install -m644 ${pkgs.writeText "CNAME" "scores.naptaker.band"} $out/CNAME
-    '';
-  };
 in
 pkgs.symlinkJoin {
   name = "naptime-${version}";
   inherit meta version;
-  paths = [ CNAME ] ++ (with builtins;
+  enableParallelBuilding = true;
+  paths = with builtins;
     map (songName: mkScore { inherit songName; })
-      (attrNames (readDir ./songs)));
+      (attrNames (readDir ./songs));
+  postBuild = ''
+    ln -s ${pkgs.writeText "CNAME" CNAME} $out/CNAME
+  '';
 }
