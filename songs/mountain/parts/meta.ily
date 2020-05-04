@@ -21,7 +21,7 @@
   s4
   \set Score.repeatCommands = #'((volta #f))
   \bar "||"
-  \break
+  \pageBreak
 }
 
 \gridPutMusic "meta" 3 {
