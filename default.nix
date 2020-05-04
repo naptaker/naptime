@@ -62,9 +62,8 @@ let
   };
 in
 pkgs.symlinkJoin {
-  name = "naptime";
+  name = "naptime-${version}";
   inherit meta version;
-
   paths = [ CNAME ] ++ (with builtins;
     map (songName: mkScore { inherit songName; })
       (attrNames (readDir ./songs)));
