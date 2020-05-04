@@ -17,13 +17,16 @@ jobs:
       with:
         name: yurrriq
         skipPush: true
+    - run: |
+        git clone --quiet --branch gh-pages --depth 1 https://x-access-token:"$GITHUB_TOKEN"@github.com/"$GITHUB_REPOSITORY".git docs
+        git -C docs config user.name github-actions
+        git -C docs config user.email github-actions@users.noreply.github.com
     - name: Build
-      run: nix-build -o docs
+      run: make
     - name: GitHub Pages
-      uses: crazy-max/ghaction-github-pages@v1.5.1
-      if: success()
-      with:
-        target_branch: gh-pages
-        build_dir: docs
+      run: |
+        git -C docs add --all .
+        git -C docs commit -m 'Deploy to GitHub Pages'
+        git -C docs push --quiet https://x-access-token:"$GITHUB_TOKEN"@github.com/"$GITHUB_REPOSITORY".git gh-pages
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
