@@ -1,18 +1,22 @@
-name: "Build"
+name: "Build site"
 on:
   push:
     branches:
     - master
 jobs:
-  tests:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: cachix/install-nix-action@v8
-    # - uses: cachix/cachix-action@v5
-    #   with:
-    #     name: yurrriq
-    #     skipPush: true
+    - name: Allow unfree
+      run: |
+        mkdir -p ~/.config/nixpkgs
+        echo '{ allowUnfree = true; }' >~/.config/nixpkgs/config.nix
+    - uses: cachix/cachix-action@v6
+      with:
+        name: yurrriq
+        skipPush: true
     - name: Build
       run: nix-build -o docs
     - name: GitHub Pages
