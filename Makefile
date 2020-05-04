@@ -2,5 +2,5 @@ prefix ?= docs
 
 .PHONY: all
 all:
-	@ find $$(nix-build --no-out-link) -name '*.pdf' | \
+	@ find -L $$(nix-build --no-out-link) -maxdepth 1 -type f | \
 		xargs install -m644 -Dt ${prefix}

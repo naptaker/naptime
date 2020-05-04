@@ -45,6 +45,10 @@ let
             );
           '';
 
+          postInstall = optionalString (!debug) ''
+            rm -frv $out/*.log
+          '';
+
           meta = meta // {
             description = "${songName} score from Naptime by Naptaker";
           };
