@@ -6,12 +6,11 @@
 
 \version "2.19.80"
 
-\include "openlilylib"
-
 
 %%% ======================================================== [ Naptaker Config ]
 
-\useLibrary Naptaker
+\include "oll-core/package.ily"
+\loadPackage naptaker
 
 \setOption naptaker.staff-size #13
 

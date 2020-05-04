@@ -6,11 +6,11 @@
 
 \version "2.19.24"
 
-\include "openlilylib"
 
 %%% ======================================================== [ Naptaker Config ]
 
-\useLibrary Naptaker
+\include "oll-core/package.ily"
+\loadPackage naptaker
 
 \setOption naptaker.guitar-tuning #guitar-open-d-tuning
 \setOption naptaker.guitar-capo #2

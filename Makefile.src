@@ -1,0 +1,21 @@
+job-count ?= $(shell nproc)
+
+lilypond ?= lilypond
+
+lilypondFlags ?= \
+--loglevel=${loglevel} \
+-djob-count=${job-count} \
+-dmidi-extension=mid \
+-dno-point-and-click \
+-drelative-includes \
+-dwarning-as-error
+
+loglevel ?= PROGRESS
+
+pdfName ?= main
+
+.PHONY: all install
+all: install
+install: ${prefix}${pdfName}.pdf
+${prefix}${pdfName}.pdf: main.ly notes/* parts/*
+	${lilypond} ${lilypondFlags} --pdf -o ${prefix}${pdfName} $< ${output}

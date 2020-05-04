@@ -109,7 +109,7 @@
    (place-fret 5 4)
    (place-fret 4 4)
    (place-fret 3 4)
-   (muts 2)
+   (mute 2)
    (mute 1))
 
 %%% Magic Fret Table
