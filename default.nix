@@ -1,9 +1,15 @@
 { pkgs ? import ./nix
-, songs ? null
 , debug ? false
 }:
 let
   version = builtins.readFile ./VERSION;
+
+  meta = with pkgs.stdenv.lib; {
+    description = "Scores from Naptime by Naptaker";
+    homepage = "https://github.com/naptaker/naptime";
+    maintainers = with maintainers; [ yurrriq ];
+    license = licenses.cc-by-nc-sa-40;
+  };
 
   lilypond = pkgs.lilypond-with-improviso;
 
@@ -13,47 +19,53 @@ let
 
   mkScore = attrs@{ songName, pdfName ? songName, ... }:
     pkgs.stdenv.mkDerivation
-      (attrs // rec {
-        pname = "naptime-${songName}";
-        inherit pdfName songName version;
-        src = ./. + "/songs/${songName}";
+      (
+        attrs // {
+          pname = "naptime-${songName}";
+          inherit pdfName songName version;
+          src = ./. + "/songs/${songName}";
 
-        FONTCONFIG_FILE = pkgs.makeFontsConf { fontDirectories = [ ]; };
+          FONTCONFIG_FILE = pkgs.makeFontsConf { fontDirectories = [ ]; };
 
-        nativeBuildInputs = [
-          lilypond
-        ];
+          nativeBuildInputs = [
+            lilypond
+          ];
 
-        buildPhase = ''
-          install -m644 ${Makefile} ./Makefile
-          install -m755 -d $out
-        '';
+          buildPhase = ''
+            install -m644 ${Makefile} ./Makefile
+            install -dm755 $out
+          '';
 
-        preInstall = ''
-          installFlagsArray=(
-            job-count=''${NIX_BUILD_CORES:-1}
-            ${optionalString debug "loglevel=debug"}
-            pdfName=${pdfName}
-            prefix=$out/
-          );
-        '';
+          preInstall = ''
+            installFlagsArray=(
+              job-count=''${NIX_BUILD_CORES:-1}
+              ${optionalString debug "loglevel=debug"}
+              pdfName=${pdfName}
+              prefix=$out/
+            );
+          '';
 
-        # TODO: meta
-      }
+          meta = meta // {
+            description = "${songName} score from Naptime by Naptaker";
+          };
+        }
       );
+
+  CNAME = pkgs.stdenv.mkDerivation {
+    name = "naptaker-scores-CNAME";
+    dontUnpack = true;
+    dontBuild = true;
+    installPhase = ''
+      install -dm755 $out
+      install -m644 ${pkgs.writeText "CNAME" "scores.naptaker.band"} $out/CNAME
+    '';
+  };
 in
 pkgs.symlinkJoin {
   name = "naptime";
-  inherit version;
+  inherit meta version;
 
-  paths = with builtins;
+  paths = [ CNAME ] ++ (with builtins;
     map (songName: mkScore { inherit songName; })
-      (attrNames (readDir ./songs));
-
-  meta = with pkgs.stdenv.lib; {
-    description = "Scores for the Naptaker album, Naptime";
-    homepage = http://github.com/naptaker/naptime;
-    maintainers = with maintainers; [ yurrriq ];
-    license = licenses.cc-by-nc-sa-40;
-  };
+      (attrNames (readDir ./songs)));
 }
