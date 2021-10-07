@@ -1,32 +1,35 @@
-{ pkgs ? import ./nix
+{ lib
+, lilypond
+, makeFontsConf
+, stdenv
+, symlinkJoin
+, writeText
 , loglevel ? "info"
 , CNAME ? "scores.naptaker.band"
 }:
 let
   version = builtins.readFile ./VERSION;
 
-  meta = with pkgs.stdenv.lib; {
+  meta = with lib; {
     description = "Scores from Naptime by Naptaker";
     homepage = "https://github.com/naptaker/naptime";
     maintainers = with maintainers; [ yurrriq ];
     license = licenses.cc-by-nc-sa-40;
   };
 
-  lilypond = pkgs.lilypond-with-improviso;
+  Makefile = writeText "Makefile" (builtins.readFile ./Makefile.src);
 
-  Makefile = pkgs.writeText "Makefile" (builtins.readFile ./Makefile.src);
-
-  inherit (pkgs.lib) concatMapStringsSep isString intersectLists optionalString splitString;
+  inherit (lib) concatMapStringsSep isString intersectLists optionalString splitString;
 
   mkScore = attrs@{ songName, pdfName ? songName, ... }:
-    pkgs.stdenv.mkDerivation
+    stdenv.mkDerivation
       (
         attrs // {
           pname = "naptime-${songName}";
           inherit pdfName songName version;
           src = ./. + "/songs/${songName}";
 
-          FONTCONFIG_FILE = pkgs.makeFontsConf { fontDirectories = [ ]; };
+          FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ ]; };
 
           nativeBuildInputs = [
             lilypond
@@ -56,14 +59,16 @@ let
         }
       );
 in
-pkgs.symlinkJoin {
+symlinkJoin rec {
   name = "naptime-${version}";
   inherit meta version;
   enableParallelBuilding = true;
+  passthru = with lib;
+    listToAttrs (map (song: nameValuePair (getName song) song) paths);
   paths = with builtins;
     map (songName: mkScore { inherit songName; })
       (attrNames (readDir ./songs));
   postBuild = ''
-    ln -s ${pkgs.writeText "CNAME" CNAME} $out/CNAME
+    ln -s ${writeText "CNAME" CNAME} $out/CNAME
   '';
 }

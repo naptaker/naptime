@@ -1,0 +1,77 @@
+{
+  "nodes": {
+    "gridly": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1582585044,
+        "narHash": "sha256-DtcFkXjj13uuxMeMX5puq+wYw645XmdDp5+hCb85+oc=",
+        "owner": "openlilylib",
+        "repo": "gridly",
+        "rev": "baa175b9c5cc3ff038d266610a0e3dd371d21e71",
+        "type": "github"
+      },
+      "original": {
+        "owner": "openlilylib",
+        "repo": "gridly",
+        "type": "github"
+      }
+    },
+    "naptaker": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1588567911,
+        "narHash": "sha256-9aa6gCZlU0mCQ9OflsQBhfvGs/k36Tn4jJavgyuTznY=",
+        "owner": "naptaker",
+        "repo": "naptaker",
+        "rev": "95a3f82ea2ea493b589d889af828cf7cc0719606",
+        "type": "github"
+      },
+      "original": {
+        "owner": "naptaker",
+        "repo": "naptaker",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1633588356,
+        "narHash": "sha256-O9bcgjc5KjSbBmjMP0t9X0wy1Y/WwaYlBvh9BmJPM0A=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "63d30d18a604e369517778472f6d9ab4d8780ecb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "oll-core": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1599641787,
+        "narHash": "sha256-8gtTOpdxv9emCw0T8N95NKGQPxwGW547aiLUu2o/u5g=",
+        "owner": "openlilylib",
+        "repo": "oll-core",
+        "rev": "73029ae46f1b870f82d1637ef241fb7c3f35ce6b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "openlilylib",
+        "repo": "oll-core",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "gridly": "gridly",
+        "naptaker": "naptaker",
+        "nixpkgs": "nixpkgs",
+        "oll-core": "oll-core"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
