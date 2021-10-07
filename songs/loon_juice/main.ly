@@ -1,6 +1,6 @@
 %%% ================================================================ [ main.ly ]
 %%% Description: Naptime - Main score for "Loon Juice"
-%%% Copyright:   (c) 2016-2018 Eric Bailey
+%%% Copyright:   (c) 2016-2021 Eric Bailey
 %%% License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
@@ -32,7 +32,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
   opus      = "Naptime"
   composer  = "Eric Bailey"
   arranger  = "Naptaker"
-  copyright = "© 2016-2018 Eric Bailey"
+  copyright = "© 2016-2021 Eric Bailey"
 }
 
 

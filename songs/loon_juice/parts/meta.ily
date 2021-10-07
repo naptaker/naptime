@@ -44,8 +44,8 @@
   \once \override Score.MetronomeMark.X-offset = #-9.5
   \tweak X-offset #-1 \mark Jam
   \tempo 4 = 82
-  \omit Score.FretBoard
-  \override Score.ChordName.extra-offset = #'(0 . -5)
+  %% \omit Score.FretBoard
+  %% \override Score.ChordName.extra-offset = #'(0 . -5)
 
   s1*3
   \tweak X-offset #6.5 \mark MegaMan
