@@ -2,18 +2,20 @@ name: "Build site"
 on:
   push:
     branches:
-    - master
+    - develop
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: cachix/install-nix-action@v8
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v22
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Allow unfree
       run: |
         mkdir -p ~/.config/nixpkgs
         echo '{ allowUnfree = true; }' >~/.config/nixpkgs/config.nix
-    - uses: cachix/cachix-action@v6
+    - uses: cachix/cachix-action@v12
       with:
         name: yurrriq
         skipPush: true
@@ -22,11 +24,17 @@ jobs:
         git -C docs config user.name github-actions
         git -C docs config user.email github-actions@users.noreply.github.com
     - name: Build
-      run: make
-    - name: GitHub Pages
       run: |
-        git -C docs add --all .
-        git -C docs commit -m 'Deploy to GitHub Pages'
-        git -C docs push --quiet https://x-access-token:"$GITHUB_TOKEN"@github.com/"$GITHUB_REPOSITORY".git gh-pages
+        nix build
+        mkdir -p site
+        cp result/* site/
+    - name: Deploy to GitHub Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v3
+      with:
+        build_dir: site
+        jekyll: false
+        keep_history: true
+        target_branch: gh-pages
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
