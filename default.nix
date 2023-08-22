@@ -19,7 +19,7 @@ let
 
   Makefile = writeText "Makefile" (builtins.readFile ./Makefile.src);
 
-  inherit (lib) concatMapStringsSep isString intersectLists optionalString splitString;
+  inherit (lib) optionalString;
 
   mkScore = attrs@{ songName, pdfName ? songName, ... }:
     stdenv.mkDerivation
