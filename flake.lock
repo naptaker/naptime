@@ -3,15 +3,16 @@
     "gridly": {
       "flake": false,
       "locked": {
-        "lastModified": 1582585044,
-        "narHash": "sha256-DtcFkXjj13uuxMeMX5puq+wYw645XmdDp5+hCb85+oc=",
-        "owner": "openlilylib",
+        "lastModified": 1692682034,
+        "narHash": "sha256-JWxCx1AnEd+9GlZL88AJi7KKdDQJOe4y0mpzkH2o6IY=",
+        "owner": "yurrriq",
         "repo": "gridly",
-        "rev": "baa175b9c5cc3ff038d266610a0e3dd371d21e71",
+        "rev": "aeba15226f4f9a62464d03e21a0e1800e9e5cf31",
         "type": "github"
       },
       "original": {
-        "owner": "openlilylib",
+        "owner": "yurrriq",
+        "ref": "lilypond-2.24",
         "repo": "gridly",
         "type": "github"
       }
@@ -19,46 +20,62 @@
     "naptaker": {
       "flake": false,
       "locked": {
-        "lastModified": 1588567911,
-        "narHash": "sha256-9aa6gCZlU0mCQ9OflsQBhfvGs/k36Tn4jJavgyuTznY=",
+        "lastModified": 1692682956,
+        "narHash": "sha256-USOSV7spTqcJnDsc1fQS7kowYiq3OkQvqBDriwmC2mE=",
         "owner": "naptaker",
         "repo": "naptaker",
-        "rev": "95a3f82ea2ea493b589d889af828cf7cc0719606",
+        "rev": "fc2d1dc7a78239dc90d5b55633c73dca4f1104d3",
         "type": "github"
       },
       "original": {
         "owner": "naptaker",
+        "ref": "lilypond-2.24",
         "repo": "naptaker",
+        "type": "github"
+      }
+    },
+    "nixpgks": {
+      "locked": {
+        "lastModified": 1676914337,
+        "narHash": "sha256-c+31TIgk0kJiFk4ROtPfNzs8b38j5+KdpGuq1l/K8xE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "0fae3035a1910b6bdbc35a5359f589f08ffc566e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "0fae3035",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1633588356,
-        "narHash": "sha256-O9bcgjc5KjSbBmjMP0t9X0wy1Y/WwaYlBvh9BmJPM0A=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "63d30d18a604e369517778472f6d9ab4d8780ecb",
-        "type": "github"
+        "lastModified": 1692207601,
+        "narHash": "sha256-tfPGNKQcJT1cvT6ufqO/7ydYNL6mcJClvzbrzhKjB80=",
+        "path": "/nix/store/qq92vih9cyvfmxjsmfjy5xpvyi0gpk88-source",
+        "rev": "b30c68669df77d981ce4aefd6b9d378563f6fc4e",
+        "type": "path"
       },
       "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "type": "github"
+        "id": "nixpkgs",
+        "type": "indirect"
       }
     },
     "oll-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1599641787,
-        "narHash": "sha256-8gtTOpdxv9emCw0T8N95NKGQPxwGW547aiLUu2o/u5g=",
-        "owner": "openlilylib",
+        "lastModified": 1692679657,
+        "narHash": "sha256-xVUCkIaHlWZPdIktP18J7S/W0PQHTgwI2Kvh/scTb3Q=",
+        "owner": "yurrriq",
         "repo": "oll-core",
-        "rev": "73029ae46f1b870f82d1637ef241fb7c3f35ce6b",
+        "rev": "3cc24254e2a93e9b4396449ff37069e1e3ca63b2",
         "type": "github"
       },
       "original": {
-        "owner": "openlilylib",
+        "owner": "yurrriq",
+        "ref": "lilypond-2.24",
         "repo": "oll-core",
         "type": "github"
       }
@@ -67,6 +84,7 @@
       "inputs": {
         "gridly": "gridly",
         "naptaker": "naptaker",
+        "nixpgks": "nixpgks",
         "nixpkgs": "nixpkgs",
         "oll-core": "oll-core"
       }

@@ -25,7 +25,7 @@
 }
 
 \gridPutMusic "meta" 3 {
-  \bar ".|:"
+  \bar ".|:-|"
   \repeat volta 4 {
     s1 s2 s4. s8
   }

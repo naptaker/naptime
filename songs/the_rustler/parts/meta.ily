@@ -18,13 +18,13 @@
 
 
 \gridPutMusic "meta" 4 {
-  \set Score.repeatCommands = #'(start-repeat)
+  %% \set Score.repeatCommands = #'(start-repeat)
   s1 \noBreak
   s1 \break
-  \set Score.repeatCommands = #'((volta "1, 3"))
+  %% \set Score.repeatCommands = #'((volta "1, 3"))
   s1 \noBreak
   s1 \noBreak
-  \set Score.repeatCommands = #'((volta #f) (volta "2, 4") end-repeat)
+  %% \set Score.repeatCommands = #'((volta #f) (volta "2, 4") end-repeat)
   s1 \noBreak
   s1
   \bar ":|."

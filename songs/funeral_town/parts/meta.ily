@@ -10,7 +10,7 @@
 }
 
 \gridPutMusic "meta" 2 {
-  \mark \markup { \musicglyph #"scripts.segno" }
+  \mark \markup { \musicglyph "scripts.segno" }
   \repeat volta 3 {
     \repeat unfold 4 { s1 \noBreak } \break
     \repeat unfold 3 { s1 \noBreak }
@@ -44,13 +44,13 @@
     \line {
       \rotate #180 "†" \null "BM1 → BP → PC"
       "⇒ BM2 → BP → PC"
-      "⇒ BM1 → BP → Bridge →" \raise #1 \tiny \musicglyph #"scripts.segno" "→ … → Fine"
+      "⇒ BM1 → BP → Bridge →" \raise #1 \tiny \musicglyph "scripts.segno" "→ … → Fine"
     }
 %{
     \left-column {
       %% \line { \rotate #180 "†" "BM1 → BP → PC" }
       %% "↳ BM2 → BP → PC"
-      %% \line { "↳ BM1 → BP → Bridge →" \raise #1 \tiny \musicglyph #"scripts.segno" "→ … → Fine" }
+      %% \line { "↳ BM1 → BP → Bridge →" \raise #1 \tiny \musicglyph "scripts.segno" "→ … → Fine" }
       %% %% "↳ BM3 → BP → PC"
       %% %% "↳ BM1 → … → Fine"
     }

@@ -4,21 +4,23 @@
   inputs = {
     gridly = {
       flake = false;
-      url = "github:openlilylib/gridly";
+      # url = "github:openlilylib/gridly";
+      url = "github:yurrriq/gridly/lilypond-2.24";
     };
 
     naptaker = {
       flake = false;
-      url = "github:naptaker/naptaker";
+      url = "github:naptaker/naptaker/lilypond-2.24";
     };
 
     oll-core = {
       flake = false;
-      url = "github:openlilylib/oll-core";
+      # url = "github:openlilylib/oll-core";
+      url = "github:yurrriq/oll-core/lilypond-2.24";
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs";
-    # nixpkgs.url = "github:nixos/nixpkgs/60255a1d";
+    nixpgks.url = "github:nixos/nixpkgs/0fae3035"; # 2.24
+    # nixpkgs.url = "github:nixos/nixpkgs"; # 2.25 (unstable)
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -39,25 +41,15 @@
         '';
       };
 
-      # FIXME: https://github.com/NixOS/nixpkgs/pull/140490
-      lilypond-with-improviso = with prev;
-        prev.lib.appendToName "with-fonts" (prev.symlinkJoin {
-          inherit (prev.lilypond) meta name version;
-          paths = [ prev.lilypond prev.openlilylib-fonts.improviso ];
-          nativeBuildInputs = [ prev.makeWrapper ];
-          postBuild = ''
-            for p in $out/bin/*; do
-              wrapProgram "$p" --set LILYPOND_DATADIR "$out/share/lilypond/${prev.lilypond.version}"
-            done
-          '';
-        });
+      lilypond-with-improviso = prev.lilypond-with-fonts.overrideAttrs(_: {
+        paths = [ prev.lilypond prev.openlilylib-fonts.improviso ];
+      });
 
       oll-lib = prev.stdenv.mkDerivation {
         pname = "oll-lib";
-        version = "20200504";
+        version = "20230821";
         dontUnpack = true;
         dontBuild = true;
-        buildInputs = with inputs; [ oll-core gridly naptaker ];
         installPhase = with inputs; ''
           mkdir -p $out
           cp -rv ${oll-core} $out/oll-core
@@ -79,14 +71,18 @@
       defaultPackage.x86_64-linux = self.packages.x86_64-linux.naptime;
 
       devShell.x86_64-linux = with pkgs; mkShell {
-        LILYPOND_SHARE_DIR = "${myLilypond}/share";
+        FONTCONFIG_FILE = makeFontsConf {
+          fontDirectories = [];
+        };
+
+        LILYPOND_SHARE_DIR = "${lilypond-with-improviso}/share";
+
         buildInputs = [
           (frescobaldi.override {
             lilypond = myLilypond;
           })
           lilypond-with-improviso
           nixpkgs-fmt
-          # pythonPackages.pywatchman
           timidity
         ];
       };
@@ -94,7 +90,7 @@
       packages.x86_64-linux =
         let
           naptime = pkgs.callPackage ./. {
-            lilypond = pkgs.lilypond-with-improviso;
+            lilypond = pkgs.myLilypond;
           };
         in
         {

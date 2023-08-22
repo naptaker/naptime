@@ -4,7 +4,7 @@
 %%% License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
-\version "2.19.24"
+\version "2.24.0"
 
 
 %%% ======================================================== [ Naptaker Config ]
@@ -68,7 +68,7 @@
         bend-amount))))
 
 shiftBend = {
-  \once \override TabVoice.Slur #'stencil = #slur::draw-shifted-bend-arrow
+  \once \override TabVoice.Slur.stencil = #slur::draw-shifted-bend-arrow
 }
 
 

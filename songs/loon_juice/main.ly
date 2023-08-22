@@ -4,7 +4,7 @@
 %%% License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
-\version "2.19.80"
+\version "2.24.0"
 
 
 %%% ======================================================== [ Naptaker Config ]
@@ -51,7 +51,7 @@ pageNumberColor = #(if (defined? 'pageNumberColor) pageNumberColor black)
         \null
         \line {
           \with-color \pageNumberColor
-          \on-the-fly #print-page-number-check-first
+          \if \should-print-page-number
           \fromproperty #'page:page-number-string
         }
       }
@@ -63,7 +63,7 @@ pageNumberColor = #(if (defined? 'pageNumberColor) pageNumberColor black)
       \fill-line {
         \line {
           \with-color \pageNumberColor
-          \on-the-fly #print-page-number-check-first
+          \if \should-print-page-number
           \fromproperty #'page:page-number-string
         }
         \null

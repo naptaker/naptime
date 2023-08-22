@@ -7,7 +7,7 @@
 
 
 \gridPutMusic "meta" 2 {
-  \mark \markup { \musicglyph #"scripts.segno" }
+  \mark \markup { \musicglyph "scripts.segno" }
   s1*3
   s2
   #(context-spec-music #{

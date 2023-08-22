@@ -19,19 +19,19 @@
 \gridPutMusic "meta" 2 {
   \overrideProperty Score.NonMusicalPaperColumn.line-break-system-details #'((Y-offset . 60))
   %% \mark \markup \box \smallCaps Verse
-  \mark \markup \musicglyph #"scripts.segno"
-  \set Score.repeatCommands = #'(start-repeat)
+  \mark \markup \musicglyph "scripts.segno"
+  %% \set Score.repeatCommands = #'(start-repeat)
   s1*6^\markup \small \italic "ad lib minimal guitar"
   \break
 
   \overrideProperty Score.NonMusicalPaperColumn.line-break-system-details #'((Y-offset . 120))
-  \set Score.repeatCommands = #'((volta "1.") end-repeat)
+  %% \set Score.repeatCommands = #'((volta "1.") end-repeat)
   s1*2
-  \set Score.repeatCommands = #'((volta "2, 3") end-repeat)
+  %% \set Score.repeatCommands = #'((volta "2, 3") end-repeat)
   s1*2
-  \set Score.repeatCommands = #'((volta "4.") end-repeat)
+  %% \set Score.repeatCommands = #'((volta "4.") end-repeat)
   s1*2
-  \set Score.repeatCommands = #'((volta #f))
+  %% \set Score.repeatCommands = #'((volta #f))
   \bar ".|:-||" %% NOTE: write this shit down somewhere... wtf
   \pageBreak
 }

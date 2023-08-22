@@ -4,7 +4,7 @@
 %%% License:     see LICENSE
 %%% ==================================================================== [ EOH ]
 
-\version "2.19.24"
+\version "2.24.0"
 
 
 %%% ======================================================== [ Naptaker Config ]
@@ -49,7 +49,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
       \fill-line {
         \null
         \line {
-          \on-the-fly #print-page-number-check-first
+          \if \should-print-page-number
           \fromproperty #'page:page-number-string
         }
       }
@@ -60,7 +60,7 @@ global = { \Tempo \defaultTimeSignature \time 4/4 }
     \column {
       \fill-line {
         \line {
-          \on-the-fly #print-page-number-check-first
+          \if \should-print-page-number
           \fromproperty #'page:page-number-string
         }
         \null
